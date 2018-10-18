@@ -13,7 +13,6 @@ namespace TMS.Models.DTO.Task
 
         public string Content { get; set; }
         public string Stage { get; set; } = "New";
-        public float HoursSpent { get; set; }
 
         public int? UserId { get; set; }
     }

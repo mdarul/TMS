@@ -26,7 +26,6 @@ namespace TMS.Models
             taskToUpdate.Content = taskWithUpdatedValues.Content;
             taskToUpdate.Stage = taskWithUpdatedValues.Stage;
             taskToUpdate.UserId = taskWithUpdatedValues.UserId;
-            taskToUpdate.HoursSpent = taskWithUpdatedValues.HoursSpent;
         }
 
         public static void ApplyPatchToWorkTimeEntity(WorkTime workTimeToUpdate,
@@ -44,7 +43,6 @@ namespace TMS.Models
             taskToUpdate.Content = taskWithUpdatedValues.Content;
             taskToUpdate.Stage = taskWithUpdatedValues.Stage;
             taskToUpdate.UserId = taskWithUpdatedValues.UserId;
-            taskToUpdate.HoursSpent = taskWithUpdatedValues.HoursSpent;
         }
 
         public static void UpdateWorkTimeFromDto(WorkTime workTimeToUpdate, WorkTimeForCreationDTO workTimeWithUpdatedValues)

@@ -40,6 +40,11 @@ public class TasksListActivity extends Activity {
     }
 
 
+    public void addNewTask(View view) {
+        Intent intent = new Intent(this, TaskCreateActivity.class);
+        startActivity(intent);
+    }
+
     private void initTasksList() {
 
         RequestQueue queue = Volley.newRequestQueue(this);

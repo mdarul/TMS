@@ -25,6 +25,7 @@
         <activity android:name=".TaskEditActivity" />
         <activity android:name=".WorkTimeActivity" />
         <activity android:name=".WorkTimeTaskSelectActivity" />
+        <activity android:name=".TaskCreateActivity" />
 
     </application>
 </manifest>

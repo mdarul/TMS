@@ -59,7 +59,6 @@ namespace TMS.Models
                 Content = task.Content,
                 Stage = task.Stage,
                 UserId = task.UserId,
-                HoursSpent = task.HoursSpent
             };
         }
 
@@ -71,7 +70,6 @@ namespace TMS.Models
                 Content = task.Content,
                 Stage = task.Stage,
                 UserId = task.UserId,
-                HoursSpent = task.HoursSpent
             };
         }
 
@@ -83,7 +81,6 @@ namespace TMS.Models
                 Content = taskDto.Content,
                 Stage = taskDto.Stage,
                 UserId = taskDto.UserId,
-                HoursSpent = taskDto.HoursSpent
             };
         }
 

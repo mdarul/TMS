@@ -19,7 +19,6 @@ namespace TMS.Models.Entities
 
         public string Content { get; set; }
         public string Stage { get; set; } = "New";
-        public float HoursSpent { get; set; }
 
         public int? UserId { get; set; }
         public User User { get; set; }

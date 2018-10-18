@@ -32,6 +32,8 @@ public class Task implements Parcelable {
         }
     }
 
+    public Task() {}
+
     protected Task(Parcel in) {
         id = in.readInt();
         title = in.readString();

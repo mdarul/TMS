@@ -68,6 +68,11 @@ public class WorkTimeActivity extends Activity {
         startActivityForResult(intent, ApplicationSettings.TASK_SELECT);
     }
 
+    public void addNewTask(View view) {
+        Intent intent = new Intent(this, TaskCreateActivity.class);
+        startActivity(intent);
+    }
+
     private void lookForUnfinishedTask() {
         RequestQueue queue = Volley.newRequestQueue(this);
         final String URL = "http://" + ApplicationSettings.getInstance().getServer() + "/api/users/" +

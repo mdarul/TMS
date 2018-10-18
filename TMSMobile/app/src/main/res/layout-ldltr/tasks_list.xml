@@ -4,11 +4,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary">
-    
+
+    <Button
+        style="@style/ButtonStyle"
+        android:id="@+id/task_list_button_add_task"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/white"
+        android:visibility="visible"
+        android:text="@string/add_task"
+        android:onClick="addNewTask" />
+
     <ListView
         android:id="@+id/tasks_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"/>
 
     <TextView
         android:id="@+id/tasks_list_error_msg"

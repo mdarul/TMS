@@ -36,6 +36,7 @@ public class LoginActivity extends Activity {
         String user = userNameTextBox.getText().toString();
         String password = passwordTextBox.getText().toString();
 
+
         RequestQueue queue = Volley.newRequestQueue(this);
         final TextView testTextView = findViewById(R.id.testTextView);
         String URL = "http://" + server + "/api/users/checkCredentials/" + user + "/" + password;

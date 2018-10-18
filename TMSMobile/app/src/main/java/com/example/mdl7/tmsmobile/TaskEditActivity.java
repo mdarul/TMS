@@ -65,17 +65,16 @@ public class TaskEditActivity extends Activity {
 
     public void SaveTask(View view) {
         updateTaskValues();
-        final TaskEditActivity context = this;
-        final JSONObject jsonObject = task.toJsonObject();
+        final JSONObject putData = task.toJsonObject();
         RequestQueue queue = Volley.newRequestQueue(this);
 
         String url = "http://" + ApplicationSettings.getInstance().getServer() + "/api/tasks/" + task.getId();
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, null,
                 (response) -> {
-                    context.onDestroy();
+                    finish();
                 },
                 (error) -> {
-                    context.onDestroy();
+                    finish();
                 }
         ) {
             @Override
@@ -95,7 +94,7 @@ public class TaskEditActivity extends Activity {
             public byte[] getBody() {
 
                 try {
-                    return jsonObject.toString().getBytes("UTF-8");
+                    return putData.toString().getBytes("UTF-8");
                 }
                 catch (Exception e) {
                     e.printStackTrace();
