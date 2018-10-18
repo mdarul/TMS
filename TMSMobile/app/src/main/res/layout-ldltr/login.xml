@@ -34,13 +34,4 @@
         android:text="@string/login"
         android:onClick="performLogin"/>
 
-    <TextView
-        android:id="@+id/testTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
 </LinearLayout>
-
-    <!--android:background="#000000"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_width="match_parent"-->

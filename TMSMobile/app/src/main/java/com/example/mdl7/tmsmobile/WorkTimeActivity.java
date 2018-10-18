@@ -139,38 +139,6 @@ public class WorkTimeActivity extends Activity {
             taskTextView.setText("Task id:" + task.getId());
             taskLinkButton.setText("Link other task");
             updateTimeButtonsLayouts();
-            updateTimeTextViewsLayouts();
-        }
-    }
-
-    private void updateTimeTextViewsLayouts() {
-        TextView startTimeTextView = findViewById(R.id.work_hours_start_time_info);
-        TextView stopTimeTextView = findViewById(R.id.work_hours_stop_time_info);
-
-        if(workTime != null) {
-            Date start = workTime.getWorkStartTime();
-            Date end = workTime.getWorkEndTime();
-            if(start != null && !workTime.isStartTimeDefault())
-            {
-                startTimeTextView.setVisibility(View.VISIBLE);
-                startTimeTextView.setText("Start:\n" + start.toString());
-            }
-            if(end != null && !workTime.isEndTimeDefault())
-            {
-                stopTimeTextView.setVisibility(View.VISIBLE);
-                stopTimeTextView.setText("End:\n" + end.toString());
-            }
-        }
-        else if(lastStart != null && lastStop != null) {
-
-            startTimeTextView.setVisibility(View.VISIBLE);
-            startTimeTextView.setText("Start:\n" + lastStart.toString());
-            stopTimeTextView.setVisibility(View.VISIBLE);
-            stopTimeTextView.setText("End:\n" + lastStop.toString());
-        }
-        else {
-            startTimeTextView.setText("");
-            stopTimeTextView.setText("");
         }
     }
 

@@ -14,7 +14,6 @@
     <string name="add_task">Add new task</string>
     <string name="title">Title</string>
     <string name="content">Content</string>
-    <string name="hours_spent">Hours spent</string>
 
     <string name="no_linked_task">No linked task</string>
 

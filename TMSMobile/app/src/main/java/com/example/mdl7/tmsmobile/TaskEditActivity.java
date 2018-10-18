@@ -1,9 +1,12 @@
 package com.example.mdl7.tmsmobile;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -21,7 +24,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TaskEditActivity extends Activity {
+
+public class TaskEditActivity extends TaskActivity {
 
     private Task task;
 
@@ -44,16 +48,14 @@ public class TaskEditActivity extends Activity {
 
     private void fillLayout() {
         TextView taskIdTextView = findViewById(R.id.task_edit_task_id);
-        EditText taskTitleEditView = findViewById(R.id.task_edit_title);
-        EditText taskContentEditView = findViewById(R.id.task_edit_content);
-        EditText taskHourSpentEditView = findViewById(R.id.task_edit_hours_spent);
-        Spinner taskStageSpinner = findViewById(R.id.task_edit_stage_spinner);
+        taskTitleEditView = findViewById(R.id.task_edit_title);
+        taskContentEditView = findViewById(R.id.task_edit_content);
+        taskStageSpinner = findViewById(R.id.task_edit_stage_spinner);
 
 
         taskIdTextView.setText("Task Id: " + String.valueOf(task.getId()));
         taskTitleEditView.setText(task.getTitle());
         taskContentEditView.setText(task.getContent());
-        taskHourSpentEditView.setText(String.valueOf(task.getHoursSpent()));
 
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.task_stages, android.R.layout.simple_spinner_item);
@@ -64,6 +66,16 @@ public class TaskEditActivity extends Activity {
     }
 
     public void SaveTask(View view) {
+
+        hideKeyboard();
+
+        String errorMsg = getErrorMessage();
+        if(!errorMsg.equals("")) {
+            Snackbar snackbar = Snackbar.make(view, errorMsg, Snackbar.LENGTH_LONG);
+            snackbar.show();
+            return;
+        }
+
         updateTaskValues();
         final JSONObject putData = task.toJsonObject();
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -106,17 +118,4 @@ public class TaskEditActivity extends Activity {
         request.setRetryPolicy(new DefaultRetryPolicy(10000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(request);
     }
-
-    private void updateTaskValues() {
-        EditText taskTitleEditView = findViewById(R.id.task_edit_title);
-        EditText taskContentEditView = findViewById(R.id.task_edit_content);
-        EditText taskHourSpentEditView = findViewById(R.id.task_edit_hours_spent);
-        Spinner taskStageSpinner = findViewById(R.id.task_edit_stage_spinner);
-
-        this.task.setTitle(taskTitleEditView.getText().toString());
-        this.task.setContent(taskContentEditView.getText().toString());
-        this.task.setHoursSpent(Integer.valueOf(taskHourSpentEditView.getText().toString()));
-        this.task.setStage(taskStageSpinner.getSelectedItem().toString());
-    }
-
 }

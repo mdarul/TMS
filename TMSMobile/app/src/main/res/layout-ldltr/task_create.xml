@@ -31,14 +31,6 @@
         android:layout_height="wrap_content">
     </Spinner>
 
-    <EditText
-        android:id="@+id/task_create_hours_spent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/hours_spent"
-        style="@style/EditTextBlockStyle">
-    </EditText>
-
     <Button
         style="@style/ButtonStyle"
         android:id="@+id/create_task_button"

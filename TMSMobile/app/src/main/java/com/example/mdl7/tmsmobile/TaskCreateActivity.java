@@ -3,6 +3,7 @@ package com.example.mdl7.tmsmobile;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -16,11 +17,10 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONObject;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TaskCreateActivity extends Activity {
+public class TaskCreateActivity extends TaskActivity {
 
     @Override
     public void onCreate(Bundle savedInstance) {
@@ -34,6 +34,15 @@ public class TaskCreateActivity extends Activity {
     }
 
     public void createTask(View view) {
+        hideKeyboard();
+
+        String errorMsg = getErrorMessage();
+        if(!errorMsg.equals("")) {
+            Snackbar snackbar = Snackbar.make(view, errorMsg, Snackbar.LENGTH_LONG);
+            snackbar.show();
+            return;
+        }
+
         Task task = getTaskFromCurrentLayout();
         postTaskToServer(task);
     }
@@ -43,12 +52,10 @@ public class TaskCreateActivity extends Activity {
 
         EditText taskTitleEditView = findViewById(R.id.task_create_title);
         EditText taskContentEditView = findViewById(R.id.task_create_content);
-        EditText taskHourSpentEditView = findViewById(R.id.task_create_hours_spent);
         Spinner taskStageSpinner = findViewById(R.id.task_create_stage_spinner);
 
         task.setTitle(taskTitleEditView.getText().toString());
         task.setContent(taskContentEditView.getText().toString());
-        task.setHoursSpent(Integer.valueOf(taskHourSpentEditView.getText().toString()));
         task.setStage(taskStageSpinner.getSelectedItem().toString());
         task.setUserId(ApplicationSettings.getInstance().getUser().getId());
 

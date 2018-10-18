@@ -12,7 +12,6 @@ public class Task implements Parcelable {
     private String title;
     private String content;
     private String stage;
-    private int hoursSpent;
     private Integer userId;
 
 
@@ -22,7 +21,6 @@ public class Task implements Parcelable {
             this.title = jsonObject.getString("title");
             this.content = jsonObject.getString("content");
             this.stage = jsonObject.getString("stage");
-            this.hoursSpent = jsonObject.getInt("hoursSpent");
 
             String temporaryUserId = jsonObject.getString("userId");
             this.userId = temporaryUserId.isEmpty() ? null : Integer.parseInt(temporaryUserId);
@@ -39,7 +37,6 @@ public class Task implements Parcelable {
         title = in.readString();
         content = in.readString();
         stage = in.readString();
-        hoursSpent = in.readInt();
         if (in.readByte() == 0) {
             userId = null;
         } else {
@@ -53,7 +50,6 @@ public class Task implements Parcelable {
         dest.writeString(title);
         dest.writeString(content);
         dest.writeString(stage);
-        dest.writeInt(hoursSpent);
         if (userId == null) {
             dest.writeByte((byte) 0);
         } else {
@@ -86,7 +82,6 @@ public class Task implements Parcelable {
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 ", stage='" + stage + '\'' +
-                ", hoursSpent=" + hoursSpent +
                 ", userId=" + userId +
                 '}';
     }
@@ -123,14 +118,6 @@ public class Task implements Parcelable {
         this.stage = stage;
     }
 
-    public int getHoursSpent() {
-        return hoursSpent;
-    }
-
-    public void setHoursSpent(int hoursSpent) {
-        this.hoursSpent = hoursSpent;
-    }
-
     public Integer getUserId() {
         return userId;
     }
@@ -146,7 +133,6 @@ public class Task implements Parcelable {
             jsonObject.put("title", this.title);
             jsonObject.put("content", this.content);
             jsonObject.put("stage", this.stage);
-            jsonObject.put("hoursSpent", this.hoursSpent);
             jsonObject.put("userId", this.userId);
         }
         catch (JSONException e) {

@@ -37,25 +37,18 @@ public class LoginActivity extends Activity {
         String password = passwordTextBox.getText().toString();
 
 
+
         RequestQueue queue = Volley.newRequestQueue(this);
-        final TextView testTextView = findViewById(R.id.testTextView);
         String URL = "http://" + server + "/api/users/checkCredentials/" + user + "/" + password;
         final LoginActivity context = this;
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, URL, null,
                 response -> {
-                    testTextView.setText(response.toString());
                     ApplicationSettings.getInstance().setUser(new User(response));
                     ApplicationSettings.getInstance().setServer(server);
                     Intent intent = new Intent(context, NavigationScreenActivity.class);
                     startActivity(intent);
-                },
-                error -> {
-                    if(error.networkResponse == null || error.networkResponse.data == null) {
-                        testTextView.setText("error");
-                    }
-                    else testTextView.setText(new String(error.networkResponse.data, StandardCharsets.UTF_8));
-                });
+                }, null);
 
         request.setRetryPolicy(new DefaultRetryPolicy(10000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(request);

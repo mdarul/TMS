@@ -22,12 +22,13 @@
         <Button
             style="@style/ButtonStyle"
             android:id="@+id/button_link_task"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
             android:layout_height="wrap_content"
 
             android:layout_marginTop="20dp"
             android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="10dp"
 
             android:background="@color/colorPrimaryDark"
             android:textColor="@color/white"
@@ -38,11 +39,12 @@
         <Button
             style="@style/ButtonStyle"
             android:id="@+id/button_add_task"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
             android:layout_height="wrap_content"
 
             android:layout_marginTop="20dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="10dp"
             android:layout_marginEnd="20dp"
 
             android:background="@color/colorPrimaryDark"
@@ -136,18 +138,5 @@
         </LinearLayout>
 
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/work_hours_start_time_info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Start"/>
-
-    <TextView
-        android:id="@+id/work_hours_stop_time_info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="End"/>
-
 
 </LinearLayout>

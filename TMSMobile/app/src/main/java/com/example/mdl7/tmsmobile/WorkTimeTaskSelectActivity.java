@@ -43,7 +43,6 @@ public class WorkTimeTaskSelectActivity extends Activity {
 
         RequestQueue queue = Volley.newRequestQueue(this);
         final ListView tasksListView = findViewById(R.id.tasks_list);
-        final TextView errorTetView = findViewById(R.id.tasks_list_error_msg);
 
         String URL = "http://" + ApplicationSettings.getInstance().getServer() + "/api/users/" +
                 ApplicationSettings.getInstance().getUser().getId() + "/tasks";
@@ -75,11 +74,7 @@ public class WorkTimeTaskSelectActivity extends Activity {
 
                         }
                     });
-                },
-                (error) -> {
-                    errorTetView.setText("error");
-                }
-        );
+                }, null);
 
         request.setRetryPolicy(new DefaultRetryPolicy(10000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(request);

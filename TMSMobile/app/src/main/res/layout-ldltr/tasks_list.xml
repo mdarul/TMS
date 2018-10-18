@@ -27,9 +27,4 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"/>
 
-    <TextView
-        android:id="@+id/tasks_list_error_msg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
 </LinearLayout>
