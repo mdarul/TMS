@@ -1,5 +1,8 @@
 package com.example.mdl7.tmsmobile;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -10,14 +13,14 @@ import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class WorkTime {
+public class WorkTime implements Parcelable {
     private int id;
     private int userId;
     private Integer taskId;
     private Date workStartTime;
     private Date workEndTime;
 
-    public static String datePattern = "YYYY-MM-dd'T'HH:mm:ss";
+    public static String datePattern = "yyyy-MM-dd'T'HH:mm:ss";
     public static String defaultDateString = "0001-01-01T00:00:00";
 
     public WorkTime() {}
@@ -37,6 +40,30 @@ public class WorkTime {
         }
 
     }
+
+    protected WorkTime(Parcel in) {
+        id = in.readInt();
+        userId = in.readInt();
+        if (in.readByte() == 0) {
+            taskId = null;
+        } else {
+            taskId = in.readInt();
+        }
+        workStartTime = new Date(in.readLong());
+        workEndTime = new Date(in.readLong());
+    }
+
+    public static final Creator<WorkTime> CREATOR = new Creator<WorkTime>() {
+        @Override
+        public WorkTime createFromParcel(Parcel in) {
+            return new WorkTime(in);
+        }
+
+        @Override
+        public WorkTime[] newArray(int size) {
+            return new WorkTime[size];
+        }
+    };
 
     public JSONObject toJsonObject() {
         JSONObject jsonObject = new JSONObject();
@@ -64,7 +91,7 @@ public class WorkTime {
         return map;
     }
 
-    private String parseDateToJsonDateTime(Date date) {
+    public static String parseDateToJsonDateTime(Date date) {
         if(date == null) return null;
         SimpleDateFormat parser = new SimpleDateFormat(datePattern);
         return parser.format(date);
@@ -159,5 +186,24 @@ public class WorkTime {
 
     public void setWorkEndTime(Date workEndTime) {
         this.workEndTime = workEndTime;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeInt(userId);
+        if (taskId == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(taskId);
+        }
+        dest.writeLong(workStartTime.getTime());
+        dest.writeLong(workEndTime.getTime());
     }
 }

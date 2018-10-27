@@ -23,10 +23,11 @@
         <activity android:name=".NavigationScreenActivity" />
         <activity android:name=".TasksListActivity" />
         <activity android:name=".TaskEditActivity" />
+        <activity android:name=".TaskCreateActivity" />
         <activity android:name=".WorkTimeActivity" />
         <activity android:name=".WorkTimeTaskSelectActivity" />
-        <activity android:name=".TaskCreateActivity" />
-        <activity android:name=".TaskActivity" />
+        <activity android:name=".WorkTimeEditActivity" />
+
 
     </application>
 </manifest>

@@ -1,6 +1,9 @@
 package com.example.mdl7.tmsmobile;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -22,9 +25,6 @@ public class WorkTimeActivity extends Activity {
     private Task task;
     private WorkTime workTime;
 
-    private Date lastStart;
-    private Date lastStop;
-
     @Override
     public void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
@@ -35,7 +35,7 @@ public class WorkTimeActivity extends Activity {
     @Override
     public void onResume(){
         super.onResume();
-        updateLayout();
+        lookForUnfinishedTask();
     }
 
     @Override
@@ -101,7 +101,7 @@ public class WorkTimeActivity extends Activity {
                 (response) -> {
                     this.workTime = new WorkTime(response);
                     this.workTime.setWorkEndTime(new Date());
-                    putWorkingTimeToServer();
+                    createConfirmationDialog();
                 },
                 (error) -> updateLayout()
                 );
@@ -216,20 +216,16 @@ public class WorkTimeActivity extends Activity {
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, URL, null,
                 response -> {
-                    lastStart = workTime.getWorkStartTime();
-                    lastStop = workTime.getWorkEndTime();
                     if(!workTime.isEndTimeDefault()) workTime = null;
                     updateLayout();
                 }, error -> {
-                    lastStart = workTime.getWorkStartTime();
-                    lastStop = workTime.getWorkEndTime();
                     if(!workTime.isEndTimeDefault()) workTime = null;
                     updateLayout();
         }) {
             @Override
             public Map<String, String> getHeaders()
             {
-                Map<String, String> headers = new HashMap<String, String>();
+                Map<String, String> headers = new HashMap<>();
                 headers.put("Accept", "application/json");
                 return headers;
             }
@@ -254,5 +250,32 @@ public class WorkTimeActivity extends Activity {
         request.setRetryPolicy(new DefaultRetryPolicy(10000,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(request);
+    }
+
+    private void createConfirmationDialog() {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+        alertDialog.setMessage("Do you want to edit saved dates?\nStart: "
+                + WorkTime.parseDateToJsonDateTime(workTime.getWorkStartTime())
+                + "\nEnd: " + WorkTime.parseDateToJsonDateTime(workTime.getWorkEndTime()));
+
+        final WorkTime workTimeFinal = this.workTime;
+        final Context contextFinal = this;
+
+        alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(contextFinal, WorkTimeEditActivity.class);
+                intent.putExtra(ApplicationSettings.WORKTIME_INFO, workTimeFinal);
+                startActivity(intent);
+            }
+        });
+        alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                putWorkingTimeToServer();
+            }
+        });
+
+        alertDialog.create().show();
     }
 }

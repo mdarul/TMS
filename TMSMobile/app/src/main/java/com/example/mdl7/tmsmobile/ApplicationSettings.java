@@ -8,6 +8,7 @@ public class ApplicationSettings {
 
     public static final int TASK_SELECT = 0;
     public static final String TASK_INFO = "TASK_INFO";
+    public static final String WORKTIME_INFO = "WORKTIME_INFO";
     public static final String TASK_INFO_FOR_WORK_TIME = "TASK_INFO_FOR_WORK_TIME";
 
     public static ApplicationSettings getInstance(){

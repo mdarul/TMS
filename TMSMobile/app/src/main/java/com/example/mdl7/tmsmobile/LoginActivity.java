@@ -32,11 +32,13 @@ public class LoginActivity extends Activity {
         EditText userNameTextBox = findViewById(R.id.login_user);
         EditText passwordTextBox = findViewById(R.id.login_password);
 
-        String server = serverTextBox.getText().toString();
-        String user = userNameTextBox.getText().toString();
-        String password = passwordTextBox.getText().toString();
+//        String server = serverTextBox.getText().toString();
+//        String user = userNameTextBox.getText().toString();
+//        String password = passwordTextBox.getText().toString();
 
-
+        String server = Secret.server;
+        String user = Secret.user;
+        String password = Secret.password;
 
         RequestQueue queue = Volley.newRequestQueue(this);
         String URL = "http://" + server + "/api/users/checkCredentials/" + user + "/" + password;

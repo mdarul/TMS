@@ -10,10 +10,17 @@
     <string name="work_time">Work time</string>
     <string name="start">Start</string>
     <string name="stop">Stop</string>
+    <string name="start_time">Start time</string>
+    <string name="stop_time">Stop time</string>
     <string name="link_task">Link task</string>
     <string name="add_task">Add new task</string>
     <string name="title">Title</string>
     <string name="content">Content</string>
+    <string name="day">Day</string>
+    <string name="hour">Hour</string>
+    <string name="minute">Minutes</string>
+    <string name="seconds">Seconds</string>
+
 
     <string name="no_linked_task">No linked task</string>
 
