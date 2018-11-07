@@ -14,7 +14,7 @@ namespace TMS.Models.Entities
 
         public SystemContext(DbContextOptions<SystemContext> options) : base(options)
         {
-//            Database.EnsureCreated();
+            Database.EnsureCreated();
         }
     }
 }

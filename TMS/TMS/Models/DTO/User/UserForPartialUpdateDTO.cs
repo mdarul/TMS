@@ -25,7 +25,6 @@ namespace TMS.Models.DTO
         public string Login { get; set; }
 
         [Required]
-        [MaxLength(15)]
         public string Password { get; set; }
     }
 }

@@ -1,7 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
+using Isopoh.Cryptography.Argon2;
+using Isopoh.Cryptography.SecureArray;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using TMS.Models;
@@ -82,10 +87,85 @@ namespace TMS.Controllers
             var user = _repo.GetUsers().FirstOrDefault(o => o.Login == login);
             if (user == null) return NotFound();
 
-            if (user.Password != password) ModelState.AddModelError("PasswordErrorMsg", "Incorrect password");
-            if (!ModelState.IsValid) return BadRequest(ModelState);
+            if (!CheckPasswordCorectness(password, user.Password))
+            {
+                ModelState.AddModelError("PasswordErrorMsg", "Incorrect password");
+            }
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
             return Ok(user);
+        }
+        
+        [HttpGet("replacePassword/{login}/{oldPassword}/{newPassword}")]
+        public IActionResult ReplaceUserPassword(string login, string oldPassword, string newPassword)
+        {
+            var user = _repo.GetUsers().FirstOrDefault(o => o.Login == login);
+            if (user == null) return NotFound();
+
+            if (!CheckPasswordCorectness(oldPassword, user.Password))
+            {
+                ModelState.AddModelError("PasswordErrorMsg", "Incorrect current password");
+            }
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            user.Password = GetPasswordHash(newPassword);
+            _repo.SaveChanges();
+
+            return Ok(user);
+        }
+
+        private string GetPasswordHash(string password)
+        {
+            byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
+            byte[] salt = new byte[8];
+
+            RandomNumberGenerator Rng = RandomNumberGenerator.Create();
+            Rng.GetBytes(salt);
+
+            var config = new Argon2Config
+            {
+                Type = Argon2Type.DataIndependentAddressing,
+                TimeCost = 5,
+                MemoryCost = 16384,
+                Password = passwordBytes,
+                Salt = salt
+            };
+            var argon2A = new Argon2(config);
+            using (SecureArray<byte> hashA = argon2A.Hash())
+            {
+                return config.EncodeString(hashA.Buffer);
+            }
+        }
+
+        private bool CheckPasswordCorectness(string password, string hashPasswordFromDb)
+        {
+            var passwordBytes = Encoding.UTF8.GetBytes(password);
+
+            if (Argon2.Verify(hashPasswordFromDb, passwordBytes))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        [HttpGet("hash")]
+        public IActionResult HashPasswords()
+        {
+
+            var users = _repo.GetUsers();
+            foreach (var userxD in users)
+            {
+                userxD.Password = GetPasswordHash(userxD.Password);
+            }
+            _repo.SaveChanges();
+            return Ok();
         }
     }
 }
