@@ -48,6 +48,7 @@ namespace TMS.Controllers
         {
             if (userFromRequest == null) return BadRequest();
             if (!ModelState.IsValid) return BadRequest();
+            userFromRequest.Password = GetPasswordHash(userFromRequest.Password);
 
             _repo.AddUser(ModelsMapping.GetUserEntity(userFromRequest));
             return Ok();
@@ -160,9 +161,9 @@ namespace TMS.Controllers
         {
 
             var users = _repo.GetUsers();
-            foreach (var userxD in users)
+            foreach (var user in users)
             {
-                userxD.Password = GetPasswordHash(userxD.Password);
+                user.Password = GetPasswordHash(user.Password);
             }
             _repo.SaveChanges();
             return Ok();
