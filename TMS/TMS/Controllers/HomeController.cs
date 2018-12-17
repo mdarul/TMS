@@ -21,7 +21,7 @@ namespace TMS.Controllers
         public IActionResult Index()
         {
             _repo.SaveChanges();
-            return Ok(":)");
+            return View("login");
         }
 
         #region Populate data

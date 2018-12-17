@@ -8,8 +8,12 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using React.AspNet;
 using TMS.Models.Entities;
 using TMS.Services;
+
+using JavaScriptEngineSwitcher.Core;
+using JavaScriptEngineSwitcher.ChakraCore;
 
 namespace TMS
 {
@@ -22,11 +26,15 @@ namespace TMS
             this.Configuration = configuration;
         }
 
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddReact();
             services.AddMvc();
             services.AddDbContext<SystemContext>(o => o.UseSqlServer(this.Configuration["WebioMSSqlConnection"]));
             services.AddScoped<ISystemRepository, SystemRepository>();
+
+            return services.BuildServiceProvider();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -36,10 +44,16 @@ namespace TMS
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(builder => builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials());
+
             app.UseHttpsRedirection();
+            app.UseReact(config => { });
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
             app.UseMvc(routes => routes.MapRoute("default,", "{controller=Home}/{action=Index}"));
 
         }

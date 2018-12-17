@@ -1,0 +1,49 @@
+.mainScreen {
+    display: grid;
+    grid-auto-rows: auto;
+}
+
+.header {
+    background-color: #c9c9c9;
+    border-radius: 5px;
+
+    font-family: Georgia, serif;
+    font-size: large;
+
+    padding: 12px;
+    margin-bottom: 15px;
+}
+
+.contentContainer{
+    display: grid;
+    grid-template-columns: 250px 1fr;
+}
+
+.sidebar {
+    background-color: #8db6fd;
+    padding: 10px;
+    border-radius: 5px;
+    border:  black solid;
+    font-family: Georgia, serif;
+}
+
+.sidebarActivity {
+    background-color: #ee99ea;
+    border: thin solid black;
+
+    padding: 15px;
+    font-family: Georgia, serif;
+}
+
+.sidebarActivity + .sidebarActivity{
+    margin-top: 20px;
+}
+
+.operationContainer {
+    margin-left: 8px;
+    background-color: #8db6fd;
+    padding: 10px;
+    border-radius: 5px;
+    border: thin black solid;
+    font-family: Georgia, serif;
+}
