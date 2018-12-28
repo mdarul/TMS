@@ -1,5 +1,5 @@
 import React from 'react'
-import "./style.css"
+import "../style.css"
 
 export class MainScreen extends React.Component {
     constructor(props) {

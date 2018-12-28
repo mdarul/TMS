@@ -1,6 +1,14 @@
 import React from 'react';
+import { connect } from "react-redux";
+import { updateUser } from "../redux/actions";
 
-export class LoginScreen extends React.Component {
+function mapDispatchToProps(dispatch) {
+    return {
+        user1: user => dispatch(updateUser(user))
+    }
+}
+
+class LoginScreen extends React.Component {
    constructor(props) {
        super(props);
 
@@ -22,15 +30,14 @@ export class LoginScreen extends React.Component {
    }
 
    handleSubmit(event) {
-       // alert(`login: ${this.state.login}\npassword: ${this.state.password}`);
-
        const Http = new XMLHttpRequest();
        const url = "bla";
        Http.open("GET", url);
        Http.send();
        Http.onreadystatechange = (e) => {
-           console.log(Http.responseText);
-           this.state.userUpdateHandler(JSON.parse(Http.responseText));
+           // if()
+           console.log(Http.readyState);
+           console.log(Http.status);
        };
 
        event.preventDefault();
@@ -66,3 +73,5 @@ export class LoginScreen extends React.Component {
        );
    }
 }
+
+export default connect(null, mapDispatchToProps)(LoginScreen);

@@ -1,21 +1,26 @@
 import React from 'react'
-import "./style.css"
+import "../style.css"
+
+const mapStateToProps = state => {
+    return { user1: state.user1 };
+};
 
 export class MainScreen extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            user: props.user
-
-        }
-    }
+    // constructor(props) {
+    //     super(props);
+    //
+    //     this.state = {
+    //         user: props.user
+    //
+    //     }
+    // }
 
     render() {
         return (
             <div className="mainScreen">
                 <div className="header">
-                    Hello, {this.state.user.name}!
+                    {/*Hello, {this.state.user.name}!*/}
+
                 </div>
                 <div className="contentContainer">
                     <div className="sidebar">
