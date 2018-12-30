@@ -1,3 +1,7 @@
+.test {
+    color: aqua;
+}
+
 .mainScreen {
     display: grid;
     grid-auto-rows: auto;

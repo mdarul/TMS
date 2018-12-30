@@ -1,5 +1,8 @@
 #js
 secret.js
+.vscode/
+dist/
+node_modules/
 
 #dotnet
 
