@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { updateUser } from "../redux/actions";
+import { createUser } from "../redux/actions";
 import { serverUrl } from "../../secret"
 
 function mapDispatchToProps(dispatch) {
     return {
-        updateUser: user => dispatch(updateUser(user))
+        createUser: user => dispatch(createUser(user))
     }
 }
 
@@ -28,7 +28,7 @@ class LoginScreen extends React.Component {
         });
     }
  
-    handleSubmit(event) {
+    handleSubmit(e) {
         // const Http = new XMLHttpRequest();
         // const url = serverUrl + `\\api\\users\\checkCredentials\\${this.state.login}\\${this.state.password}`;
         // console.log(url);
@@ -39,23 +39,20 @@ class LoginScreen extends React.Component {
         //         console.log(this.responseText);
         //     }
         // };
-        // event.preventDefault();
+        e.preventDefault();
 
-        this.props.updateUser(
-            {
-                user: { 
-                    login: this.state.login, 
-                    password: this.state.password 
-                }
-            }
-        )
+        this.props.createUser(
+        {
+            login: this.state.login, 
+            password: this.state.password 
+        })
         // alert(`${this.state.login}\n${this.state.password}`)
     }
  
     render() {
         return (
             <div id="loginContainer">
-                <form onSubmit={this.props.updateUser}>
+                <form onSubmit={this.handleSubmit}>
                     <label>
                         Login:
                         <br />

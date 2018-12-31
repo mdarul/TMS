@@ -1,16 +1,14 @@
-import { UPDATE_USER } from "./constants";
+import { CREATE_USER } from "./constants";
 
 
-const initalState = {
-    user: null,
-};
+const initalState = {};
 
 export function rootReducer(state = initalState, action) {
-    if (action.type === UPDATE_USER) {
-        return ({
-            user: action.user
-        });
+    if (action.type === CREATE_USER) {
+        return (        
+            {user: action.user}
+        );
     }
-
+    
     return state;
 }

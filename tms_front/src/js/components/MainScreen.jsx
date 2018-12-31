@@ -10,7 +10,6 @@ class MainScreen extends React.Component {
     return (
       <div>
           {JSON.stringify(this.props.user)}
-          {/* dfsfds */}
       </div>
     );
   }
