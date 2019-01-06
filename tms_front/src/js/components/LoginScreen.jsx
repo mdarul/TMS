@@ -29,23 +29,27 @@ class LoginScreen extends React.Component {
     }
  
     handleSubmit(e) {
-        // const Http = new XMLHttpRequest();
-        // const url = serverUrl + `\\api\\users\\checkCredentials\\${this.state.login}\\${this.state.password}`;
-        // console.log(url);
-        // Http.open("GET", url);
-        // Http.send();
-        // Http.onreadystatechange = (e) => {
-        //     if(this.readyState === 4 && this.status === 200) {
-        //         console.log(this.responseText);
-        //     }
-        // };
         e.preventDefault();
 
-        this.props.createUser(
-        {
-            login: this.state.login, 
-            password: this.state.password 
-        })
+        const Http = new XMLHttpRequest();
+        const requestUrl = serverUrl + `/api/users/checkCredentials/${this.state.login}/${this.state.password}`;
+        // console.log(requestUrl);
+
+        Http.open("GET", requestUrl);
+        Http.send();
+
+        Http.onreadystatechange = (e) => {
+            if(Http.readyState === 4 && Http.status === 200) {
+                console.log("inside");
+                console.log(Http.responseText);
+            }
+        };
+
+        // this.props.createUser(
+        // {
+        //     login: this.state.login, 
+        //     password: this.state.password 
+        // })
         // alert(`${this.state.login}\n${this.state.password}`)
     }
  
