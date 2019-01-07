@@ -1,4 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+const mapStateToProps = state => {
+  return {
+       user: state.user,
+      };
+};
 
 class AddTaskScreen extends React.Component {
 
@@ -11,4 +18,4 @@ class AddTaskScreen extends React.Component {
   }
 }
 
-export default AddTaskScreen;
+export default connect(mapStateToProps)(AddTaskScreen);
