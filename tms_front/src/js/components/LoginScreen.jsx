@@ -44,13 +44,6 @@ class LoginScreen extends React.Component {
                 console.log(Http.responseText);
             }
         };
-
-        // this.props.createUser(
-        // {
-        //     login: this.state.login, 
-        //     password: this.state.password 
-        // })
-        // alert(`${this.state.login}\n${this.state.password}`)
     }
  
     render() {

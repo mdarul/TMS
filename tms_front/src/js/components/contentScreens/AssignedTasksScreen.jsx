@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { serverUrl } from "../../../secret.js"
-import Task from "../utilsComponents/Task.jsx"
+import TaskPresent from "../utilsComponents/TaskPresent.jsx"
 
 const mapStateToProps = state => {
   return {
@@ -35,7 +35,7 @@ class AssignedTasksScreen extends React.Component {
   render() {
     let tasksComponents = null;
     if(this.state.asignedTasks !== null) {
-      tasksComponents = this.state.asignedTasks.map(taskJson => <Task taskJson={taskJson} key={taskJson.id} />); 
+      tasksComponents = this.state.asignedTasks.map(taskJson => <TaskPresent taskJson={taskJson} key={taskJson.id} />); 
     }
 
     return (
