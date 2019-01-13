@@ -122,5 +122,37 @@ namespace TMS.Controllers
 
             return Ok(ModelsMapping.GetWorkTimeDto(unfinishedWorkTime));
         }
+
+        [HttpGet("users/{userId}/workTimes/subordinates")]
+        public IActionResult GetSubordinatesWorkTimes(int userId)
+        {
+            var users = _repo.GetUsers();
+
+            var user = _repo.GetUser(userId);
+            if (user == null) return NotFound();
+
+            var usersIdsList = new List<int>();
+            GetSubordinatesIDs(users, usersIdsList, user);
+
+            var workTimes = new List<WorkTimeDTO>();
+            foreach (var id in usersIdsList)
+            {
+                workTimes.AddRange(_repo.GetWorkTimesForUser(id).Select(ModelsMapping.GetWorkTimeDto));
+            }
+
+            return Ok(workTimes);
+        }
+
+        private void GetSubordinatesIDs(IEnumerable<User> allUsers, List<int> idList, User currentBoss)
+        {
+            foreach (var user in allUsers)
+            {
+                if (user.BossId != null && user.BossId == currentBoss.Id)
+                {
+                    idList.Add(user.Id);
+                    GetSubordinatesIDs(allUsers, idList, user);
+                }
+            }
+        }
     }
 }
