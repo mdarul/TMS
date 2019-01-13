@@ -25,7 +25,6 @@ class AssignedTasksScreen extends React.Component {
     fetch(requestUrl)
       .then(response => response.json())
       .then(responseData => {
-        console.log(responseData);
         this.setState({
           asignedTasks: responseData
         })

@@ -10,6 +10,7 @@ using TMS.Models.DTO;
 using TMS.Models.DTO.Task;
 using TMS.Models.Entities;
 using TMS.Services;
+using Task = System.Threading.Tasks.Task;
 
 namespace TMS.Controllers
 {
@@ -115,6 +116,38 @@ namespace TMS.Controllers
             if (unfinishedTask == null) return NotFound();
 
             return Ok(unfinishedTask);
+        }
+
+        [HttpGet("users/{userId}/tasks/subordinates")]
+        public IActionResult GetSubordinatesTasks(int userId)
+        {
+            var users = _repo.GetUsers();
+
+            var user = _repo.GetUser(userId);
+            if (user == null) return NotFound();
+
+            var usersIdsList = new List<int>();
+            GetSubordinatesIDs(users, usersIdsList, user);
+
+            var tasks = new List<TaskDTO>();
+            foreach (var id in usersIdsList)
+            {
+                tasks.AddRange(_repo.GetTasksForUser(id).Select(ModelsMapping.GetTaskDto));
+            }
+
+            return Ok(tasks);
+        }
+
+        private void GetSubordinatesIDs(IEnumerable<User> allUsers, List<int> idList, User currentBoss)
+        {
+            foreach (var user in allUsers)
+            {
+                if (user.BossId != null && user.BossId == currentBoss.Id)
+                {
+                    idList.Add(user.Id);
+                    GetSubordinatesIDs(allUsers, idList, user);
+                }
+            }
         }
     }
 }

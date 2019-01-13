@@ -6,6 +6,7 @@ import '../../styles/style.css'
 import ListWorktimesScreen from "./contentScreens/ListWorktimesScreen.jsx"
 import UserSettingsScreen from "./contentScreens/UserSettingsScreen.jsx"
 import AddWorktimeScreen from "./contentScreens/AddWorktimeScreen.jsx"
+import EditWorktimeScreen from "./contentScreens/EditWorktimeScreen.jsx"
 import AssignedTasksScreen from "./contentScreens/AssignedTasksScreen.jsx"
 import AddTaskScreen from "./contentScreens/AddTaskScreen.jsx"
 import SubordinatesTasksScreen from "./contentScreens/SubordinatesTasksScreen.jsx"
@@ -16,6 +17,7 @@ import
     USER_SETTINGS,
     LIST_WORKTIMES,
     ADD_WORKTIME,
+    EDIT_WORKTIME,
     ASSIGNED_TASKS,
     ADD_TASK,
     SUBORDINATES_TASKS,
@@ -31,7 +33,8 @@ const mapStateToProps = state => {
          assignedTasksClicked: state.assignedTasksClicked,
          addTaskClicked: state.addTaskClicked,
          subordinatesTasksClicked: state.subordinatesTasksClicked,
-         subordinatesWorktimesClicked: state.subordinatesWorktimesClicked
+         subordinatesWorktimesClicked: state.subordinatesWorktimesClicked,
+         editWorktimeClicked: state.editWorktimeClicked
         };
 };
 
@@ -59,6 +62,9 @@ class MainScreen extends React.Component {
                     <div className="sidebarActivity" onClick={() => this.props.showScreen(ADD_WORKTIME)}>
                         Add worktime
                     </div>
+                    <div className="sidebarActivity" onClick={() => this.props.showScreen(EDIT_WORKTIME)}>
+                        Edit worktime
+                    </div>
                     <div className="sidebarActivity" onClick={() => this.props.showScreen(ASSIGNED_TASKS)}>
                         Assigned tasks
                     </div>
@@ -76,6 +82,7 @@ class MainScreen extends React.Component {
                     { this.props.userSettingsClicked === true ? <UserSettingsScreen /> : ""}
                     { this.props.listWorktimesClicked === true ? <ListWorktimesScreen /> : ""}
                     { this.props.addWorktimesClicked === true ? <AddWorktimeScreen /> : ""}
+                    { this.props.editWorktimeClicked === true ? <EditWorktimeScreen /> : ""}
                     { this.props.assignedTasksClicked === true ? <AssignedTasksScreen /> : ""}
                     { this.props.addTaskClicked === true ? <AddTaskScreen /> : ""}
                     { this.props.subordinatesTasksClicked === true ? <SubordinatesTasksScreen /> : ""}

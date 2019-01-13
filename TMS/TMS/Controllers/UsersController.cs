@@ -9,6 +9,7 @@ using Isopoh.Cryptography.SecureArray;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Design;
 using TMS.Models;
 using TMS.Models.DTO;
 using TMS.Services;
@@ -121,6 +122,23 @@ namespace TMS.Controllers
             return Ok(user);
         }
 
+        [HttpGet("{userId}/subordinates")]
+        public IActionResult GetSubordinates(int userId)
+        {
+            var users = _repo.GetUsers().Select(ModelsMapping.GetUserDto);
+            if (users == null || !users.Any()) return NotFound();
+
+            var currentUser = ModelsMapping.GetUserDto(_repo.GetUser(userId));
+            if (currentUser == null) return BadRequest();
+
+            var subordinatesIdsList = new List<int>();
+            GetSubordinatesIDs(users, subordinatesIdsList, currentUser);
+
+            return Ok(subordinatesIdsList);
+        }
+
+        
+
         private string GetPasswordHash(string password)
         {
             byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
@@ -167,6 +185,18 @@ namespace TMS.Controllers
             }
             _repo.SaveChanges();
             return Ok();
+        }
+
+        private void GetSubordinatesIDs(IEnumerable<UserDTO> allUsers, List<int> idList, UserDTO currentBoss)
+        {
+            foreach (var user in allUsers)
+            {
+                if (user.BossId != null && user.BossId == currentBoss.Id)
+                {
+                    idList.Add(user.Id);
+                    GetSubordinatesIDs(allUsers, idList, user);
+                }
+            }
         }
     }
 }

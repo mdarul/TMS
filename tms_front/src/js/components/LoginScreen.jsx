@@ -33,14 +33,12 @@ class LoginScreen extends React.Component {
 
         const Http = new XMLHttpRequest();
         const requestUrl = serverUrl + `/api/users/checkCredentials/${this.state.login}/${this.state.password}`;
-        // console.log(requestUrl);
 
         Http.open("GET", requestUrl);
         Http.send();
 
         Http.onreadystatechange = (e) => {
             if(Http.readyState === 4 && Http.status === 200) {
-                console.log("inside");
                 console.log(Http.responseText);
             }
         };

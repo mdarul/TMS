@@ -43,7 +43,7 @@ class AddTaskScreen extends React.Component {
 
     const newTask = {
       title: this.state.title,
-      content: this.state.title,
+      content: this.state.content,
       stage: this.state.stage.value,
       userId: this.props.user.id 
     }
@@ -71,7 +71,7 @@ class AddTaskScreen extends React.Component {
             <input                             
               name="title"
               type="text"
-              value={this.state.login} 
+              value={this.state.title} 
               onChange={this.handleChange} />
             
             <br/>
@@ -81,7 +81,7 @@ class AddTaskScreen extends React.Component {
             <input                             
               name="content"
               type="text"
-              value={this.state.login} 
+              value={this.state.content} 
               onChange={this.handleChange} />
             <br />
 

@@ -7,7 +7,8 @@ import
     ADD_TASK,
     SUBORDINATES_TASKS,
     SUBORDINATES_WORKTIMES,
-    SELECT_SCREEN
+    SELECT_SCREEN,
+    EDIT_WORKTIME
 } from "./constants";
 
 
@@ -16,6 +17,7 @@ const initalState = {
     userSettingsClicked: false,
     listWorktimesClicked: false,
     addWorktimesClicked: false,
+    EditWorktimeClicked: false,
     assignedTasksClicked: false,
     addTaskClicked: false,
     subordinatesTasksClicked: false,
@@ -46,6 +48,9 @@ export function rootReducer(state = initalState, action) {
                     case ADD_WORKTIME:
                         stateJSON.addWorktimesClicked = true;
                         return stateJSON;
+                    case EDIT_WORKTIME:
+                        stateJSON.editWorktimeClicked = true;
+                        return stateJSON;
                     case ASSIGNED_TASKS:
                         stateJSON.assignedTasksClicked = true;
                         return stateJSON;
@@ -72,6 +77,7 @@ function getDefaultJSON(state){
         userSettingsClicked: false,
         listWorktimesClicked: false,
         addWorktimesClicked: false,
+        EditWorktimeClicked: false,
         assignedTasksClicked: false,
         addTaskClicked: false,
         subordinatesTasksClicked: false,
