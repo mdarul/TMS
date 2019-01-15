@@ -38,7 +38,7 @@ class SubordinatesWorktimesScreen extends React.Component {
     }
 
     return (
-      <div>
+      <div className="listEntityContainer">
         { workTimesComponents }
       </div>
     );

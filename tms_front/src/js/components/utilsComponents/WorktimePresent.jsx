@@ -1,4 +1,5 @@
 import React from "react"
+import "../../../styles/style.css"
 
 class WorktimePresent extends React.Component {
     constructor(props) {
@@ -14,7 +15,7 @@ class WorktimePresent extends React.Component {
 
     render() {
         return(
-            <div>
+            <div className="worktimeListEntity">
                 {this.state.workStartTime} - {this.state.workEndTime}
                 <br />
                 Task id: {this.state.taskId}

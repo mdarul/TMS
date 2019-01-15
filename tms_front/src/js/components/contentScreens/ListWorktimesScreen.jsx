@@ -38,7 +38,7 @@ class ListWorktimes extends React.Component {
     }
 
     return (
-      <div>
+      <div className="listEntityContainer">
           {worktimesComponents}
       </div>
     );

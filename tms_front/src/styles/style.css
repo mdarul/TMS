@@ -51,3 +51,42 @@
     border: thin black solid;
     font-family: Georgia, serif;
 }
+
+.listEntityContainer {
+
+}
+
+.listEntityContainer > .worktimeListEntity {
+    margin-left: 10px;
+}
+
+
+.worktimeListEntity {
+    border-radius: 5px;
+    border: thin black solid;
+    padding: 10px;
+    background-color: #f4f499;
+
+    font-family: Georgia, serif;
+    width: 330px;
+    display: inline-block;
+}
+
+.worktimeListEntity + .worktimeListEntity {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.taskListEntity {
+    border-radius: 5px;
+    border: thin black solid;
+    padding: 10px;
+    background-color: #f4f499;
+
+    font-family: Georgia, serif;
+    /* display: table; */
+}
+
+.taskListEntity + .taskListEntity {
+    margin-top: 10px;
+}
