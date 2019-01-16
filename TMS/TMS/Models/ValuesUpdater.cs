@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using TMS.Models.DTO;
+using TMS.Models.DTO.SickLeave;
 using TMS.Models.DTO.Task;
+using TMS.Models.DTO.Team;
+using TMS.Models.DTO.Vacation;
 using TMS.Models.DTO.WorkTime;
 using TMS.Models.Entities;
 
@@ -15,6 +18,7 @@ namespace TMS.Models
             userToUpdate.Name = userWithUpdatedValues.Name;
             userToUpdate.Surname = userWithUpdatedValues.Surname;
             userToUpdate.Type = userWithUpdatedValues.Type;
+            userToUpdate.TeamId = userWithUpdatedValues.TeamId;
             userToUpdate.BossId = userWithUpdatedValues.BossId;
             userToUpdate.Login = userWithUpdatedValues.Login;
             userToUpdate.Password = userWithUpdatedValues.Password;
@@ -51,6 +55,26 @@ namespace TMS.Models
             workTimeToUpdate.UserId = workTimeWithUpdatedValues.UserId;
             workTimeToUpdate.WorkStartTime = workTimeWithUpdatedValues.WorkStartTime;
             workTimeToUpdate.WorkEndTime = workTimeWithUpdatedValues.WorkEndTime;
+        }
+
+        public static void UpdateTeamFromDto(Team teamToUpdate, TeamForCreationDTO teamWithUpdatedValues)
+        {
+            teamToUpdate.ManagerId = teamWithUpdatedValues.ManagerId;
+            teamToUpdate.Name = teamWithUpdatedValues.Name;
+        }
+
+        public static void UpdateVacationFromDto(Vacation vacationToUpdate, VacationForCreationDTO vacationWithUpdatedValues)
+        {
+            vacationToUpdate.UserId = vacationWithUpdatedValues.UserId;
+            vacationToUpdate.StartTime = vacationWithUpdatedValues.StartTime;
+            vacationToUpdate.EndTime = vacationWithUpdatedValues.EndTime;
+        }
+
+        public static void UpdateSickLeaveFromDto(SickLeave sickLeaveToUpdate, SickLeaveForCreationDTO sickLeaveWithUpdatedValues)
+        {
+            sickLeaveToUpdate.UserId = sickLeaveWithUpdatedValues.UserId;
+            sickLeaveToUpdate.StartTime = sickLeaveWithUpdatedValues.StartTime;
+            sickLeaveToUpdate.EndTime = sickLeaveWithUpdatedValues.EndTime;
         }
     }
 }

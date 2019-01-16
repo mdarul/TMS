@@ -20,6 +20,7 @@ namespace TMS.Models
                 Id = user.Id,
                 Name = user.Name,
                 Surname = user.Surname,
+                TeamId = user.TeamId,
                 BossId = user.BossId,
                 Type = user.Type,
                 Login = user.Login,
@@ -33,6 +34,7 @@ namespace TMS.Models
             {
                 Name = user.Name,
                 Surname = user.Surname,
+                TeamId = user.TeamId,
                 BossId = user.BossId,
                 Type = user.Type,
                 Login = user.Login,
@@ -46,6 +48,7 @@ namespace TMS.Models
             {
                 Name = userDto.Name,
                 Surname = userDto.Surname,
+                TeamId = userDto.TeamId,
                 BossId = userDto.BossId,
                 Type = userDto.Type,
                 Login = userDto.Login,

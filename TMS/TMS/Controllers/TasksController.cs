@@ -32,7 +32,7 @@ namespace TMS.Controllers
             var tasks = _repo.GetTasks();
             if (tasks == null || !tasks.Any()) return NotFound();
 
-            return Ok(_repo.GetTasks().Select(o => ModelsMapping.GetTaskDto(o)));
+            return Ok(tasks.Select(ModelsMapping.GetTaskDto));
         }
 
         [HttpGet("users/{userId}/tasks")]
@@ -61,8 +61,8 @@ namespace TMS.Controllers
         {
             var taskToDelete = _repo.GetTask(taskId);
             if (taskToDelete == null) return NotFound();
-            _repo.DeleteTask(taskToDelete);
 
+            _repo.DeleteTask(taskToDelete);
             return Ok();
         }
 

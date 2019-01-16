@@ -13,7 +13,7 @@ namespace TMS.Models.Entities
         public string Name { set; get; }
 
         public int? ManagerId { get; set; }
-        public User Manager { get; set; }
+        public Management Manager { get; set; }
 
         public List<User> Members { get; set; }
     }

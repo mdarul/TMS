@@ -24,6 +24,23 @@ namespace TMS.Services
         void AddWorkTime(WorkTime workTime);
         void DeleteWorkTime(WorkTime workTime);
 
+        IEnumerable<Team> GetTeams();
+        Team GetTeam(int teamId);
+        void AddTeam(Team team);
+        void DeleteTeam(Team team);
+
+        IEnumerable<Vacation> GetVacations();
+        IEnumerable<Vacation> GetVacationsForUser(int userId);
+        Vacation GetVacation(int userId, int vacationId);
+        void AddVacation(Vacation vacation);
+        void DeleteVacation(Vacation vacation);
+
+        IEnumerable<SickLeave> GetSickLeaves();
+        IEnumerable<SickLeave> GetSickLeaveForUser(int userId);
+        SickLeave GetSickLeave(int userId, int sickLeaveId);
+        void AddSickLeave(SickLeave sickLeave);
+        void DeleteSickLeave(SickLeave sickLeave);
+
         void SaveChanges();
     }
 }

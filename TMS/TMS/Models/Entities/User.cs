@@ -23,6 +23,9 @@ namespace TMS.Models.Entities
 
         public short Type { get; set; } = 0;
 
+        public int? TeamId { get; set; }
+        public Team Team { get; set; }
+
         public int? BossId { get; set; }
         public User Boss { get; set; }
 

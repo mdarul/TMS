@@ -16,6 +16,8 @@ namespace TMS.Models.DTO
         [MaxLength(30)]
         public string Surname { get; set; }
 
+        public int? TeamId { get; set; }
+
         public int? BossId { get; set; }
 
         public short Type { get; set; } = 0;

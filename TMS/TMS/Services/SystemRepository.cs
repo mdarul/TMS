@@ -90,6 +90,82 @@ namespace TMS.Services
             SaveChanges();
         }
 
+        public IEnumerable<Team> GetTeams()
+        {
+            return _context.Teams.ToList();
+        }
+
+        public Team GetTeam(int teamId)
+        {
+            return _context.Teams.ToList().FirstOrDefault(o => o.Id == teamId);
+        }
+
+        public void AddTeam(Team team)
+        {
+            _context.Teams.Add(team);
+            SaveChanges();
+        }
+
+        public void DeleteTeam(Team team)
+        {
+            _context.Teams.Remove(team);
+            SaveChanges();
+        }
+
+        public IEnumerable<Vacation> GetVacations()
+        {
+            return _context.Vacations.ToList();
+        }
+
+        public IEnumerable<Vacation> GetVacationsForUser(int userId)
+        {
+            return _context.Vacations.ToList().Where(o => o.UserId == userId);
+        }
+
+        public Vacation GetVacation(int userId, int vacationId)
+        {
+            return _context.Vacations.ToList().FirstOrDefault(o => o.UserId == userId && o.Id == vacationId);
+        }
+
+        public void AddVacation(Vacation vacation)
+        {
+            _context.Vacations.Add(vacation);
+            SaveChanges();
+        }
+
+        public void DeleteVacation(Vacation vacation)
+        {
+            _context.Vacations.Remove(vacation);
+            SaveChanges();
+        }
+
+        public IEnumerable<SickLeave> GetSickLeaves()
+        {
+            return _context.SickLeaves.ToList();
+        }
+
+        public IEnumerable<SickLeave> GetSickLeaveForUser(int userId)
+        {
+            return _context.SickLeaves.Where(o => o.UserId == userId);
+        }
+
+        public SickLeave GetSickLeave(int userId, int sickLeaveId)
+        {
+            return _context.SickLeaves.ToList().FirstOrDefault(o => o.UserId == userId && o.Id == sickLeaveId);
+        }
+
+        public void AddSickLeave(SickLeave sickLeave)
+        {
+            _context.SickLeaves.Add(sickLeave);
+            SaveChanges();
+        }
+
+        public void DeleteSickLeave(SickLeave sickLeave)
+        {
+            _context.SickLeaves.Remove(sickLeave);
+            SaveChanges();
+        }
+
         public void SaveChanges()
         {
             _context.SaveChanges();
