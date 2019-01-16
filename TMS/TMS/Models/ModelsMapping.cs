@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using TMS.Models.DTO;
+using TMS.Models.DTO.SickLeave;
 using TMS.Models.DTO.Task;
+using TMS.Models.DTO.Team;
+using TMS.Models.DTO.Vacation;
 using TMS.Models.DTO.WorkTime;
 using TMS.Models.Entities;
 
@@ -115,6 +118,67 @@ namespace TMS.Models
                 WorkEndTime = workTimeDto.WorkEndTime,
                 UserId = workTimeDto.UserId,
                 TaskId = workTimeDto.TaskId
+            };
+        }
+
+        public static SickLeaveDTO GetSickLeaveDto(SickLeave sickLeave)
+        {
+            return new SickLeaveDTO()
+            {
+                Id = sickLeave.Id,
+                UserId = sickLeave.UserId,
+                StartTime = sickLeave.StartTime,
+                EndTime = sickLeave.EndTime
+            };
+        }
+
+        public static SickLeave GetSickLeaveEntity(SickLeaveForCreationDTO sickLeave)
+        {
+            return new SickLeave()
+            {
+                UserId = sickLeave.UserId,
+                StartTime = sickLeave.StartTime,
+                EndTime = sickLeave.EndTime
+            };
+        }
+
+        public static VacationDTO GetVacationeDto(Vacation vacation)
+        {
+            return new VacationDTO()
+            {
+                Id = vacation.Id,
+                UserId = vacation.UserId,
+                StartTime = vacation.StartTime,
+                EndTime = vacation.EndTime
+            };
+        }
+
+        public static Vacation GetVacationEntity(VacationForCreationDTO vacationDto)
+        {
+            return new Vacation()
+            {
+                UserId = vacationDto.UserId,
+                StartTime = vacationDto.StartTime,
+                EndTime = vacationDto.EndTime
+            };
+        }
+
+        public static TeamDTO GetTeamDto(Team team)
+        {
+            return new TeamDTO()
+            {
+                Id = team.Id,
+                ManagerId = team.ManagerId,
+                Name = team.Name
+            };
+        }
+
+        public static Team GetTeamEntity(TeamForCreationDTO teamDto)
+        {
+            return new Team()
+            {
+                ManagerId = teamDto.ManagerId,
+                Name = teamDto.Name
             };
         }
     }
