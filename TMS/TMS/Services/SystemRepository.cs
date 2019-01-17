@@ -122,9 +122,9 @@ namespace TMS.Services
             return _context.Vacations.ToList().Where(o => o.UserId == userId);
         }
 
-        public Vacation GetVacation(int userId, int vacationId)
+        public Vacation GetVacation(int vacationId)
         {
-            return _context.Vacations.ToList().FirstOrDefault(o => o.UserId == userId && o.Id == vacationId);
+            return _context.Vacations.ToList().FirstOrDefault(o => o.Id == vacationId);
         }
 
         public void AddVacation(Vacation vacation)
@@ -149,9 +149,9 @@ namespace TMS.Services
             return _context.SickLeaves.Where(o => o.UserId == userId);
         }
 
-        public SickLeave GetSickLeave(int userId, int sickLeaveId)
+        public SickLeave GetSickLeave(int sickLeaveId)
         {
-            return _context.SickLeaves.ToList().FirstOrDefault(o => o.UserId == userId && o.Id == sickLeaveId);
+            return _context.SickLeaves.ToList().FirstOrDefault(o => o.Id == sickLeaveId);
         }
 
         public void AddSickLeave(SickLeave sickLeave)

@@ -31,13 +31,13 @@ namespace TMS.Services
 
         IEnumerable<Vacation> GetVacations();
         IEnumerable<Vacation> GetVacationsForUser(int userId);
-        Vacation GetVacation(int userId, int vacationId);
+        Vacation GetVacation(int vacationId);
         void AddVacation(Vacation vacation);
         void DeleteVacation(Vacation vacation);
 
         IEnumerable<SickLeave> GetSickLeaves();
         IEnumerable<SickLeave> GetSickLeaveForUser(int userId);
-        SickLeave GetSickLeave(int userId, int sickLeaveId);
+        SickLeave GetSickLeave(int sickLeaveId);
         void AddSickLeave(SickLeave sickLeave);
         void DeleteSickLeave(SickLeave sickLeave);
 
