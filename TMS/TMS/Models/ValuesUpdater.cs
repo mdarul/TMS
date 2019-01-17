@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using TMS.Models.DTO;
+using TMS.Models.DTO.Management;
 using TMS.Models.DTO.SickLeave;
 using TMS.Models.DTO.Task;
 using TMS.Models.DTO.Team;
@@ -75,6 +76,12 @@ namespace TMS.Models
             sickLeaveToUpdate.UserId = sickLeaveWithUpdatedValues.UserId;
             sickLeaveToUpdate.StartTime = sickLeaveWithUpdatedValues.StartTime;
             sickLeaveToUpdate.EndTime = sickLeaveWithUpdatedValues.EndTime;
+        }
+
+        public static void UpdateManagementFromDto(Management managementToUpdate, ManagementForCreationDTO managementWithUpdatedValues)
+        {
+            managementToUpdate.ManagerId = managementWithUpdatedValues.ManagerId;
+            managementToUpdate.TeamId = managementWithUpdatedValues.TeamId;
         }
     }
 }

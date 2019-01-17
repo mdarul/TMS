@@ -17,7 +17,7 @@ namespace TMS.Models.Entities
         public User Manager { get; set; }
 
         [ForeignKey("Team")]
-        public int TeamId { get; set; }
+        public int? TeamId { get; set; }
         public Team Team { get; set; }
     }
 }

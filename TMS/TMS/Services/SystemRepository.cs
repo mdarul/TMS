@@ -166,6 +166,28 @@ namespace TMS.Services
             SaveChanges();
         }
 
+        public IEnumerable<Management> GetManagers()
+        {
+            return _context.Management.ToList();
+        }
+
+        public Management GetManager(int id)
+        {
+            return _context.Management.ToList().FirstOrDefault(o => o.Id == id);
+        }
+
+        public void AddManager(Management manager)
+        {
+            _context.Management.Add(manager);
+            SaveChanges();
+        }
+
+        public void DeleteManager(Management manager)
+        {
+            _context.Management.Remove(manager);
+            SaveChanges();
+        }
+
         public void SaveChanges()
         {
             _context.SaveChanges();

@@ -41,6 +41,12 @@ namespace TMS.Services
         void AddSickLeave(SickLeave sickLeave);
         void DeleteSickLeave(SickLeave sickLeave);
 
+
+        IEnumerable<Management> GetManagers();
+        Management GetManager(int id);
+        void AddManager(Management manager);
+        void DeleteManager(Management manager);
+
         void SaveChanges();
     }
 }

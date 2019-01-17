@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using TMS.Models.DTO;
+using TMS.Models.DTO.Management;
 using TMS.Models.DTO.SickLeave;
 using TMS.Models.DTO.Task;
 using TMS.Models.DTO.Team;
@@ -182,6 +183,24 @@ namespace TMS.Models
             {
                 ManagerId = teamDto.ManagerId,
                 Name = teamDto.Name
+            };
+        }
+
+        public static ManagementDTO GetManagementDto(Management management)
+        {
+            return new ManagementDTO()
+            {
+                ManagerId = management.ManagerId,
+                TeamId = management.TeamId
+            };
+        }
+
+        public static Management GetManagementEntity(ManagementForCreationDTO managementDto)
+        {
+            return new Management()
+            {
+                ManagerId = managementDto.ManagerId,
+                TeamId = managementDto.TeamId
             };
         }
     }
