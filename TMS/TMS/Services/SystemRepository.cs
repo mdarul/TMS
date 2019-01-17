@@ -144,7 +144,7 @@ namespace TMS.Services
             return _context.SickLeaves.ToList();
         }
 
-        public IEnumerable<SickLeave> GetSickLeaveForUser(int userId)
+        public IEnumerable<SickLeave> GetSickLeavesForUser(int userId)
         {
             return _context.SickLeaves.Where(o => o.UserId == userId);
         }

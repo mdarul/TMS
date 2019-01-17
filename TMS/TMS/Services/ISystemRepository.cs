@@ -36,7 +36,7 @@ namespace TMS.Services
         void DeleteVacation(Vacation vacation);
 
         IEnumerable<SickLeave> GetSickLeaves();
-        IEnumerable<SickLeave> GetSickLeaveForUser(int userId);
+        IEnumerable<SickLeave> GetSickLeavesForUser(int userId);
         SickLeave GetSickLeave(int sickLeaveId);
         void AddSickLeave(SickLeave sickLeave);
         void DeleteSickLeave(SickLeave sickLeave);
