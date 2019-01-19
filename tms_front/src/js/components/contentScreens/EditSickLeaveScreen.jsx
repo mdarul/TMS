@@ -8,18 +8,18 @@ const mapStateToProps = state => {
         };
   };
 
-class EditVacationScreen extends React.Component {
+class EditSickLeaveScreen extends React.Component {
     constructor(props){
         super(props);
 
         this.state = {
-            vacationId: "",
+            sickLeaveId: "",
             startTime: "",
             endTime: ""
         }
 
-        this.getVacationData = this.getVacationData.bind(this);
-        this.updateVacationData = this.updateVacationData.bind(this);
+        this.getSickLeaveData = this.getSickLeaveData.bind(this);
+        this.updateSickLeaveData = this.updateSickLeaveData.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
     
@@ -29,9 +29,9 @@ class EditVacationScreen extends React.Component {
         });
     }
 
-    getVacationData(event) {
+    getSickLeaveData(event) {
         event.preventDefault();
-        const requestUrl = serverUrl + `\\api\\vacations\\${this.state.vacationId}`;
+        const requestUrl = serverUrl + `\\api\\sickLeaves\\${this.state.sickLeaveId}`;
 
         const Http = new XMLHttpRequest();
         Http.open("GET", requestUrl);
@@ -47,11 +47,11 @@ class EditVacationScreen extends React.Component {
         }
     }
 
-    updateVacationData(event) {
+    updateSickLeaveData(event) {
         event.preventDefault();
-        const requestUrl = serverUrl + `\\api\\vacations\\${this.state.vacationId}`;
+        const requestUrl = serverUrl + `\\api\\sickLeaves\\${this.state.sickLeaveId}`;
 
-        const updatedVacation = {
+        const updatedSickLeave = {
             userId: this.props.user.id,
             startTime: this.state.startTime,
             endTime: this.state.endTime
@@ -60,11 +60,11 @@ class EditVacationScreen extends React.Component {
         const http = new XMLHttpRequest();
         http.open("PUT", requestUrl);
         http.setRequestHeader("Content-type", "application/json");
-        http.send(JSON.stringify(updatedVacation));
+        http.send(JSON.stringify(updatedSickLeave));
     
         http.onreadystatechange = (e) => {
             if (http.readyState === 4 && http.status === 200) {
-                alert("Vacation updated successfully");
+                alert("Sick leave updated successfully");
             }
         };
     }
@@ -73,19 +73,19 @@ class EditVacationScreen extends React.Component {
         return(
             <div>
                 <form>
-                    Vacation id:
+                    Sick leave id:
                     <br />
                     <input
-                        name="vacationId"
+                        name="sickLeaveId"
                         type="text"
-                        value={this.state.vacationId}
+                        value={this.state.sickLeaveId}
                         onChange={this.handleChange} />
 
                     <br />
-                    <button type="button" onClick={this.getVacationData}>Get vacation values</button>
+                    <button type="button" onClick={this.getSickLeaveData}>Get sick leave values</button>
                     <br />
                     <br />
-                    Vacation start:
+                    Sick leave start:
                     <br />
                     <input
                         name="startTime"
@@ -93,7 +93,7 @@ class EditVacationScreen extends React.Component {
                         value={this.state.startTime}
                         onChange={this.handleChange} />
                     <br />
-                    Vacation end:
+                    Sick leave end:
                     <br />
                     <input
                         name="endTime"
@@ -102,7 +102,7 @@ class EditVacationScreen extends React.Component {
                         onChange={this.handleChange} />
                     <br />
 
-                    <button type="button" onClick={this.updateVacationData}>Update vacation</button>       
+                    <button type="button" onClick={this.updateSickLeaveData}>Update sick leave</button>       
                 </form>
             </div>
 
@@ -110,4 +110,4 @@ class EditVacationScreen extends React.Component {
     }
 }
 
-export default connect(mapStateToProps)(EditVacationScreen);
+export default connect(mapStateToProps)(EditSickLeaveScreen);
