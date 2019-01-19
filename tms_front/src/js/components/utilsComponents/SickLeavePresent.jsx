@@ -1,13 +1,13 @@
 import React from "react"
 
-class VacationPresent extends React.Component {
+class SickLeavePresent extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            id: props.vacationJson.id,
-            startTime: props.vacationJson.startTime,
-            endTime: props.vacationJson.endTime
+            id: props.sickLeaveJson.id,
+            startTime: props.sickLeaveJson.startTime,
+            endTime: props.sickLeaveJson.endTime
         }
     }
 
@@ -25,4 +25,4 @@ class VacationPresent extends React.Component {
     }
 }
 
-export default VacationPresent;
+export default SickLeavePresent;
