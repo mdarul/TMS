@@ -14,10 +14,8 @@ import SubordinatesWorktimesScreen from "./contentScreens/SubordinatesWorktimesS
 import AddVacationScreen from "./contentScreens/AddVacationScreen.jsx"
 import ListVacationsScreen from "./contentScreens/ListVacationsScreen.jsx"
 import EditVacationScreen from "./contentScreens/EditVacationScreen.jsx"
-
+import AddSickLeaveScreen from "./contentScreens/AddSickLeaveScreen.jsx"
 import ListSickLeavesScreen from "./contentScreens/ListSickLeavesScreen.jsx"
-
-import Test from "./contentScreens/Test.jsx"
 
 import 
 {
@@ -127,9 +125,9 @@ class MainScreen extends React.Component {
                     { this.props.addVacationClicked === true ? <AddVacationScreen /> : ""}
                     { this.props.listVacationsClicked === true ? <ListVacationsScreen /> : ""}
                     { this.props.editVacationClicked === true ? <EditVacationScreen /> : ""}
-                    { this.props.addSickLeaveClicked === true ? <Test text="add" /> : ""}
+                    { this.props.addSickLeaveClicked === true ? <AddSickLeaveScreen /> : ""}
                     { this.props.listSickLeavesClicked === true ? <ListSickLeavesScreen /> : ""}
-                    { this.props.editSickLeaveClicked === true ? <Test text="edit" /> : ""}
+                    {/* { this.props.editSickLeaveClicked === true ? <Test text="edit" /> : ""} */}
 
                 </div>
             </div>
