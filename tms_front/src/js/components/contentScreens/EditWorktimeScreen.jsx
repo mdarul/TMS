@@ -62,8 +62,6 @@ class EditWorktimeScreen extends React.Component {
             userId: this.props.user.id
         };
 
-        console.log(updatedWorktime);
-
         const http = new XMLHttpRequest();
         http.open("PUT", requestUrl);
         http.setRequestHeader("Content-type", "application/json");

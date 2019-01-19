@@ -55,13 +55,13 @@ namespace TMS.Controllers
             return Ok();
         }
 
-        [HttpPut("vacations/{userId}")]
-        public IActionResult PutVacation([FromBody] VacationForCreationDTO vacationFromRequest, int userId)
+        [HttpPut("vacations/{vacationId}")]
+        public IActionResult PutVacation([FromBody] VacationForCreationDTO vacationFromRequest, int vacationId)
         {
             if (vacationFromRequest == null) return NotFound();
             if (!ModelState.IsValid) return BadRequest();
 
-            var vacation = _repo.GetVacation(userId);
+            var vacation = _repo.GetVacation(vacationId);
             ValuesUpdater.UpdateVacationFromDto(vacation, vacationFromRequest);
             _repo.SaveChanges();
 
