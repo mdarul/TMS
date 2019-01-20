@@ -124,6 +124,7 @@ class MainScreen extends React.Component {
                 </div>
                 <div className="operationContainer">
                     { this.props.userSettingsClicked === true ? <UserSettingsScreen /> : ""}
+                    { this.props.generateReportClicked === true ? <GenerateReportScreen /> : ""}
                     { this.props.listWorktimesClicked === true ? <ListWorktimesScreen /> : ""}
                     { this.props.addWorktimesClicked === true ? <AddWorktimeScreen /> : ""}
                     { this.props.editWorktimeClicked === true ? <EditWorktimeScreen /> : ""}
