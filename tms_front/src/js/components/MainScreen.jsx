@@ -16,8 +16,11 @@ import ListVacationsScreen from "./contentScreens/ListVacationsScreen.jsx"
 import EditVacationScreen from "./contentScreens/EditVacationScreen.jsx"
 import AddSickLeaveScreen from "./contentScreens/AddSickLeaveScreen.jsx"
 import ListSickLeavesScreen from "./contentScreens/ListSickLeavesScreen.jsx"
+import EditSickLeaveScreen from "./contentScreens/EditSickLeaveScreen.jsx"
+import GenerateReportScreen from "./contentScreens/GenerateReportScreen.jsx"
 
-import 
+
+import
 {
     USER_SETTINGS,
     LIST_WORKTIMES,
@@ -32,7 +35,8 @@ import
     EDIT_VACATION,
     ADD_SICK_LEAVE,
     LIST_SICK_LEAVES,
-    EDIT_SICK_LEAVE
+    EDIT_SICK_LEAVE,
+    GENERATE_REPORT
 } from "../redux/constants";
 
 const mapStateToProps = state => {
@@ -51,7 +55,8 @@ const mapStateToProps = state => {
          editVacationClicked: state.editVacationClicked,
          addSickLeaveClicked: state.addSickLeaveClicked,
          listSickLeavesClicked: state.listSickLeavesClicked,
-         editSickLeaveClicked: state.editSickLeaveClicked
+         editSickLeaveClicked: state.editSickLeaveClicked,
+         generateReportClicked: state.generateReportClicked
         };
 };
 
@@ -72,6 +77,9 @@ class MainScreen extends React.Component {
                 <div className="sidebar">
                     <div className="sidebarActivity" onClick={() => this.props.showScreen(USER_SETTINGS)}>
                         User settings
+                    </div>
+                    <div className="sidebarActivity" onClick={() => this.props.showScreen(GENERATE_REPORT)}>
+                        Generate report
                     </div>
                     <div className="sidebarActivity" onClick={() => this.props.showScreen(LIST_WORKTIMES)}>
                         List worktimes
@@ -127,7 +135,7 @@ class MainScreen extends React.Component {
                     { this.props.editVacationClicked === true ? <EditVacationScreen /> : ""}
                     { this.props.addSickLeaveClicked === true ? <AddSickLeaveScreen /> : ""}
                     { this.props.listSickLeavesClicked === true ? <ListSickLeavesScreen /> : ""}
-                    {/* { this.props.editSickLeaveClicked === true ? <Test text="edit" /> : ""} */}
+                    { this.props.editSickLeaveClicked === true ? <EditSickLeaveScreen /> : ""}
 
                 </div>
             </div>

@@ -14,7 +14,8 @@ import
     EDIT_VACATION,
     ADD_SICK_LEAVE,
     LIST_SICK_LEAVES,
-    EDIT_SICK_LEAVE
+    EDIT_SICK_LEAVE,
+    GENERATE_REPORT
 } from "./constants";
 
 
@@ -33,7 +34,8 @@ const initalState = {
     editVacationClicked: false,
     addSickLeaveClicked: false,
     listSickLeavesClicked: false,
-    editSickLeaveClicked: false
+    editSickLeaveClicked: false,
+    generateReportClicked: false
 };
 
 export function rootReducer(state = initalState, action) {
@@ -93,6 +95,9 @@ export function rootReducer(state = initalState, action) {
                     case EDIT_SICK_LEAVE:
                         stateJSON.editSickLeaveClicked = true;
                         return stateJSON;
+                    case GENERATE_REPORT:
+                        stateJSON.generateReportClicked = true;
+                        return stateJSON;
                     default:
                         return stateJSON;
                 }
@@ -117,6 +122,7 @@ function getDefaultJSON(state){
         editVacationClicked: false,
         addSickLeaveClicked: false,
         listSickLeavesClicked: false,
-        editSickLeaveClicked: false
+        editSickLeaveClicked: false,
+        generateReportClicked: false
     }
 }
