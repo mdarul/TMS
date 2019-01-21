@@ -15,7 +15,7 @@ class WorktimePresent extends React.Component {
 
     render() {
         return(
-            <div className="inlineListEntity">
+            <div className="worktimeListEntity">
                 {this.state.workStartTime} - {this.state.workEndTime}
                 <br />
                 Task id: {this.state.taskId}

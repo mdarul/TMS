@@ -11,17 +11,8 @@ import AssignedTasksScreen from "./contentScreens/AssignedTasksScreen.jsx"
 import AddTaskScreen from "./contentScreens/AddTaskScreen.jsx"
 import SubordinatesTasksScreen from "./contentScreens/SubordinatesTasksScreen.jsx"
 import SubordinatesWorktimesScreen from "./contentScreens/SubordinatesWorktimesScreen.jsx"
-import AddVacationScreen from "./contentScreens/AddVacationScreen.jsx"
-import ListVacationsScreen from "./contentScreens/ListVacationsScreen.jsx"
-import EditVacationScreen from "./contentScreens/EditVacationScreen.jsx"
-import AddSickLeaveScreen from "./contentScreens/AddSickLeaveScreen.jsx"
-import ListSickLeavesScreen from "./contentScreens/ListSickLeavesScreen.jsx"
-import EditSickLeaveScreen from "./contentScreens/EditSickLeaveScreen.jsx"
-import GenerateReportScreen from "./contentScreens/GenerateReportScreen.jsx"
 
-
-
-import
+import 
 {
     USER_SETTINGS,
     LIST_WORKTIMES,
@@ -30,14 +21,7 @@ import
     ASSIGNED_TASKS,
     ADD_TASK,
     SUBORDINATES_TASKS,
-    SUBORDINATES_WORKTIMES,
-    ADD_VACATION,
-    LIST_VACATIONS,
-    EDIT_VACATION,
-    ADD_SICK_LEAVE,
-    LIST_SICK_LEAVES,
-    EDIT_SICK_LEAVE,
-    GENERATE_REPORT
+    SUBORDINATES_WORKTIMES
 } from "../redux/constants";
 
 const mapStateToProps = state => {
@@ -50,14 +34,7 @@ const mapStateToProps = state => {
          addTaskClicked: state.addTaskClicked,
          subordinatesTasksClicked: state.subordinatesTasksClicked,
          subordinatesWorktimesClicked: state.subordinatesWorktimesClicked,
-         editWorktimeClicked: state.editWorktimeClicked,
-         addVacationClicked: state.addVacationClicked,
-         listVacationsClicked: state.listVacationsClicked,
-         editVacationClicked: state.editVacationClicked,
-         addSickLeaveClicked: state.addSickLeaveClicked,
-         listSickLeavesClicked: state.listSickLeavesClicked,
-         editSickLeaveClicked: state.editSickLeaveClicked,
-         generateReportClicked: state.generateReportClicked
+         editWorktimeClicked: state.editWorktimeClicked
         };
 };
 
@@ -78,9 +55,6 @@ class MainScreen extends React.Component {
                 <div className="sidebar">
                     <div className="sidebarActivity" onClick={() => this.props.showScreen(USER_SETTINGS)}>
                         User settings
-                    </div>
-                    <div className="sidebarActivity" onClick={() => this.props.showScreen(GENERATE_REPORT)}>
-                        Generate report
                     </div>
                     <div className="sidebarActivity" onClick={() => this.props.showScreen(LIST_WORKTIMES)}>
                         List worktimes
@@ -103,28 +77,9 @@ class MainScreen extends React.Component {
                     <div className="sidebarActivity" onClick={() => this.props.showScreen(SUBORDINATES_WORKTIMES)}>
                         Subordinates worktimes
                     </div>
-                    <div className="sidebarActivity" onClick={() => this.props.showScreen(ADD_VACATION)}>
-                        Add vacation
-                    </div>
-                    <div className="sidebarActivity" onClick={() => this.props.showScreen(LIST_VACATIONS)}>
-                        List vacations
-                    </div>
-                    <div className="sidebarActivity" onClick={() => this.props.showScreen(EDIT_VACATION)}>
-                        Edit vacation
-                    </div>
-                    <div className="sidebarActivity" onClick={() => this.props.showScreen(ADD_SICK_LEAVE)}>
-                        Add sick leave
-                    </div>
-                    <div className="sidebarActivity" onClick={() => this.props.showScreen(LIST_SICK_LEAVES)}>
-                        List sick leaves
-                    </div>
-                    <div className="sidebarActivity" onClick={() => this.props.showScreen(EDIT_SICK_LEAVE)}>
-                        Edit sick leave
-                    </div>
                 </div>
                 <div className="operationContainer">
                     { this.props.userSettingsClicked === true ? <UserSettingsScreen /> : ""}
-                    { this.props.generateReportClicked === true ? <GenerateReportScreen /> : ""}
                     { this.props.listWorktimesClicked === true ? <ListWorktimesScreen /> : ""}
                     { this.props.addWorktimesClicked === true ? <AddWorktimeScreen /> : ""}
                     { this.props.editWorktimeClicked === true ? <EditWorktimeScreen /> : ""}
@@ -132,13 +87,6 @@ class MainScreen extends React.Component {
                     { this.props.addTaskClicked === true ? <AddTaskScreen /> : ""}
                     { this.props.subordinatesTasksClicked === true ? <SubordinatesTasksScreen /> : ""}
                     { this.props.subordinatesWorktimesClicked === true ? <SubordinatesWorktimesScreen /> : ""}
-                    { this.props.addVacationClicked === true ? <AddVacationScreen /> : ""}
-                    { this.props.listVacationsClicked === true ? <ListVacationsScreen /> : ""}
-                    { this.props.editVacationClicked === true ? <EditVacationScreen /> : ""}
-                    { this.props.addSickLeaveClicked === true ? <AddSickLeaveScreen /> : ""}
-                    { this.props.listSickLeavesClicked === true ? <ListSickLeavesScreen /> : ""}
-                    { this.props.editSickLeaveClicked === true ? <EditSickLeaveScreen /> : ""}
-
                 </div>
             </div>
         </div>      
