@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMS.Models.DTO;
 using TMS.Models.DTO.Management;
+using TMS.Models.DTO.Payment;
 using TMS.Models.DTO.SickLeave;
 using TMS.Models.DTO.Task;
 using TMS.Models.DTO.Team;
@@ -82,6 +83,14 @@ namespace TMS.Models
         {
             managementToUpdate.ManagerId = managementWithUpdatedValues.ManagerId;
             managementToUpdate.TeamId = managementWithUpdatedValues.TeamId;
+        }
+
+        public static void UpdatePaymentFromDto(Payment paymentToUpdate, PaymentForCreationDTO paymentWithUpdatedValues)
+        {
+            paymentToUpdate.EmployeeId = paymentWithUpdatedValues.EmployeeId;
+            paymentToUpdate.HourlyRate = paymentWithUpdatedValues.HourlyRate;
+            paymentToUpdate.ContractType = paymentWithUpdatedValues.contractType;
+            paymentToUpdate.JobTimePortion = paymentWithUpdatedValues.jobTimePortion;
         }
     }
 }

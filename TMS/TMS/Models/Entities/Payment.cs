@@ -13,9 +13,12 @@ namespace TMS.Models.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        public string contractType { get; set; }
+        public User Employee { get; set; }
+        public int EmployeeId { get; set; }
 
-        public double jobTimePortion { get; set; }
+        public string ContractType { get; set; }
+
+        public double JobTimePortion { get; set; }
 
         public double HourlyRate { get; set; }
     }

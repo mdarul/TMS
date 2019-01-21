@@ -209,9 +209,10 @@ namespace TMS.Models
         {
             return new PaymentDTO()
             {
+                EmployeeId = payment.EmployeeId,
                 HourlyRate = payment.HourlyRate,
-                contractType = payment.contractType,
-                jobTimePortion = payment.jobTimePortion
+                contractType = payment.ContractType,
+                jobTimePortion = payment.JobTimePortion
             };
         }
 
@@ -219,9 +220,10 @@ namespace TMS.Models
         {
             return new Payment()
             {
+                EmployeeId = paymentDto.EmployeeId,
                 HourlyRate = paymentDto.HourlyRate,
-                contractType = paymentDto.contractType,
-                jobTimePortion = paymentDto.jobTimePortion
+                ContractType = paymentDto.contractType,
+                JobTimePortion = paymentDto.jobTimePortion
             };
         }
     }
