@@ -188,6 +188,28 @@ namespace TMS.Services
             SaveChanges();
         }
 
+        public IEnumerable<Payment> GetPayments()
+        {
+            return _context.Payments.ToList();
+        }
+
+        public Payment GetPayment(int id)
+        {
+            return _context.Payments.ToList().FirstOrDefault(o => o.Id == id);
+        }
+
+        public void AddPayment(Payment payment)
+        {
+            _context.Payments.Add(payment);
+            SaveChanges();
+        }
+
+        public void DeletePayment(Payment payment)
+        {
+            _context.Payments.Remove(payment);
+            SaveChanges();
+        }
+
         public void SaveChanges()
         {
             _context.SaveChanges();

@@ -15,6 +15,7 @@ namespace TMS.Models.Entities
         public DbSet<Vacation> Vacations { get; set; }
         public DbSet<SickLeave> SickLeaves{ get; set; }
         public DbSet<Management> Management { get; set; }
+        public DbSet<Payment> Payments { get; set; }
 
         public SystemContext(DbContextOptions<SystemContext> options) : base(options)
         {

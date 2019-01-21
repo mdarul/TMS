@@ -47,6 +47,11 @@ namespace TMS.Services
         void AddManager(Management manager);
         void DeleteManager(Management manager);
 
+        IEnumerable<Payment> GetPayments();
+        Payment GetPayment(int id);
+        void AddPayment(Payment payment);
+        void DeletePayment(Payment payment);
+
         void SaveChanges();
     }
 }

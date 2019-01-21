@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMS.Models.DTO;
 using TMS.Models.DTO.Management;
+using TMS.Models.DTO.Payment;
 using TMS.Models.DTO.SickLeave;
 using TMS.Models.DTO.Task;
 using TMS.Models.DTO.Team;
@@ -201,6 +202,26 @@ namespace TMS.Models
             {
                 ManagerId = managementDto.ManagerId,
                 TeamId = managementDto.TeamId
+            };
+        }
+
+        public static PaymentDTO GetPaymentDto(Payment payment)
+        {
+            return new PaymentDTO()
+            {
+                HourlyRate = payment.HourlyRate,
+                contractType = payment.contractType,
+                jobTimePortion = payment.jobTimePortion
+            };
+        }
+
+        public static Payment GetPaymentEntity(PaymentForCreationDTO paymentDto)
+        {
+            return new Payment()
+            {
+                HourlyRate = paymentDto.HourlyRate,
+                contractType = paymentDto.contractType,
+                jobTimePortion = paymentDto.jobTimePortion
             };
         }
     }
