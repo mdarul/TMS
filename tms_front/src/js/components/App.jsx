@@ -11,6 +11,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
+          {console.log("app")}
           {console.log(this.props.user)}
           {(this.props.user === null || this.props.user) === undefined ? <LoginScreen /> : <MainScreen />}
       </div>

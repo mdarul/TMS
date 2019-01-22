@@ -9,14 +9,7 @@ import
     SUBORDINATES_TASKS,
     SUBORDINATES_WORKTIMES,
     SELECT_SCREEN,
-    EDIT_WORKTIME,
-    ADD_VACATION,
-    LIST_VACATIONS,
-    EDIT_VACATION,
-    ADD_SICK_LEAVE,
-    LIST_SICK_LEAVES,
-    EDIT_SICK_LEAVE,
-    GENERATE_REPORT
+    EDIT_WORKTIME
 } from "./constants";
 
 
@@ -33,14 +26,7 @@ const initalState = {
     assignedTasksClicked: false,
     addTaskClicked: false,
     subordinatesTasksClicked: false,
-    subordinatesWorktimesClicked: false,
-    addVacationClicked: false,
-    listVacationsClicked: false,
-    editVacationClicked: false,
-    addSickLeaveClicked: false,
-    listSickLeavesClicked: false,
-    editSickLeaveClicked: false,
-    generateReportClicked: false
+    subordinatesWorktimesClicked: false
 };
 
 export function rootReducer(state = initalState, action) {
@@ -83,27 +69,6 @@ export function rootReducer(state = initalState, action) {
                     case SUBORDINATES_WORKTIMES:
                         stateJSON.subordinatesWorktimesClicked = true;
                         return stateJSON;
-                    case ADD_VACATION:
-                        stateJSON.addVacationClicked = true;
-                        return stateJSON;
-                    case LIST_VACATIONS:
-                        stateJSON.listVacationsClicked = true;
-                        return stateJSON;
-                    case EDIT_VACATION:
-                        stateJSON.editVacationClicked = true;
-                        return stateJSON;
-                    case ADD_SICK_LEAVE:
-                        stateJSON.addSickLeaveClicked = true;
-                        return stateJSON;
-                    case LIST_SICK_LEAVES:
-                        stateJSON.listSickLeavesClicked = true;
-                        return stateJSON;
-                    case EDIT_SICK_LEAVE:
-                        stateJSON.editSickLeaveClicked = true;
-                        return stateJSON;
-                    case GENERATE_REPORT:
-                        stateJSON.generateReportClicked = true;
-                        return stateJSON;
                     default:
                         return stateJSON;
                 }
@@ -126,13 +91,6 @@ function getDefaultJSON(state){
         assignedTasksClicked: false,
         addTaskClicked: false,
         subordinatesTasksClicked: false,
-        subordinatesWorktimesClicked: false,
-        addVacationClicked: false,
-        listVacationsClicked: false,
-        editVacationClicked: false,
-        addSickLeaveClicked: false,
-        listSickLeavesClicked: false,
-        editSickLeaveClicked: false,
-        generateReportClicked: false
+        subordinatesWorktimesClicked: false
     }
 }

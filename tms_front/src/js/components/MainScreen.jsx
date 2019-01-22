@@ -21,9 +21,7 @@ import ListSickLeavesScreen from "./contentScreens/ListSickLeavesScreen.jsx"
 import EditSickLeaveScreen from "./contentScreens/EditSickLeaveScreen.jsx"
 import GenerateReportScreen from "./contentScreens/GenerateReportScreen.jsx"
 
-
-
-import
+import 
 {
     USER_SETTINGS,
     LIST_WORKTIMES,
@@ -32,14 +30,7 @@ import
     ASSIGNED_TASKS,
     ADD_TASK,
     SUBORDINATES_TASKS,
-    SUBORDINATES_WORKTIMES,
-    ADD_VACATION,
-    LIST_VACATIONS,
-    EDIT_VACATION,
-    ADD_SICK_LEAVE,
-    LIST_SICK_LEAVES,
-    EDIT_SICK_LEAVE,
-    GENERATE_REPORT
+    SUBORDINATES_WORKTIMES
 } from "../redux/constants";
 
 const mapStateToProps = state => {
@@ -52,14 +43,7 @@ const mapStateToProps = state => {
          addTaskClicked: state.addTaskClicked,
          subordinatesTasksClicked: state.subordinatesTasksClicked,
          subordinatesWorktimesClicked: state.subordinatesWorktimesClicked,
-         editWorktimeClicked: state.editWorktimeClicked,
-         addVacationClicked: state.addVacationClicked,
-         listVacationsClicked: state.listVacationsClicked,
-         editVacationClicked: state.editVacationClicked,
-         addSickLeaveClicked: state.addSickLeaveClicked,
-         listSickLeavesClicked: state.listSickLeavesClicked,
-         editSickLeaveClicked: state.editSickLeaveClicked,
-         generateReportClicked: state.generateReportClicked
+         editWorktimeClicked: state.editWorktimeClicked
         };
 };
 
@@ -80,9 +64,6 @@ class MainScreen extends React.Component {
                 <div className="sidebar">
                     <div className="sidebarActivity" onClick={() => this.props.showScreen(USER_SETTINGS)}>
                         User settings
-                    </div>
-                    <div className="sidebarActivity" onClick={() => this.props.showScreen(GENERATE_REPORT)}>
-                        Generate report
                     </div>
                     <div className="sidebarActivity" onClick={() => this.props.showScreen(LIST_WORKTIMES)}>
                         List worktimes
@@ -113,6 +94,7 @@ class MainScreen extends React.Component {
                     </div>
                     <div className="sidebarActivity" onClick={() => this.props.showScreen(EDIT_SICK_LEAVE)}>
                         Edit sick leave
+
                     </div>
                 </div>
                 <div className="operationContainer">
@@ -131,7 +113,6 @@ class MainScreen extends React.Component {
                     { this.props.addSickLeaveClicked === true ? <AddSickLeaveScreen /> : ""}
                     { this.props.listSickLeavesClicked === true ? <ListSickLeavesScreen /> : ""}
                     { this.props.editSickLeaveClicked === true ? <EditSickLeaveScreen /> : ""}
-
                 </div>
             </div>
         </div>      
