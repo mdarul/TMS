@@ -1,12 +1,25 @@
 import React from 'react';
 import { connect } from "react-redux"
-import { serverUrl } from "../../../secret.js"
-import WorktimePresent from "../utilsComponents/WorktimePresent.jsx"
+import { serverUrl } from "../../../../secret.js"
+import { showScreen } from "../../../redux/actions"
+import WorktimePresent from "../../utilsComponents/WorktimePresent.jsx"
+
+import {
+    ADD_WORKTIME,
+    EDIT_WORKTIME,
+    SUBORDINATES_WORKTIMES
+} from "../../../redux/constants";
 
 const mapStateToProps = state => {
   return {
        user: state.user,
       };
+};
+
+function mapDispatchToProps(dispatch) {
+  return {
+      showScreen: screen => dispatch(showScreen(screen))
+  }
 };
 
 class ListWorktimes extends React.Component {
@@ -31,18 +44,21 @@ class ListWorktimes extends React.Component {
   }
 
   render() {
-
     let worktimesComponents = null;
     if(this.state.userWorktimes !== null) {
       worktimesComponents = this.state.userWorktimes.map(worktimeJson => <WorktimePresent worktimeJson={worktimeJson} key={worktimeJson.id} />); 
     }
 
     return (
-      <div className="listEntityContainer">
+      <div>
+        <button onClick={() => this.props.showScreen(ADD_WORKTIME)}>Add worktime</button>
+        <button onClick={() => this.props.showScreen(SUBORDINATES_WORKTIMES)}>Show subordinates worktimes</button>
+        <div className="listEntityContainer">
           {worktimesComponents}
+        </div>
       </div>
     );
   }
 }
 
-export default connect(mapStateToProps)(ListWorktimes);
+export default connect(mapStateToProps, mapDispatchToProps)(ListWorktimes);

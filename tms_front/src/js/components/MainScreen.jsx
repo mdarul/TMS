@@ -3,14 +3,16 @@ import { showScreen } from "../redux/actions"
 import { connect } from "react-redux";
 import '../../styles/style.css'
 
-import ListWorktimesScreen from "./contentScreens/ListWorktimesScreen.jsx"
+import WorktimesContainer from "./contentScreens/worktimes/WorktimesContainer.jsx"
+
+import ListWorktimesScreen from "./contentScreens/worktimes/ListWorktimesScreen.jsx"
 import UserSettingsScreen from "./contentScreens/UserSettingsScreen.jsx"
-import AddWorktimeScreen from "./contentScreens/AddWorktimeScreen.jsx"
-import EditWorktimeScreen from "./contentScreens/EditWorktimeScreen.jsx"
+import AddWorktimeScreen from "./contentScreens/worktimes/AddWorktimeScreen.jsx"
+import EditWorktimeScreen from "./contentScreens/worktimes/EditWorktimeScreen.jsx"
 import AssignedTasksScreen from "./contentScreens/AssignedTasksScreen.jsx"
 import AddTaskScreen from "./contentScreens/AddTaskScreen.jsx"
 import SubordinatesTasksScreen from "./contentScreens/SubordinatesTasksScreen.jsx"
-import SubordinatesWorktimesScreen from "./contentScreens/SubordinatesWorktimesScreen.jsx"
+import SubordinatesWorktimesScreen from "./contentScreens/worktimes/SubordinatesWorktimesScreen.jsx"
 import AddVacationScreen from "./contentScreens/AddVacationScreen.jsx"
 import ListVacationsScreen from "./contentScreens/ListVacationsScreen.jsx"
 import EditVacationScreen from "./contentScreens/EditVacationScreen.jsx"
@@ -85,12 +87,6 @@ class MainScreen extends React.Component {
                     <div className="sidebarActivity" onClick={() => this.props.showScreen(LIST_WORKTIMES)}>
                         List worktimes
                     </div>
-                    <div className="sidebarActivity" onClick={() => this.props.showScreen(ADD_WORKTIME)}>
-                        Add worktime
-                    </div>
-                    <div className="sidebarActivity" onClick={() => this.props.showScreen(EDIT_WORKTIME)}>
-                        Edit worktime
-                    </div>
                     <div className="sidebarActivity" onClick={() => this.props.showScreen(ASSIGNED_TASKS)}>
                         Assigned tasks
                     </div>
@@ -99,9 +95,6 @@ class MainScreen extends React.Component {
                     </div>
                     <div className="sidebarActivity" onClick={() => this.props.showScreen(SUBORDINATES_TASKS)}>
                         Subordinates tasks
-                    </div>
-                    <div className="sidebarActivity" onClick={() => this.props.showScreen(SUBORDINATES_WORKTIMES)}>
-                        Subordinates worktimes
                     </div>
                     <div className="sidebarActivity" onClick={() => this.props.showScreen(ADD_VACATION)}>
                         Add vacation
@@ -125,13 +118,13 @@ class MainScreen extends React.Component {
                 <div className="operationContainer">
                     { this.props.userSettingsClicked === true ? <UserSettingsScreen /> : ""}
                     { this.props.generateReportClicked === true ? <GenerateReportScreen /> : ""}
-                    { this.props.listWorktimesClicked === true ? <ListWorktimesScreen /> : ""}
-                    { this.props.addWorktimesClicked === true ? <AddWorktimeScreen /> : ""}
-                    { this.props.editWorktimeClicked === true ? <EditWorktimeScreen /> : ""}
+                    { this.props.listWorktimesClicked === true ? <WorktimesContainer /> : ""}
+                    { this.props.addWorktimesClicked === true ? <WorktimesContainer /> : ""}
+                    { this.props.editWorktimeClicked === true ? <WorktimesContainer /> : ""}
                     { this.props.assignedTasksClicked === true ? <AssignedTasksScreen /> : ""}
                     { this.props.addTaskClicked === true ? <AddTaskScreen /> : ""}
                     { this.props.subordinatesTasksClicked === true ? <SubordinatesTasksScreen /> : ""}
-                    { this.props.subordinatesWorktimesClicked === true ? <SubordinatesWorktimesScreen /> : ""}
+                    { this.props.subordinatesWorktimesClicked === true ? <WorktimesContainer /> : ""}
                     { this.props.addVacationClicked === true ? <AddVacationScreen /> : ""}
                     { this.props.listVacationsClicked === true ? <ListVacationsScreen /> : ""}
                     { this.props.editVacationClicked === true ? <EditVacationScreen /> : ""}

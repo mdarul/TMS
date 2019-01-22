@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { serverUrl } from "../../../secret.js"
+import { serverUrl } from "../../../../secret.js"
 import moment from 'moment';
 
 const mapStateToProps = state => {

@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { serverUrl } from "../../../secret.js"
+import { serverUrl } from "../../../../secret.js"
 
 const mapStateToProps = state => {
     return {
-         user: state.user,
+         worktime: state.selectedWorktime,
         };
   };
 
@@ -13,10 +13,10 @@ class EditWorktimeScreen extends React.Component {
         super(props);
 
         this.state = {
-            worktimeId: "",
-            workEndTime: "",
-            workStartTime: "",
-            worktimeTaskId: ""
+            worktimeId: this.props.worktime.worktimeId,
+            workEndTime: this.props.worktime.workEndTime,
+            workStartTime: this.props.worktime.workStartTime,
+            worktimeTaskId: this.props.worktime.worktimeTaskId
         }
 
         this.getWorktimeData = this.getWorktimeData.bind(this);

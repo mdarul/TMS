@@ -1,5 +1,6 @@
 import 
 {   CREATE_USER,
+    PUSH_WORKTIME,
     USER_SETTINGS,
     LIST_WORKTIMES,
     ADD_WORKTIME,
@@ -21,10 +22,14 @@ import
 
 const initalState = {
     user: JSON.parse("{\"id\":1,\"name\":\"Jan\",\"surname\":\"Kowalski\",\"type\":1,\"bossId\":null,\"boss\":null,\"login\":\"jkow\",\"password\":\"xd\",\"tasks\":null,\"workTimes\":null}"),
+    selectedWorktime: null,
+    selectedTask: null,
+    selectedVacation: null,
+    selectedSickLeave: null,
     userSettingsClicked: false,
     listWorktimesClicked: false,
     addWorktimesClicked: false,
-    EditWorktimeClicked: false,
+    editWorktimeClicked: false,
     assignedTasksClicked: false,
     addTaskClicked: false,
     subordinatesTasksClicked: false,
@@ -40,17 +45,17 @@ const initalState = {
 
 export function rootReducer(state = initalState, action) {
     let stateJSON = getDefaultJSON(state);
-
-    if (action.type === CREATE_USER) {
-        return ({ 
-            user: action.user 
-        });
-    }
     switch(action.type) {
         case CREATE_USER:
             return (        
                 { user: action.user }
             );
+        case PUSH_WORKTIME:
+            console.log("reducer");
+            console.log(action.worktime);
+            stateJSON.selectedWorktime = action.worktime;
+            stateJSON.editWorktimeClicked = true;
+            return stateJSON;
         case SELECT_SCREEN:
                 switch(action.screen) {
                     case USER_SETTINGS:
@@ -64,6 +69,7 @@ export function rootReducer(state = initalState, action) {
                         return stateJSON;
                     case EDIT_WORKTIME:
                         stateJSON.editWorktimeClicked = true;
+                        stateJSON.selectedWorktime = action.selectedWorktime;
                         return stateJSON;
                     case ASSIGNED_TASKS:
                         stateJSON.assignedTasksClicked = true;
@@ -109,10 +115,14 @@ export function rootReducer(state = initalState, action) {
 function getDefaultJSON(state){
     return {
         user: state.user,
+        selectedWorktime: null,
+        selectedTask: null,
+        selectedVacation: null,
+        selectedSickLeave: null,
         userSettingsClicked: false,
         listWorktimesClicked: false,
         addWorktimesClicked: false,
-        EditWorktimeClicked: false,
+        editWorktimeClicked: false,
         assignedTasksClicked: false,
         addTaskClicked: false,
         subordinatesTasksClicked: false,

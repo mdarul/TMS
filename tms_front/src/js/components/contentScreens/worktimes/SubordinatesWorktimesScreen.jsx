@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {serverUrl} from "../../../secret.js"
-import WorktimePresent from "../utilsComponents/WorktimePresent.jsx"
+import {serverUrl} from "../../../../secret.js"
+import WorktimePresent from "../../utilsComponents/WorktimePresent.jsx"
 
 const mapStateToProps = state => {
   return {

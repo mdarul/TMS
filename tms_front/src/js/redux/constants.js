@@ -1,4 +1,5 @@
 export const CREATE_USER = "CREATE_USER";
+export const PUSH_WORKTIME = "PUSH_WORKTIME";
 export const SELECT_SCREEN = "SELECT_SCREEN";
 
 export const USER_SETTINGS = "USER_SETTINGS";
