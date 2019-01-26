@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Select from 'react-select';
-import taskTypes from "../../utils/tasksTypes.js"
-import {serverUrl} from "../../../secret.js"
+import taskTypes from "../../../utils/tasksTypes.js"
+import {serverUrl} from "../../../../secret.js"
 
 const mapStateToProps = state => {
   return {

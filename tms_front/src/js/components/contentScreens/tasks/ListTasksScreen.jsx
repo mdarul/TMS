@@ -1,12 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { serverUrl } from "../../../secret.js"
-import TaskPresent from "../utilsComponents/TaskPresent.jsx"
+import { serverUrl } from "../../../../secret.js"
+import { showScreen } from "../../../redux/actions"
+import { ADD_TASK, SUBORDINATES_TASKS } from '../../../redux/constants.js';
+import TaskPresent from "../../utilsComponents/TaskPresent.jsx"
 
 const mapStateToProps = state => {
   return {
        user: state.user,
       };
+};
+
+function mapDispatchToProps(dispatch) {
+  return {
+      showScreen: screen => dispatch(showScreen(screen))
+  }
 };
 
 class AssignedTasksScreen extends React.Component {
@@ -39,10 +47,14 @@ class AssignedTasksScreen extends React.Component {
 
     return (
       <div>
-          {tasksComponents}
+        <button onClick={() => this.props.showScreen(ADD_TASK)}>Add task</button>
+        <button onClick={() => this.props.showScreen(SUBORDINATES_TASKS)}>Show subordinates tasks</button>
+        <div className="listEntityContainer">
+            { tasksComponents }
+        </div>
       </div>
     );
   }
 }
 
-export default connect(mapStateToProps)(AssignedTasksScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(AssignedTasksScreen);

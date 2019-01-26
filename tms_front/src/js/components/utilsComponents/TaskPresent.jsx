@@ -1,5 +1,13 @@
 import React from "react"
-// import "../../../styles/style.css"
+import { connect } from 'react-redux'
+import { pushData } from "../../redux/actions.js"
+import { PUSH_TASK } from "../../redux/constants";
+
+function mapDispatchToProps(dispatch) {
+    return {
+        pushData: task => dispatch(pushData(PUSH_TASK, task))
+    }
+};
 
 class TaskPresent extends React.Component {
     constructor(props) {
@@ -12,11 +20,23 @@ class TaskPresent extends React.Component {
             stage: props.taskJson.stage,
             content: props.taskJson.content
         }
+        this.pushDataForEdit = this.pushDataForEdit.bind(this);
+    }
+
+    pushDataForEdit(){
+        const task = {
+            id: this.state.id,
+            title: this.state.title,
+            userId: this.state.userId,
+            stage: this.state.stage,
+            content: this.state.content
+        }
+        this.props.pushData(task);
     }
 
     render() {
         return(
-            <div className="taskListEntity">
+            <div className="taskListEntity" onClick={this.pushDataForEdit}>
                 {this.state.id}, {this.state.title}
                 <br />
                 user: {this.state.userId}
@@ -31,4 +51,4 @@ class TaskPresent extends React.Component {
     }
 }
 
-export default TaskPresent;
+export default connect(null, mapDispatchToProps)(TaskPresent);

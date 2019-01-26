@@ -1,12 +1,29 @@
 export const CREATE_USER = "CREATE_USER";
-export const PUSH_WORKTIME = "PUSH_WORKTIME";
 export const SELECT_SCREEN = "SELECT_SCREEN";
 
+export const PUSH_DATA = "PUSH_DATA";
+export const PUSH_WORKTIME = "PUSH_WORKTIME";
+export const PUSH_TASK = "PUSH_TASK";
+export const PUSH_VACATIONS = "PUSH_VACATIONS";
+export const PUSH_SICK_LEAVE = "PUSH_SICK_LEAVE";
+
 export const USER_SETTINGS = "USER_SETTINGS";
+export const GENERATE_REPORT = "GENERATE_REPORT"; 
+
 export const LIST_WORKTIMES = "LIST_WORKTIMES";
 export const ADD_WORKTIME = "ADD_WORKTIME";
 export const EDIT_WORKTIME = "EDIT_WORKTIME";
-export const ASSIGNED_TASKS = "ASSIGNED_TASKS";
-export const ADD_TASK = "ADD_TASK";
-export const SUBORDINATES_TASKS = "SUBORDINATES_TASKS"; 
 export const SUBORDINATES_WORKTIMES = "SUBORDINATE_WORKTIMES";
+
+export const LIST_TASKS = "LIST_TASKS";
+export const ADD_TASK = "ADD_TASK";
+export const EDIT_TASK = "EDIT_TASK";
+export const SUBORDINATES_TASKS = "SUBORDINATES_TASKS"; 
+
+export const LIST_VACATIONS = "LIST_VACATIONS";
+export const ADD_VACATION = "ADD_VACATION";
+export const EDIT_VACATION = "EDIT_VACATION";
+
+export const LIST_SICK_LEAVES = "LIST_SICK_LEAVES";
+export const ADD_SICK_LEAVE = "ADD_SICK_LEAVE";
+export const EDIT_SICK_LEAVE = "EDIT_SICK_LEAVE";

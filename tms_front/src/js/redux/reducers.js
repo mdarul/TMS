@@ -1,15 +1,27 @@
 import 
 {   CREATE_USER,
+    PUSH_DATA,
     PUSH_WORKTIME,
+    PUSH_TASK,
+    PUSH_VACATIONS,
+    PUSH_SICK_LEAVE,
     USER_SETTINGS,
     LIST_WORKTIMES,
     ADD_WORKTIME,
-    ASSIGNED_TASKS,
-    ADD_TASK,
-    SUBORDINATES_TASKS,
+    EDIT_WORKTIME,
     SUBORDINATES_WORKTIMES,
-    SELECT_SCREEN,
-    EDIT_WORKTIME
+    LIST_TASKS,
+    ADD_TASK,
+    EDIT_TASK,
+    SUBORDINATES_TASKS,
+    ADD_VACATION,
+    LIST_VACATIONS,
+    EDIT_VACATION,
+    ADD_SICK_LEAVE,
+    LIST_SICK_LEAVES,
+    EDIT_SICK_LEAVE,
+    GENERATE_REPORT,
+    SELECT_SCREEN
 } from "./constants";
 
 
@@ -23,25 +35,47 @@ const initalState = {
     listWorktimesClicked: false,
     addWorktimesClicked: false,
     editWorktimeClicked: false,
-    assignedTasksClicked: false,
+    subordinatesWorktimesClicked: false,
+    listTasksClicked: false,
     addTaskClicked: false,
+    editTaskClicked: false,
     subordinatesTasksClicked: false,
-    subordinatesWorktimesClicked: false
+    addVacationClicked: false,
+    listVacationsClicked: false,
+    editVacationClicked: false,
+    addSickLeaveClicked: false,
+    listSickLeavesClicked: false,
+    editSickLeaveClicked: false,
+    generateReportClicked: false
 };
 
 export function rootReducer(state = initalState, action) {
+    console.log(action);
     let stateJSON = getDefaultJSON(state);
     switch(action.type) {
         case CREATE_USER:
             return (        
                 { user: action.user }
             );
-        case PUSH_WORKTIME:
-            console.log("reducer");
-            console.log(action.worktime);
-            stateJSON.selectedWorktime = action.worktime;
-            stateJSON.editWorktimeClicked = true;
-            return stateJSON;
+        case PUSH_DATA:
+            switch(action.subType) {
+                case PUSH_WORKTIME:
+                    stateJSON.selectedWorktime = action.data;
+                    stateJSON.editWorktimeClicked = true;
+                    return stateJSON;
+                case PUSH_TASK:
+                    stateJSON.selectedTask = action.data;
+                    stateJSON.editTaskClicked= true;
+                    return stateJSON;
+                case PUSH_VACATIONS:
+                    stateJSON.selectedVacation = action.vacation;
+                    stateJSON.editVacationClicked = true;
+                    return stateJSON;
+                case PUSH_SICK_LEAVE:
+                    stateJSON.selectedSickLeave = action.sickLeave;
+                    stateJSON.editSickLeaveClicked = true;
+                    return stateJSON;
+            }
         case SELECT_SCREEN:
                 switch(action.screen) {
                     case USER_SETTINGS:
@@ -57,8 +91,8 @@ export function rootReducer(state = initalState, action) {
                         stateJSON.editWorktimeClicked = true;
                         stateJSON.selectedWorktime = action.selectedWorktime;
                         return stateJSON;
-                    case ASSIGNED_TASKS:
-                        stateJSON.assignedTasksClicked = true;
+                    case LIST_TASKS:
+                        stateJSON.listTasksClicked = true;
                         return stateJSON;
                     case ADD_TASK:
                         stateJSON.addTaskClicked = true;
@@ -68,6 +102,27 @@ export function rootReducer(state = initalState, action) {
                         return stateJSON;
                     case SUBORDINATES_WORKTIMES:
                         stateJSON.subordinatesWorktimesClicked = true;
+                        return stateJSON;
+                    case ADD_VACATION:
+                        stateJSON.addVacationClicked = true;
+                        return stateJSON;
+                    case LIST_VACATIONS:
+                        stateJSON.listVacationsClicked = true;
+                        return stateJSON;
+                    case EDIT_VACATION:
+                        stateJSON.editVacationClicked = true;
+                        return stateJSON;
+                    case ADD_SICK_LEAVE:
+                        stateJSON.addSickLeaveClicked = true;
+                        return stateJSON;
+                    case LIST_SICK_LEAVES:
+                        stateJSON.listSickLeavesClicked = true;
+                        return stateJSON;
+                    case EDIT_SICK_LEAVE:
+                        stateJSON.editSickLeaveClicked = true;
+                        return stateJSON;
+                    case GENERATE_REPORT:
+                        stateJSON.generateReportClicked = true;
                         return stateJSON;
                     default:
                         return stateJSON;
@@ -88,7 +143,8 @@ function getDefaultJSON(state){
         listWorktimesClicked: false,
         addWorktimesClicked: false,
         editWorktimeClicked: false,
-        assignedTasksClicked: false,
+        listTasksClicked: false,
+        editTaskClicked: false,
         addTaskClicked: false,
         subordinatesTasksClicked: false,
         subordinatesWorktimesClicked: false

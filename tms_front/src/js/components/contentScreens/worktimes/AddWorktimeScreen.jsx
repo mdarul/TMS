@@ -21,6 +21,8 @@ class AddWorktimeScreen extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.fillStartWithCurrentDate = this.fillStartWithCurrentDate.bind(this);
+    this.fillEndWithCurrentDate = this.fillEndWithCurrentDate.bind(this);
   }
 
   handleChange(event) {
@@ -53,6 +55,22 @@ class AddWorktimeScreen extends React.Component {
     event.preventDefault();
   }
 
+  fillStartWithCurrentDate(event) {
+    event.preventDefault();
+    const currentTime = moment().format().slice(0, -6);
+    this.setState({
+      workStartTime: currentTime
+    });
+  }
+
+  fillEndWithCurrentDate(event) {
+    event.preventDefault();
+    const currentTime = moment().format().slice(0, -6);
+    this.setState({
+      workEndTime: currentTime
+    });
+  }
+
   render() {
     return (
       <div>
@@ -73,6 +91,7 @@ class AddWorktimeScreen extends React.Component {
               type="text"
               value={this.state.workStartTime}
               onChange={this.handleChange}/>
+            <button type="button" onClick={this.fillStartWithCurrentDate}>Now</button>
             <br />
 
             workEndTime:
@@ -82,6 +101,7 @@ class AddWorktimeScreen extends React.Component {
               type="text"
               value={this.state.workEndTime}
               onChange={this.handleChange}/>
+            <button type="button" onClick={this.fillEndWithCurrentDate}>Now</button>
             <br />
             <br />
             <button type="button" onClick={this.handleSubmit}>Add worktime</button>

@@ -1,11 +1,15 @@
 import React from "react"
 import { connect } from 'react-redux'
-import { pushWorktimeData } from "../../redux/actions.js"
+import { pushData } from "../../redux/actions.js"
+import { PUSH_WORKTIME } from "../../redux/constants.js"
+
 import "../../../styles/style.css"
+
+
 
 function mapDispatchToProps(dispatch) {
     return {
-        pushWorktimeData: worktime => dispatch(pushWorktimeData(worktime))
+        pushData: worktime => dispatch(pushData(PUSH_WORKTIME, worktime))
     }
 };
 
@@ -20,22 +24,22 @@ class WorktimePresent extends React.Component {
             taskId: props.worktimeJson.taskId,
         }
 
-        this.pushDataForEditForm = this.pushDataForEditForm.bind(this);
+        this.pushDataForEdit = this.pushDataForEdit.bind(this);
     }
 
-    pushDataForEditForm(){
+    pushDataForEdit(){
         const worktime = {
             worktimeId: this.state.worktimeId,
             workEndTime: this.state.workEndTime,
             workStartTime: this.state.workStartTime,
             worktimeTaskId: this.state.taskId
         }
-        this.props.pushWorktimeData(worktime);
+        this.props.pushData(worktime);
     }
 
     render() {
         return(
-            <div className="inlineListEntity" onClick={this.pushDataForEditForm}>
+            <div className="inlineListEntity" onClick={this.pushDataForEdit}>
                 {this.state.workStartTime} - {this.state.workEndTime}
                 <br />
                 Task id: {this.state.taskId}

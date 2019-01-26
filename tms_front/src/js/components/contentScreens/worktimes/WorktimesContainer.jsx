@@ -8,7 +8,6 @@ import SubordinatesWorktimesScreen from "./SubordinatesWorktimesScreen.jsx"
 
 const mapStateToProps = state => {
     return {
-        user: state.user,
         listWorktimesClicked: state.listWorktimesClicked,
         addWorktimesClicked: state.addWorktimesClicked,
         subordinatesWorktimesClicked: state.subordinatesWorktimesClicked,

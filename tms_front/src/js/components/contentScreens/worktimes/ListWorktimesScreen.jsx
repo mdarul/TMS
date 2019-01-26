@@ -4,11 +4,7 @@ import { serverUrl } from "../../../../secret.js"
 import { showScreen } from "../../../redux/actions"
 import WorktimePresent from "../../utilsComponents/WorktimePresent.jsx"
 
-import {
-    ADD_WORKTIME,
-    EDIT_WORKTIME,
-    SUBORDINATES_WORKTIMES
-} from "../../../redux/constants";
+import { ADD_WORKTIME, SUBORDINATES_WORKTIMES } from "../../../redux/constants";
 
 const mapStateToProps = state => {
   return {
@@ -54,7 +50,7 @@ class ListWorktimes extends React.Component {
         <button onClick={() => this.props.showScreen(ADD_WORKTIME)}>Add worktime</button>
         <button onClick={() => this.props.showScreen(SUBORDINATES_WORKTIMES)}>Show subordinates worktimes</button>
         <div className="listEntityContainer">
-          {worktimesComponents}
+          { worktimesComponents }
         </div>
       </div>
     );

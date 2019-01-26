@@ -56,12 +56,12 @@
 
 }
 
-.listEntityContainer > .worktimeListEntity {
+.listEntityContainer > .inlineListEntity {
     margin-left: 10px;
 }
 
 
-.worktimeListEntity {
+.inlineListEntity {
     border-radius: 5px;
     border: thin black solid;
     padding: 10px;
@@ -72,7 +72,7 @@
     display: inline-block;
 }
 
-.worktimeListEntity + .worktimeListEntity {
+.inlineListEntity + .inlineListEntity {
     margin-top: 10px;
     margin-left: 10px;
 }

@@ -5,7 +5,7 @@ import { serverUrl } from "../../../../secret.js"
 const mapStateToProps = state => {
     return {
         user: state.user,
-        worktime: state.selectedWorktime,
+        task: state.selectedTask,
     };
   };
 
@@ -14,14 +14,15 @@ class EditWorktimeScreen extends React.Component {
         super(props);
 
         this.state = {
-            worktimeId: this.props.worktime.worktimeId,
-            workEndTime: this.props.worktime.workEndTime,
-            workStartTime: this.props.worktime.workStartTime,
-            worktimeTaskId: this.props.worktime.worktimeTaskId
+            id: props.task.id,
+            title: props.task.title,
+            userId: props.task.userId,
+            stage: props.task.stage,
+            content: props.task.content
         }
 
-        this.getWorktimeData = this.getWorktimeData.bind(this);
-        this.updateWorktimeData = this.updateWorktimeData.bind(this);
+        this.getTaskData = this.getTaskData.bind(this);
+        this.updateTaskData = this.updateTaskData.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
     
@@ -29,12 +30,11 @@ class EditWorktimeScreen extends React.Component {
         this.setState({
             [event.target.name]: event.target.value
         });
-        console.log(this.state);
     }
 
-    getWorktimeData(event) {
+    getTaskData(event) {
         event.preventDefault();
-        const requestUrl = serverUrl + `\\api\\users\\${this.props.user.id}\\worktimes\\${this.state.worktimeId}`;
+        const requestUrl = serverUrl + `\\api\\tasks\\${this.state.id}`;
 
         const Http = new XMLHttpRequest();
         Http.open("GET", requestUrl);
@@ -42,36 +42,37 @@ class EditWorktimeScreen extends React.Component {
         Http.onreadystatechange = (e) => {
             if(Http.readyState === 4 && Http.status === 200) {
                 const responseData = JSON.parse(Http.responseText);
+                console.log(responseData);
                 this.setState({
-                    workEndTime: responseData.workEndTime,
-                    workStartTime: responseData.workStartTime,
-                    worktimeTaskId: responseData.taskId
+                    title: responseData.title,
+                    userId: responseData.userId,
+                    stage: responseData.stage,
+                    content: responseData.content
                 });
             }
         }
     }
 
-    updateWorktimeData(event) {
+    updateTaskData(event) {
         event.preventDefault();
-        const requestUrl = serverUrl + `\\api\\users\\${this.props.user.id}\\worktimes\\${this.state.worktimeId}`;
+        const requestUrl = serverUrl + `\\api\\tasks\\${this.state.id}`;
 
-        const updatedWorktime = {
-            workStartTime: this.state.workStartTime,
-            workEndTime: this.state.workEndTime,
-            taskId: this.state.worktimeTaskId,
+        const updatedTask = {
+            title: this.state.title,
+            userId: this.state.userId,
+            stage: this.state.stage,
+            content: this.state.content,
             userId: this.props.user.id
         };
-
-        console.log(updatedWorktime);
 
         const http = new XMLHttpRequest();
         http.open("PUT", requestUrl);
         http.setRequestHeader("Content-type", "application/json");
-        http.send(JSON.stringify(updatedWorktime));
+        http.send(JSON.stringify(updatedTask));
     
         http.onreadystatechange = (e) => {
             if (http.readyState === 4 && http.status === 200) {
-                alert("Worktime updated successfully");
+                alert("Task updated successfully");
             }
         };
     }
@@ -80,44 +81,52 @@ class EditWorktimeScreen extends React.Component {
         return(
             <div>
                 <form>
-                    Worktime id:
+                    Task id:
                     <br />
                     <input
-                        name="worktimeId"
+                        name="id"
                         type="text"
-                        value={this.state.worktimeId}
+                        value={this.state.id}
                         onChange={this.handleChange} />
 
                     <br />
-                    <button type="button" onClick={this.getWorktimeData}>Get worktimes values</button>
+                    <button type="button" onClick={this.getTaskData}>Get task values</button>
                     <br />
                     <br />
-                    workStartTime:
+                    Title:
                     <br />
                     <input
-                        name="workStartTime"
+                        name="title"
                         type="text"
-                        value={this.state.workStartTime}
+                        value={this.state.title}
                         onChange={this.handleChange} />
                     <br />
-                    workEndTime:
+                    Stage:
                     <br />
                     <input
-                        name="workEndTime"
+                        name="stage"
                         type="text"
-                        value={this.state.workEndTime}
+                        value={this.state.stage}
                         onChange={this.handleChange} />
                     <br />
-                    worktimeTaskId:
+                    Assigned employee:
                     <br />
                     <input
-                        name="worktimeTaskId"
+                        name="userId"
                         type="text"
-                        value={this.state.worktimeTaskId}
+                        value={this.state.userId}
+                        onChange={this.handleChange} />
+                    <br />
+                    Content:
+                    <br />
+                    <input
+                        name="content"
+                        type="text"
+                        value={this.state.content}
                         onChange={this.handleChange} />
                     <br />
 
-                    <button type="button" onClick={this.updateWorktimeData}>Update worktime</button>       
+                    <button type="button" onClick={this.updateTaskData}>Update task</button>       
                 </form>
             </div>
 
