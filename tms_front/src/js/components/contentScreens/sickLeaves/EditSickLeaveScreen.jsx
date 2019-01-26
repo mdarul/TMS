@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { serverUrl } from "../../../secret.js"
+import { serverUrl } from "../../../../secret.js"
 
 const mapStateToProps = state => {
     return {
          user: state.user,
+         sickLeave: state.selectedSickLeave
         };
   };
 
@@ -13,9 +14,9 @@ class EditSickLeaveScreen extends React.Component {
         super(props);
 
         this.state = {
-            sickLeaveId: "",
-            startTime: "",
-            endTime: ""
+            sickLeaveId: props.sickLeave.id,
+            startTime: props.sickLeave.startTime,
+            endTime: props.sickLeave.endTime
         }
 
         this.getSickLeaveData = this.getSickLeaveData.bind(this);

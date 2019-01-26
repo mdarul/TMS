@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux"
-import { serverUrl } from "../../../secret.js"
-import SickLeavePresent from '../utilsComponents/SickLeavePresent.jsx';
+import { serverUrl } from "../../../../secret.js"
+import SickLeavePresent from '../../utilsComponents/SickLeavePresent.jsx';
 
 const mapStateToProps = state => {
   return {

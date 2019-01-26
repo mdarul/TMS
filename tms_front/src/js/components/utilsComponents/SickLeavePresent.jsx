@@ -1,4 +1,13 @@
 import React from "react"
+import { connect } from 'react-redux'
+import { pushData } from "../../redux/actions.js"
+import { PUSH_SICK_LEAVE } from "../../redux/constants";
+
+function mapDispatchToProps(dispatch) {
+    return {
+        pushData: sickLeave => dispatch(pushData(PUSH_SICK_LEAVE, sickLeave))
+    }
+};
 
 class SickLeavePresent extends React.Component {
     constructor(props) {
@@ -9,11 +18,22 @@ class SickLeavePresent extends React.Component {
             startTime: props.sickLeaveJson.startTime,
             endTime: props.sickLeaveJson.endTime
         }
+
+        this.pushDataForEdit = this.pushDataForEdit.bind(this);
+    }
+
+    pushDataForEdit(){
+        const sickLeave = {
+            id: this.state.id,
+            startTime: this.state.startTime,
+            endTime: this.state.endTime
+        }
+        this.props.pushData(sickLeave);
     }
 
     render() {
         return(
-            <div className="inlineListEntity">
+            <div className="inlineListEntity" onClick={this.pushDataForEdit}>
                 id: {this.state.id}
                 <br />
                 begin: {this.state.startTime}
@@ -25,4 +45,4 @@ class SickLeavePresent extends React.Component {
     }
 }
 
-export default SickLeavePresent;
+export default connect(null, mapDispatchToProps)(SickLeavePresent);

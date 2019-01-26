@@ -3,15 +3,13 @@ import { showScreen } from "../redux/actions"
 import { connect } from "react-redux";
 import '../../styles/style.css'
 
+import UserSettingsScreen from "./contentScreens/UserSettingsScreen.jsx"
+import GenerateReportScreen from "./contentScreens/GenerateReportScreen.jsx"
+
 import WorktimesContainer from "./contentScreens/worktimes/WorktimesContainer.jsx"
 import TasksContainer from "./contentScreens/tasks/TasksContainer.jsx"
-
-import UserSettingsScreen from "./contentScreens/UserSettingsScreen.jsx"
 import VacationsContainer from "./contentScreens/vacations/VacationsContainer.jsx"
-import AddSickLeaveScreen from "./contentScreens/AddSickLeaveScreen.jsx"
-import ListSickLeavesScreen from "./contentScreens/ListSickLeavesScreen.jsx"
-import EditSickLeaveScreen from "./contentScreens/EditSickLeaveScreen.jsx"
-import GenerateReportScreen from "./contentScreens/GenerateReportScreen.jsx"
+import SickLeavesContainer from "./contentScreens/sickLeaves/SickLeavesContainer.jsx"
 
 import {
     USER_SETTINGS,
@@ -19,8 +17,6 @@ import {
     LIST_TASKS,
     LIST_VACATIONS,
     LIST_SICK_LEAVES,
-    ADD_SICK_LEAVE,
-    EDIT_SICK_LEAVE,
     GENERATE_REPORT
 } from "../redux/constants";
 
@@ -84,15 +80,8 @@ class MainScreen extends React.Component {
                     <div className="sidebarActivity" onClick={() => this.props.showScreen(LIST_VACATIONS)}>
                         { vacationsText }
                     </div>
-                    <div className="sidebarActivity" onClick={() => this.props.showScreen(ADD_SICK_LEAVE)}>
-                        Add sick leave
-                    </div>
                     <div className="sidebarActivity" onClick={() => this.props.showScreen(LIST_SICK_LEAVES)}>
-                        List sick leaves
-                    </div>
-                    <div className="sidebarActivity" onClick={() => this.props.showScreen(EDIT_SICK_LEAVE)}>
-                        Edit sick leave
-
+                        { sickLeavesText }
                     </div>
                 </div>
                 <div className="operationContainer">
@@ -114,7 +103,7 @@ class MainScreen extends React.Component {
 
                     { ( this.props.addSickLeaveClicked === true || this.props.listSickLeavesClicked ||
                         this.props.editSickLeaveClicked) 
-                        ? <AddSickLeaveScreen /> : ""}
+                        ? <SickLeavesContainer /> : ""}
                 </div>
             </div>
         </div>      
