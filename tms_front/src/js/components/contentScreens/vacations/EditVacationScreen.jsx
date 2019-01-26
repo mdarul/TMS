@@ -1,10 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { serverUrl } from "../../../secret.js"
+import { serverUrl } from "../../../../secret.js"
 
 const mapStateToProps = state => {
+    console.log(state);
     return {
          user: state.user,
+         vacation: state.selectedVacation
         };
   };
 
@@ -13,9 +15,9 @@ class EditVacationScreen extends React.Component {
         super(props);
 
         this.state = {
-            vacationId: "",
-            startTime: "",
-            endTime: ""
+            vacationId: props.vacation.id,
+            startTime: props.vacation.startTime,
+            endTime: props.vacation.endTime
         }
 
         this.getVacationData = this.getVacationData.bind(this);

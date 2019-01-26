@@ -3,7 +3,7 @@ import
     PUSH_DATA,
     PUSH_WORKTIME,
     PUSH_TASK,
-    PUSH_VACATIONS,
+    PUSH_VACATION,
     PUSH_SICK_LEAVE,
     USER_SETTINGS,
     LIST_WORKTIMES,
@@ -67,12 +67,12 @@ export function rootReducer(state = initalState, action) {
                     stateJSON.selectedTask = action.data;
                     stateJSON.editTaskClicked= true;
                     return stateJSON;
-                case PUSH_VACATIONS:
-                    stateJSON.selectedVacation = action.vacation;
+                case PUSH_VACATION:
+                    stateJSON.selectedVacation = action.data;
                     stateJSON.editVacationClicked = true;
                     return stateJSON;
                 case PUSH_SICK_LEAVE:
-                    stateJSON.selectedSickLeave = action.sickLeave;
+                    stateJSON.selectedSickLeave = action.data;
                     stateJSON.editSickLeaveClicked = true;
                     return stateJSON;
             }

@@ -28,7 +28,6 @@ class AssignedTasksScreen extends React.Component {
 
   componentDidMount(){
     const requestUrl = serverUrl + `\\api\\users\\${this.props.user.id}\\tasks`;
-    console.log(requestUrl);
 
     fetch(requestUrl)
       .then(response => response.json())

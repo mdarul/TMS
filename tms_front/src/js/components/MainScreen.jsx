@@ -7,9 +7,7 @@ import WorktimesContainer from "./contentScreens/worktimes/WorktimesContainer.js
 import TasksContainer from "./contentScreens/tasks/TasksContainer.jsx"
 
 import UserSettingsScreen from "./contentScreens/UserSettingsScreen.jsx"
-import AddVacationScreen from "./contentScreens/AddVacationScreen.jsx"
-import ListVacationsScreen from "./contentScreens/ListVacationsScreen.jsx"
-import EditVacationScreen from "./contentScreens/EditVacationScreen.jsx"
+import VacationsContainer from "./contentScreens/vacations/VacationsContainer.jsx"
 import AddSickLeaveScreen from "./contentScreens/AddSickLeaveScreen.jsx"
 import ListSickLeavesScreen from "./contentScreens/ListSickLeavesScreen.jsx"
 import EditSickLeaveScreen from "./contentScreens/EditSickLeaveScreen.jsx"
@@ -20,11 +18,10 @@ import {
     LIST_WORKTIMES,
     LIST_TASKS,
     LIST_VACATIONS,
-    ADD_VACATION,
-    EDIT_VACATION,
     LIST_SICK_LEAVES,
     ADD_SICK_LEAVE,
-    EDIT_SICK_LEAVE
+    EDIT_SICK_LEAVE,
+    GENERATE_REPORT
 } from "../redux/constants";
 
 import {
@@ -84,14 +81,8 @@ class MainScreen extends React.Component {
                     <div className="sidebarActivity" onClick={() => this.props.showScreen(LIST_TASKS)}>
                         { tasksText }
                     </div>
-                    <div className="sidebarActivity" onClick={() => this.props.showScreen(ADD_VACATION)}>
-                        Add vacation
-                    </div>
                     <div className="sidebarActivity" onClick={() => this.props.showScreen(LIST_VACATIONS)}>
-                        List vacations
-                    </div>
-                    <div className="sidebarActivity" onClick={() => this.props.showScreen(EDIT_VACATION)}>
-                        Edit vacation
+                        { vacationsText }
                     </div>
                     <div className="sidebarActivity" onClick={() => this.props.showScreen(ADD_SICK_LEAVE)}>
                         Add sick leave
@@ -119,7 +110,7 @@ class MainScreen extends React.Component {
 
                     { ( this.props.addVacationClicked === true || this.props.listVacationsClicked === true ||
                         this.props.editVacationClicked ) 
-                        ? <AddVacationScreen /> : ""}
+                        ? <VacationsContainer /> : ""}
 
                     { ( this.props.addSickLeaveClicked === true || this.props.listSickLeavesClicked ||
                         this.props.editSickLeaveClicked) 

@@ -4,7 +4,7 @@ export const SELECT_SCREEN = "SELECT_SCREEN";
 export const PUSH_DATA = "PUSH_DATA";
 export const PUSH_WORKTIME = "PUSH_WORKTIME";
 export const PUSH_TASK = "PUSH_TASK";
-export const PUSH_VACATIONS = "PUSH_VACATIONS";
+export const PUSH_VACATION = "PUSH_VACATIONS";
 export const PUSH_SICK_LEAVE = "PUSH_SICK_LEAVE";
 
 export const USER_SETTINGS = "USER_SETTINGS";
