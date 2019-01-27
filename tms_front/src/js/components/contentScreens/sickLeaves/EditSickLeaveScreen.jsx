@@ -73,37 +73,46 @@ class EditSickLeaveScreen extends React.Component {
     render(){
         return(
             <div>
-                <form>
-                    Sick leave id:
-                    <br />
-                    <input
-                        name="sickLeaveId"
-                        type="text"
-                        value={this.state.sickLeaveId}
-                        onChange={this.handleChange} />
+                <form className="form-group">
+                    <label>Sick leave id</label>
+                    <div className="form-row">
+                        <div className="form-group col-md-6">
+                            <input 
+                                className="form-control" 
+                                name="sickLeaveId"
+                                type="text"
+                                value={this.state.sickLeaveId}
+                                onChange={this.handleChange} />
+                        </div>
+                        <div className="form-group col-md-2">
+                            <button type="button" className="btn btn-primary form-control" onClick={this.getSickLeaveData}>Get sick leaves values</button>
+                        </div>
+                    </div>
 
-                    <br />
-                    <button type="button" onClick={this.getSickLeaveData}>Get sick leave values</button>
-                    <br />
-                    <br />
-                    Sick leave start:
-                    <br />
-                    <input
-                        name="startTime"
-                        type="text"
-                        value={this.state.startTime}
-                        onChange={this.handleChange} />
-                    <br />
-                    Sick leave end:
-                    <br />
-                    <input
-                        name="endTime"
-                        type="text"
-                        value={this.state.endTime}
-                        onChange={this.handleChange} />
-                    <br />
+                    <div className="form-row">
+                        <div className="form-group col-md-6">
+                            <label>Start</label>
+                            <input
+                                className="form-control"
+                                name="startTime"
+                                type="text"
+                                value={this.state.startTime}
+                                onChange={this.handleChange} />
+                        </div>
+                        <div className="form-group col-md-6">
+                            <label>End</label>
+                            <input
+                                className="form-control"
+                                name="endTime"
+                                type="text"
+                                value={this.state.endTime}
+                                onChange={this.handleChange} />
+                        </div>
+                    </div>
 
-                    <button type="button" onClick={this.updateSickLeaveData}>Update sick leave</button>       
+                    <div className="form-group">
+                        <button type="button" className="btn btn-primary" onClick={this.updateSickLeaveData}>Update sick leave</button>       
+                    </div>
                 </form>
             </div>
 
