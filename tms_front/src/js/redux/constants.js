@@ -12,13 +12,12 @@ export const GENERATE_REPORT = "GENERATE_REPORT";
 
 export const LIST_WORKTIMES = "LIST_WORKTIMES";
 export const ADD_WORKTIME = "ADD_WORKTIME";
-export const EDIT_WORKTIME = "EDIT_WORKTIME";
 export const SUBORDINATES_WORKTIMES = "SUBORDINATE_WORKTIMES";
 
 export const LIST_TASKS = "LIST_TASKS";
 export const ADD_TASK = "ADD_TASK";
-export const EDIT_TASK = "EDIT_TASK";
 export const SUBORDINATES_TASKS = "SUBORDINATES_TASKS"; 
+export const TEAM_TASK = "TEAM_TASK"; 
 
 export const LIST_VACATIONS = "LIST_VACATIONS";
 export const ADD_VACATION = "ADD_VACATION";

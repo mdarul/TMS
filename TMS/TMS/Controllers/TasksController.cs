@@ -148,6 +148,21 @@ namespace TMS.Controllers
             return Ok(tasks);
         }
 
+        [HttpGet("users/{userId}/tasks/team")]
+        public IActionResult GetTeamTasks(int userId)
+        {
+            var users = _repo.GetUsers();
+            var userFromRequest = _repo.GetUser(userId);
+            if (userFromRequest == null) return NotFound();
+
+            var taskList = users
+                .Where(o => o.Id != userId && o.TeamId == userFromRequest.TeamId)
+                .SelectMany(o => _repo.GetTasksForUser(o.Id))
+                .Select(ModelsMapping.GetTaskDto);
+
+            return Ok(taskList);
+        }
+
         private void GetSubordinatesIDs(IEnumerable<User> allUsers, List<int> idList, User currentBoss)
         {
             foreach (var user in allUsers)

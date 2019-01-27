@@ -39,6 +39,7 @@ const mapStateToProps = state => {
          listTasksClicked: state.listTasksClicked,
          addTaskClicked: state.addTaskClicked,
          editTaskClicked: state.editTaskClicked,
+         teamTaskClicked: state.teamTaskClicked,
          subordinatesTasksClicked: state.subordinatesTasksClicked,
          addVacationClicked: state.addVacationClicked,
          listVacationsClicked: state.listVacationsClicked,
@@ -94,7 +95,8 @@ class MainScreen extends React.Component {
                         ? <WorktimesContainer /> : ""}
 
                     { ( this.props.listTasksClicked === true || this.props.addTaskClicked === true ||
-                        this.props.editTaskClicked === true ||this.props.subordinatesTasksClicked) 
+                        this.props.editTaskClicked === true ||this.props.subordinatesTasksClicked ||
+                        this.props.teamTaskClicked) 
                         ? <TasksContainer /> : ""}
 
 

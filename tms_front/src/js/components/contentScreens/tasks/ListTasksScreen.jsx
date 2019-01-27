@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { connect } from 'react-redux';
 import { serverUrl } from "../../../../secret.js"
 import { showScreen } from "../../../redux/actions"
-import { ADD_TASK, SUBORDINATES_TASKS } from '../../../redux/constants.js';
+import { ADD_TASK, SUBORDINATES_TASKS, TEAM_TASK } from '../../../redux/constants.js';
 import TaskPresent from "../../utilsComponents/TaskPresent.jsx"
 
 const mapStateToProps = state => {
@@ -59,6 +59,7 @@ class ListTasksScreen extends React.Component {
       <div>
         <div className="taskButtonGroup btn-group btn-group-lg" role="group" aria-label="...">
           <button onClick={() => this.props.showScreen(ADD_TASK)} className="btn btn-dark btn-lg">Add task</button>
+          <button onClick={() => this.props.showScreen(TEAM_TASK)} className="btn btn-dark btn-lg">Show team tasks</button>
           <button onClick={() => this.props.showScreen(SUBORDINATES_TASKS)} className="btn btn-dark btn-lg">Show subordinates tasks</button>
         </div>
 
