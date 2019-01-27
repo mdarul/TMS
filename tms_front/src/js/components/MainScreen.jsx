@@ -65,24 +65,25 @@ class MainScreen extends React.Component {
             </div>
             <div className="contentContainer">
                 <div className="sidebar">
-                    <div className="sidebarActivity" onClick={() => this.props.showScreen(USER_SETTINGS)}>
+
+                    <button className="btn btn-dark btn-lg btn-block" onClick={() => this.props.showScreen(USER_SETTINGS)}>
                         User settings
-                    </div>
-                    <div className="sidebarActivity" onClick={() => this.props.showScreen(GENERATE_REPORT)}>
+                    </button>
+                    <button className="btn btn-dark btn-lg btn-block" onClick={() => this.props.showScreen(GENERATE_REPORT)}>
                         { generateReportsText }
-                    </div>
-                    <div className="sidebarActivity" onClick={() => this.props.showScreen(LIST_WORKTIMES)}>
+                    </button>
+                    <button className="btn btn-dark btn-lg btn-block" onClick={() => this.props.showScreen(LIST_WORKTIMES)}>
                         { worktimesText }
-                    </div>
-                    <div className="sidebarActivity" onClick={() => this.props.showScreen(LIST_TASKS)}>
+                    </button>
+                    <button className="btn btn-dark btn-lg btn-block" onClick={() => this.props.showScreen(LIST_TASKS)}>
                         { tasksText }
-                    </div>
-                    <div className="sidebarActivity" onClick={() => this.props.showScreen(LIST_VACATIONS)}>
+                    </button>
+                    <button className="btn btn-dark btn-lg btn-block" onClick={() => this.props.showScreen(LIST_VACATIONS)}>
                         { vacationsText }
-                    </div>
-                    <div className="sidebarActivity" onClick={() => this.props.showScreen(LIST_SICK_LEAVES)}>
+                    </button>
+                    <button className="btn btn-dark btn-lg btn-block" onClick={() => this.props.showScreen(LIST_SICK_LEAVES)}>
                         { sickLeavesText }
-                    </div>
+                    </button>
                 </div>
                 <div className="operationContainer">
                     { this.props.userSettingsClicked === true ? <UserSettingsScreen /> : ""}

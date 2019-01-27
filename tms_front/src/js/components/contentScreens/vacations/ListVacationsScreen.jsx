@@ -46,8 +46,9 @@ class ListVacationsScreen extends React.Component {
 
     return (
       <div>
-        <button onClick={() => this.props.showScreen(ADD_VACATION)}>Add vacation</button>
-        <button>Show subordinates vacations</button>
+        <div className="buttonGroup btn-group btn-group-lg" role="group" aria-label="...">
+          <button onClick={() => this.props.showScreen(ADD_VACATION)} className="btn btn-dark btn-lg">Add worktime</button>
+        </div>
         <div className="listEntityContainer">
             { userVacationsComponents }
         </div>

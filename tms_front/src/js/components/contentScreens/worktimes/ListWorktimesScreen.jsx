@@ -47,8 +47,10 @@ class ListWorktimes extends React.Component {
 
     return (
       <div>
-        <button onClick={() => this.props.showScreen(ADD_WORKTIME)}>Add worktime</button>
-        <button onClick={() => this.props.showScreen(SUBORDINATES_WORKTIMES)}>Show subordinates worktimes</button>
+        <div className="buttonGroup btn-group btn-group-lg" role="group" aria-label="...">
+          <button onClick={() => this.props.showScreen(ADD_WORKTIME)} className="btn btn-dark btn-lg">Add worktime</button>
+          <button onClick={() => this.props.showScreen(SUBORDINATES_WORKTIMES)} className="btn btn-dark btn-lg">Show subordinates worktimes</button>
+        </div>
         <div className="listEntityContainer">
           { worktimesComponents }
         </div>

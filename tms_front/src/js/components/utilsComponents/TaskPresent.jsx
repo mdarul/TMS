@@ -45,7 +45,6 @@ class TaskPresent extends React.Component {
                 <br />
                 {this.state.content}
                 <br />
-                <br />
             </div>
         );
     }

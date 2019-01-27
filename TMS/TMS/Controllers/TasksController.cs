@@ -35,6 +35,16 @@ namespace TMS.Controllers
             return Ok(tasks.Select(ModelsMapping.GetTaskDto));
         }
 
+        [HttpGet("tasks/{taskId}")]
+        public IActionResult GetTask(int taskId)
+        {
+            var tasks = _repo.GetTasks();
+            if (tasks == null || !tasks.Any()) return NotFound();
+            var task = tasks.FirstOrDefault(o => o.Id == taskId);
+
+            return Ok(ModelsMapping.GetTaskDto(task));
+        }
+
         [HttpGet("users/{userId}/tasks")]
         public IActionResult GetTasksForUser(int userId)
         {

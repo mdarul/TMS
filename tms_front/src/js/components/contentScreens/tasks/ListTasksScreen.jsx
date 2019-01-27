@@ -1,4 +1,5 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { connect } from 'react-redux';
 import { serverUrl } from "../../../../secret.js"
 import { showScreen } from "../../../redux/actions"
@@ -46,8 +47,11 @@ class AssignedTasksScreen extends React.Component {
 
     return (
       <div>
-        <button onClick={() => this.props.showScreen(ADD_TASK)}>Add task</button>
-        <button onClick={() => this.props.showScreen(SUBORDINATES_TASKS)}>Show subordinates tasks</button>
+        <div class="taskButtonGroup btn-group btn-group-lg" role="group" aria-label="...">
+          <button onClick={() => this.props.showScreen(ADD_TASK)} className="btn btn-dark btn-lg">Add task</button>
+          <button onClick={() => this.props.showScreen(SUBORDINATES_TASKS)} className="btn btn-dark btn-lg">Show subordinates tasks</button>
+        </div>
+
         <div className="listEntityContainer">
             { tasksComponents }
         </div>

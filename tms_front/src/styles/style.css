@@ -4,17 +4,18 @@ body, html {
 
 #root {
     height: 100%;
+    padding: 10px;
 }
 
 .mainScreen {
     display: grid;
     /* grid-auto-rows: auto; */
-    grid-template-rows: 8% 92%;
+    grid-template-rows: 9% 91%;
     height: 100%;
 }
 
 .header {
-    background-color: #c9c9c9;
+    background-color: #A3BFF0;
     border-radius: 5px;
 
     font-family: Georgia, serif;
@@ -30,10 +31,10 @@ body, html {
 }
 
 .sidebar {
-    background-color: #8db6fd;
+    background-color: #E8E8E8;
     padding: 10px;
     border-radius: 5px;
-    border:  black solid;
+    border:  thin black solid;
     font-family: Georgia, serif;
 }
 
@@ -45,18 +46,35 @@ body, html {
     font-family: Georgia, serif;
 }
 
+.buttonSidebar {
+    width: 100%;
+}
+
 .sidebarActivity + .sidebarActivity{
     margin-top: 20px;
 }
 
 .operationContainer {
     margin-left: 8px;
-    background-color: #8db6fd;
+    background-color: #E8E8E8;
     padding: 10px;
     border-radius: 5px;
     border: thin black solid;
     font-family: Georgia, serif;
     overflow-y: auto;
+}
+
+.buttonGroup {
+    margin-left: 10px;
+}
+
+.taskButtonGroup {
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.buttonTask {
+    margin-left: 10px;
 }
 
 .listEntityContainer {
@@ -72,7 +90,7 @@ body, html {
     border-radius: 5px;
     border: thin black solid;
     padding: 10px;
-    background-color: #f4f499;
+    background-color: #CCFF99;
 
     font-family: Georgia, serif;
     width: 330px;
@@ -88,7 +106,9 @@ body, html {
     border-radius: 5px;
     border: thin black solid;
     padding: 10px;
-    background-color: #f4f499;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: #CCFF99;
 
     font-family: Georgia, serif;
     /* display: table; */
@@ -96,4 +116,8 @@ body, html {
 
 .taskListEntity + .taskListEntity {
     margin-top: 10px;
+}
+
+.buttonGetValues {
+    bottom: 0;
 }

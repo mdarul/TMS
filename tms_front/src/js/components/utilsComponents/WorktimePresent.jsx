@@ -40,7 +40,9 @@ class WorktimePresent extends React.Component {
     render() {
         return(
             <div className="inlineListEntity" onClick={this.pushDataForEdit}>
-                {this.state.workStartTime} - {this.state.workEndTime}
+                Start: {this.state.workStartTime}
+                <br />
+                End: {this.state.workEndTime}
                 <br />
                 Task id: {this.state.taskId}
                 <br />

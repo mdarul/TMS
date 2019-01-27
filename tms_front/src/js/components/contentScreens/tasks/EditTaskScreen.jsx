@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { serverUrl } from "../../../../secret.js"
+import taskTypes from "../../../utils/tasksTypes.js"
 
 const mapStateToProps = state => {
     return {
@@ -80,53 +81,73 @@ class EditWorktimeScreen extends React.Component {
     render(){
         return(
             <div>
-                <form>
-                    Task id:
+                <form className="form-group">
+                    
+                    <label>Task id</label>
+                    <div className="form-row">
+                        <div className="form-group col-md-6">
+                            <input 
+                                className="form-control" 
+                                name="id"
+                                type="text"
+                                value={this.state.id}
+                                onChange={this.handleChange} />
+                        </div>
+                        <div className="form-group col-md-2">
+                            <button type="button" className="btn btn-primary form-control" onClick={this.getTaskData}>Get task values</button>
+                        </div>
+                    </div>
                     <br />
-                    <input
-                        name="id"
-                        type="text"
-                        value={this.state.id}
-                        onChange={this.handleChange} />
 
-                    <br />
-                    <button type="button" onClick={this.getTaskData}>Get task values</button>
-                    <br />
-                    <br />
-                    Title:
-                    <br />
-                    <input
-                        name="title"
-                        type="text"
-                        value={this.state.title}
-                        onChange={this.handleChange} />
-                    <br />
-                    Stage:
-                    <br />
-                    <input
+                    <div className="form-row">
+                        <div class="col">
+                            <label>Title</label>
+                            <input
+                                className="form-control"
+                                name="title"
+                                type="text"
+                                value={this.state.title}
+                                onChange={this.handleChange} />
+                        </div>
+                        <div class="col">
+                            <label>User id</label>
+                            <input
+                                className="form-control"
+                                name="userId"
+                                type="text"
+                                value={this.state.userId}
+                                onChange={this.handleChange} />                        
+                        </div>
+                    </div>
+
+                    <label>Stage</label>
+                    <select 
+                        className="custom-select mr-sm-2"
                         name="stage"
                         type="text"
                         value={this.state.stage}
-                        onChange={this.handleChange} />
-                    <br />
-                    Assigned employee:
-                    <br />
-                    <input
-                        name="userId"
-                        type="text"
-                        value={this.state.userId}
-                        onChange={this.handleChange} />
-                    <br />
-                    Content:
-                    <br />
-                    <input
-                        name="content"
-                        type="text"
-                        value={this.state.content}
-                        onChange={this.handleChange} />
-                    <br />
+                        onChange={this.handleChange} >
+                        <option value={taskTypes[0].value}>{taskTypes[0].label}</option>
+                        <option value={taskTypes[1].value}>{taskTypes[1].label}</option>
+                        <option value={taskTypes[2].value}>{taskTypes[2].label}</option>
+                        <option value={taskTypes[3].value}>{taskTypes[3].label}</option>
+                        <option value={taskTypes[4].value}>{taskTypes[4].label}</option>
+                        <option value={taskTypes[5].value}>{taskTypes[5].label}</option>
+                    </select>
 
-                    <button type="button" onClick={this.updateTaskData}>Update task</button>       
+                    <div className="form-group">
+                        <label for="exampleFormControlTextarea1">Content</label>
+                        <textarea 
+                            className="form-control" 
+                            id="exampleFormControlTextarea1" 
+                            rows="3"
+                            name="content"
+                            type="text"
+                            value={this.state.content}
+                            onChange={this.handleChange} />
+                    </div>
+
+                    <button type="button" className="btn btn-primary form-control" onClick={this.updateTaskData}>Update task</button>       
                 </form>
             </div>
 

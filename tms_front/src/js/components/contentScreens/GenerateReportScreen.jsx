@@ -32,10 +32,6 @@ class GenerateReportScreen extends React.Component {
         event.preventDefault();
         const requestUrl = serverUrl + `\\api\\reports\\${this.state.year}\\${this.state.month}`;
 
-        // const http = new XMLHttpRequest();
-        // http.open("GET", requestUrl);
-        // http.send();
-
         axios({
             url: requestUrl,
             method: 'GET',
@@ -53,28 +49,30 @@ class GenerateReportScreen extends React.Component {
     render() {
         return (
             <div>
-                <form>
-                    Generate report for:
-                    <br />
-                    <br/ >
-                    month:
-                    <br />
-                    <input 
-                        name="month"
-                        type="text"
-                        value={this.state.month}
-                        onChange={this.handleChange}/>
-                                            <br/ >
-                    year:
-                    <br />
-                    <input 
-                        name="year"
-                        type="text"
-                        value={this.state.year}
-                        onChange={this.handleChange}/>
-                    <br />
-
-                    <button onClick={this.handleSubmit}>Generate report</button>
+                <form className="form-group">
+                    <div className="form-group">
+                        <div className="form-group col-md-6">
+                            <label>Month</label>
+                            <input 
+                                className="form-control" 
+                                name="month"
+                                type="text"
+                                value={this.state.month}
+                                onChange={this.handleChange}/>
+                        </div>
+                        <div className="form-group col-md-6">
+                            <label>Year</label>
+                            <input 
+                                className="form-control" 
+                                name="year"
+                                type="text"
+                                value={this.state.year}
+                                onChange={this.handleChange}/>
+                        </div>
+                        <div className="form-group col-md-2">
+                            <button className="btn btn-primary" onClick={this.handleSubmit}>Generate report</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         );

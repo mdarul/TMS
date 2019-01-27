@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux"
 import { serverUrl } from "../../../../secret.js"
+import { ADD_SICK_LEAVE } from "../../../redux/constants";
 import SickLeavePresent from '../../utilsComponents/SickLeavePresent.jsx';
 
 const mapStateToProps = state => {
@@ -38,8 +39,13 @@ class ListSickLeavesScreen extends React.Component {
     }
 
     return (
-      <div className="listEntityContainer">
-          { userSickLeavesComponents }
+      <div>
+        <div className="buttonGroup btn-group btn-group-lg" role="group" aria-label="...">
+          <button onClick={() => this.props.showScreen(ADD_SICK_LEAVE)} className="btn btn-dark btn-lg">Add worktime</button>
+        </div>
+        <div className="listEntityContainer">
+            { userSickLeavesComponents }
+        </div>
       </div>
     );
   }
