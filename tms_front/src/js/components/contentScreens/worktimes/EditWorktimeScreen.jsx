@@ -79,45 +79,55 @@ class EditWorktimeScreen extends React.Component {
     render(){
         return(
             <div>
-                <form>
-                    Worktime id:
-                    <br />
-                    <input
-                        name="worktimeId"
-                        type="text"
-                        value={this.state.worktimeId}
-                        onChange={this.handleChange} />
+                <form className="form-group">
+                    <label>Worktime id</label>
+                    <div className="form-row">
+                        <div className="form-group col-md-6">
+                            <input 
+                                className="form-control" 
+                                name="worktimeId"
+                                type="text"
+                                value={this.state.worktimeId}
+                                onChange={this.handleChange} />
+                        </div>
+                        <div className="form-group col-md-2">
+                            <button type="button" className="btn btn-primary form-control" onClick={this.getWorktimeData}>Get worktime values</button>
+                        </div>
+                    </div>
 
-                    <br />
-                    <button type="button" onClick={this.getWorktimeData}>Get worktimes values</button>
-                    <br />
-                    <br />
-                    workStartTime:
-                    <br />
-                    <input
-                        name="workStartTime"
-                        type="text"
-                        value={this.state.workStartTime}
-                        onChange={this.handleChange} />
-                    <br />
-                    workEndTime:
-                    <br />
-                    <input
-                        name="workEndTime"
-                        type="text"
-                        value={this.state.workEndTime}
-                        onChange={this.handleChange} />
-                    <br />
-                    worktimeTaskId:
-                    <br />
-                    <input
-                        name="worktimeTaskId"
-                        type="text"
-                        value={this.state.worktimeTaskId}
-                        onChange={this.handleChange} />
-                    <br />
+                    <div className="form-row">
+                        <div className="form-group col-md-6">
+                            <label>Start</label>
+                            <input
+                                className="form-control"
+                                name="workStartTime"
+                                type="text"
+                                value={this.state.workStartTime}
+                                onChange={this.handleChange} />
+                        </div>
+                        <div className="form-group col-md-6">
+                            <label>End</label>
+                            <input
+                                className="form-control"
+                                name="workEndTime"
+                                type="text"
+                                value={this.state.workEndTime}
+                                onChange={this.handleChange} />
+                        </div>
+                    </div>
 
-                    <button type="button" onClick={this.updateWorktimeData}>Update worktime</button>       
+                    <div className="form-group">
+                        <label>Task id</label>
+                        <input
+                            className="form-control"
+                            name="worktimeTaskId"
+                            type="text"
+                            value={this.state.worktimeTaskId}
+                            onChange={this.handleChange} />
+                        <br />
+                    </div>
+
+                    <button type="button" className="btn btn-primary" onClick={this.updateWorktimeData}>Update worktime</button>       
                 </form>
             </div>
 
