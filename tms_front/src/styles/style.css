@@ -9,7 +9,6 @@ body, html {
 
 .mainScreen {
     display: grid;
-    /* grid-auto-rows: auto; */
     grid-template-rows: 9% 91%;
     height: 100%;
 }
@@ -75,6 +74,12 @@ body, html {
 
 .buttonTask {
     margin-left: 10px;
+}
+
+.searchContainer {
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .listEntityContainer {

@@ -29,7 +29,6 @@ class EditWorktimeScreen extends React.Component {
         this.setState({
             [event.target.name]: event.target.value
         });
-        console.log(this.state);
     }
 
     getWorktimeData(event) {
@@ -124,7 +123,6 @@ class EditWorktimeScreen extends React.Component {
                             type="text"
                             value={this.state.worktimeTaskId}
                             onChange={this.handleChange} />
-                        <br />
                     </div>
 
                     <button type="button" className="btn btn-primary" onClick={this.updateWorktimeData}>Update worktime</button>       

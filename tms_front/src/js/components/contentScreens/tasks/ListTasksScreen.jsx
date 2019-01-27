@@ -18,13 +18,16 @@ function mapDispatchToProps(dispatch) {
   }
 };
 
-class AssignedTasksScreen extends React.Component {
+class ListTasksScreen extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      asignedTasks: null
+      asignedTasks: null,
+      searchPhrase: ""
     }
+
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount(){
@@ -35,29 +38,46 @@ class AssignedTasksScreen extends React.Component {
       .then(responseData => {
         this.setState({
           asignedTasks: responseData
-        })
+        });
       });
+  }
+
+  handleChange(event) {
+    this.setState({
+        [event.target.name]: event.target.value
+    });
   }
 
   render() {
     let tasksComponents = null;
     if(this.state.asignedTasks !== null) {
-      tasksComponents = this.state.asignedTasks.map(taskJson => <TaskPresent taskJson={taskJson} key={taskJson.id} />); 
+      var taskToFilter = this.state.asignedTasks.filter(o => o.title.toLowerCase().includes(this.state.searchPhrase.toLowerCase()));
+      tasksComponents = taskToFilter.map(taskJson => <TaskPresent taskJson={taskJson} key={taskJson.id} />); 
     }
 
     return (
       <div>
-        <div class="taskButtonGroup btn-group btn-group-lg" role="group" aria-label="...">
+        <div className="taskButtonGroup btn-group btn-group-lg" role="group" aria-label="...">
           <button onClick={() => this.props.showScreen(ADD_TASK)} className="btn btn-dark btn-lg">Add task</button>
           <button onClick={() => this.props.showScreen(SUBORDINATES_TASKS)} className="btn btn-dark btn-lg">Show subordinates tasks</button>
         </div>
 
+        <div className="form-group searchContainer">
+            <label>Search by title</label>
+            <input
+              className="form-control"
+              name="searchPhrase"
+              type="text"
+              value={this.state.searchPhrase}
+              onChange={this.handleChange} />
+        </div>
+
         <div className="listEntityContainer">
-            { tasksComponents }
+          { tasksComponents }
         </div>
       </div>
     );
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AssignedTasksScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(ListTasksScreen);
