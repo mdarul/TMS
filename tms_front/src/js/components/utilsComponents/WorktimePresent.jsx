@@ -2,8 +2,8 @@ import React from "react"
 import { connect } from 'react-redux'
 import { pushData } from "../../redux/actions.js"
 import { PUSH_WORKTIME } from "../../redux/constants.js"
-
 import "../../../styles/style.css"
+import { formatDateFromRawString } from "../../utils/dateFormatter.js"
 
 
 
@@ -19,8 +19,8 @@ class WorktimePresent extends React.Component {
 
         this.state = {
             worktimeId: props.worktimeJson.id,
-            workEndTime: props.worktimeJson.workEndTime,
-            workStartTime: props.worktimeJson.workStartTime,
+            workEndTime: formatDateFromRawString(props.worktimeJson.workEndTime),
+            workStartTime: formatDateFromRawString(props.worktimeJson.workStartTime),
             taskId: props.worktimeJson.taskId,
         }
 

@@ -94,11 +94,12 @@ body, html {
 .inlineListEntity {
     border-radius: 5px;
     border: thin black solid;
-    padding: 10px;
+    padding: 15px 10px 10px 15px;
     background-color: #CCFF99;
 
     font-family: Georgia, serif;
-    width: 330px;
+    width: 250px;
+    height: 130px;
     display: inline-block;
 }
 
