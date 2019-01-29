@@ -82,7 +82,6 @@ class EditWorktimeScreen extends React.Component {
         return(
             <div>
                 <form className="form-group">
-                    
                     <label>Task id</label>
                     <div className="form-row">
                         <div className="form-group col-md-6">

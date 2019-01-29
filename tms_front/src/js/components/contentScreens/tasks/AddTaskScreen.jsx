@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Select from 'react-select';
 import taskTypes from "../../../utils/tasksTypes.js"
 import {serverUrl} from "../../../../secret.js"
 
@@ -18,6 +17,7 @@ class AddTaskScreen extends React.Component {
         title: "",
         content: "",
         stage: "",
+        userId: this.props.user.id
 
     };
 
@@ -45,7 +45,7 @@ class AddTaskScreen extends React.Component {
       title: this.state.title,
       content: this.state.content,
       stage: this.state.stage.value,
-      userId: this.props.user.id 
+      userId: this.state.userId 
     }
 
     const http = new XMLHttpRequest();
@@ -57,6 +57,10 @@ class AddTaskScreen extends React.Component {
         if (http.readyState === 4 && http.status === 200) {
             alert("Task added successfully");
         }
+        else {
+          console.log(http.readyState);
+          console.log(http.status);
+        }
     };
 
     event.preventDefault();
@@ -65,36 +69,56 @@ class AddTaskScreen extends React.Component {
   render() {
     return (
       <div>
-          <form>
-            Task title:
-            <br />
-            <input                             
-              name="title"
-              type="text"
-              value={this.state.title} 
-              onChange={this.handleChange} />
-            
-            <br/>
+        <form className="form-group">
+          <div className="form-row">
+              <div className="col">
+                  <label>Title</label>
+                  <input
+                      className="form-control"
+                      name="title"
+                      type="text"
+                      value={this.state.title}
+                      onChange={this.handleChange} />
+              </div>
+              <div className="col">
+                  <label>User id</label>
+                  <input
+                      className="form-control"
+                      name="userId"
+                      type="text"
+                      value={this.state.userId}
+                      onChange={this.handleChange} />                        
+              </div>
+          </div>
 
-            Task content:
-            <br />
-            <input                             
-              name="content"
+          <label>Stage</label>
+          <select 
+              className="custom-select mr-sm-2"
+              name="stage"
               type="text"
-              value={this.state.content} 
-              onChange={this.handleChange} />
-            <br />
-
-            Stage:
-            <br />
-            <Select
               value={this.state.stage}
-              onChange={this.handleSelectChange}
-              options={taskTypes} />
-            <br />
-            
-            <button type="button" onClick={this.handleSubmit}>Add task</button>
-          </form>
+              onChange={this.handleChange} >
+              <option value={taskTypes[0].value}>{taskTypes[0].label}</option>
+              <option value={taskTypes[1].value}>{taskTypes[1].label}</option>
+              <option value={taskTypes[2].value}>{taskTypes[2].label}</option>
+              <option value={taskTypes[3].value}>{taskTypes[3].label}</option>
+              <option value={taskTypes[4].value}>{taskTypes[4].label}</option>
+              <option value={taskTypes[5].value}>{taskTypes[5].label}</option>
+          </select>
+
+          <div className="form-group">
+              <label>Content</label>
+              <textarea 
+                  className="form-control" 
+                  rows="3"
+                  name="content"
+                  type="text"
+                  value={this.state.content}
+                  onChange={this.handleChange} />
+          </div>
+
+          <button type="button" className="btn btn-primary form-control" onClick={this.handleSubmit}>Add task</button>
+        </form>           
       </div>
     );
   }
