@@ -1,6 +1,7 @@
 import React from 'react';
-import { connect } from "react-redux"
-import { serverUrl } from "../../../../secret.js"
+import { connect } from "react-redux";
+import { serverUrl } from "../../../../secret.js";
+import { showScreen } from "../../../redux/actions";
 import { ADD_SICK_LEAVE } from "../../../redux/constants";
 import SickLeavePresent from '../../utilsComponents/SickLeavePresent.jsx';
 
@@ -8,6 +9,12 @@ const mapStateToProps = state => {
   return {
        user: state.user,
       };
+};
+
+function mapDispatchToProps(dispatch) {
+  return {
+      showScreen: screen => dispatch(showScreen(screen))
+  }
 };
 
 class ListSickLeavesScreen extends React.Component {
@@ -41,7 +48,7 @@ class ListSickLeavesScreen extends React.Component {
     return (
       <div>
         <div className="buttonGroup btn-group btn-group-lg" role="group" aria-label="...">
-          <button onClick={() => this.props.showScreen(ADD_SICK_LEAVE)} className="btn btn-dark btn-lg">Add worktime</button>
+          <button onClick={() => this.props.showScreen(ADD_SICK_LEAVE)} className="btn btn-dark btn-lg">Add sick leave</button>
         </div>
         <div className="listEntityContainer">
             { userSickLeavesComponents }
@@ -51,4 +58,4 @@ class ListSickLeavesScreen extends React.Component {
   }
 }
 
-export default connect(mapStateToProps)(ListSickLeavesScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(ListSickLeavesScreen);

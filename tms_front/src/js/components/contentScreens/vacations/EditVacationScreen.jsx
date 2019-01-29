@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { serverUrl } from "../../../../secret.js"
+import { serverUrl } from "../../../../secret.js";
+import { formatStringDateToFullDate, formatDateWithoutTime } from "../../../utils/dateFormatter.js";
 
 const mapStateToProps = state => {
     console.log(state);
@@ -42,8 +43,8 @@ class EditVacationScreen extends React.Component {
             if(Http.readyState === 4 && Http.status === 200) {
                 const responseData = JSON.parse(Http.responseText);
                 this.setState({
-                    startTime: responseData.startTime,
-                    endTime: responseData.endTime
+                    startTime: formatDateWithoutTime(responseData.startTime),
+                    endTime: formatDateWithoutTime(responseData.endTime)
                 });
             }
         }
@@ -55,8 +56,8 @@ class EditVacationScreen extends React.Component {
 
         const updatedVacation = {
             userId: this.props.user.id,
-            startTime: this.state.startTime,
-            endTime: this.state.endTime
+            startTime: formatStringDateToFullDate(this.state.startTime),
+            endTime: formatStringDateToFullDate(this.state.endTime)
         };
 
         const http = new XMLHttpRequest();
@@ -75,7 +76,6 @@ class EditVacationScreen extends React.Component {
         return(
             <div>
                 <form className="form-group">
-
                     <label>Vacation id</label>
                     <div className="form-row">
                         <div className="form-group col-md-6">
@@ -111,11 +111,9 @@ class EditVacationScreen extends React.Component {
                                 onChange={this.handleChange} />
                         </div>
                     </div>
-
                     <div className="form-group">
                         <button type="button" className="btn btn-primary" onClick={this.updateVacationData}>Update vacation</button>       
                     </div>
-
                 </form>
             </div>
 

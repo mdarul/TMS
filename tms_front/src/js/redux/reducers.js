@@ -150,6 +150,12 @@ function getDefaultJSON(state){
         teamTaskClicked: false,
         addTaskClicked: false,
         subordinatesTasksClicked: false,
-        subordinatesWorktimesClicked: false
+        subordinatesWorktimesClicked: false,
+        addVacationClicked: false,
+        editVacationClicked: false,
+        listVacationsClicked: false,
+        addSickLeaveClicked: false,
+        editSickLeaveClicked: false,
+        listSickLeavesClicked: false
     }
 }

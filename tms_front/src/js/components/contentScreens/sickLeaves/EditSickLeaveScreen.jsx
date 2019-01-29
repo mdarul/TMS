@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { serverUrl } from "../../../../secret.js"
+import { formatStringDateToFullDate, formatDateWithoutTime } from "../../../utils/dateFormatter.js";
 
 const mapStateToProps = state => {
     return {
@@ -41,8 +42,8 @@ class EditSickLeaveScreen extends React.Component {
             if(Http.readyState === 4 && Http.status === 200) {
                 const responseData = JSON.parse(Http.responseText);
                 this.setState({
-                    startTime: responseData.startTime,
-                    endTime: responseData.endTime
+                    startTime: formatDateWithoutTime(responseData.startTime),
+                    endTime: formatDateWithoutTime(responseData.endTime)
                 });
             }
         }
@@ -54,8 +55,8 @@ class EditSickLeaveScreen extends React.Component {
 
         const updatedSickLeave = {
             userId: this.props.user.id,
-            startTime: this.state.startTime,
-            endTime: this.state.endTime
+            startTime: formatStringDateToFullDate(this.state.startTime),
+            endTime: formatStringDateToFullDate(this.state.endTime)
         };
 
         const http = new XMLHttpRequest();

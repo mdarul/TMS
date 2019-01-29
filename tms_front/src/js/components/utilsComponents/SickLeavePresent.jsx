@@ -2,7 +2,7 @@ import React from "react"
 import { connect } from 'react-redux'
 import { pushData } from "../../redux/actions.js"
 import { PUSH_SICK_LEAVE } from "../../redux/constants";
-import { formatDateFromRawString } from "../../utils/dateFormatter.js"
+import { formatDateWithoutTime } from "../../utils/dateFormatter.js"
 
 function mapDispatchToProps(dispatch) {
     return {
@@ -16,8 +16,8 @@ class SickLeavePresent extends React.Component {
 
         this.state = {
             id: props.sickLeaveJson.id,
-            startTime: formatDateFromRawString(props.sickLeaveJson.startTime),
-            endTime: formatDateFromRawString(props.sickLeaveJson.endTime)
+            startTime: formatDateWithoutTime(props.sickLeaveJson.startTime),
+            endTime: formatDateWithoutTime(props.sickLeaveJson.endTime)
         }
 
         this.pushDataForEdit = this.pushDataForEdit.bind(this);
