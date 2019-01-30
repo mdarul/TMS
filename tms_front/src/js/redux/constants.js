@@ -22,7 +22,9 @@ export const TEAM_TASK = "TEAM_TASK";
 export const LIST_VACATIONS = "LIST_VACATIONS";
 export const ADD_VACATION = "ADD_VACATION";
 export const EDIT_VACATION = "EDIT_VACATION";
+export const TEAM_VACATIONS = "TEAM_VACATIONS";
 
 export const LIST_SICK_LEAVES = "LIST_SICK_LEAVES";
 export const ADD_SICK_LEAVE = "ADD_SICK_LEAVE";
 export const EDIT_SICK_LEAVE = "EDIT_SICK_LEAVE";
+export const TEAM_SICK_LEAVES = "TEAM_SICK_LEAVES";

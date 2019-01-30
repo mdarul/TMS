@@ -16,9 +16,11 @@ import
     ADD_VACATION,
     LIST_VACATIONS,
     EDIT_VACATION,
+    TEAM_VACATIONS,
     ADD_SICK_LEAVE,
     LIST_SICK_LEAVES,
     EDIT_SICK_LEAVE,
+    TEAM_SICK_LEAVES,
     GENERATE_REPORT,
     SELECT_SCREEN
 } from "./constants";
@@ -43,9 +45,11 @@ const initalState = {
     addVacationClicked: false,
     listVacationsClicked: false,
     editVacationClicked: false,
+    teamVacationsClicked: false,
     addSickLeaveClicked: false,
     listSickLeavesClicked: false,
     editSickLeaveClicked: false,
+    teamSickLeavesClicked: false,
     generateReportClicked: false
 };
 
@@ -114,6 +118,9 @@ export function rootReducer(state = initalState, action) {
                     case EDIT_VACATION:
                         stateJSON.editVacationClicked = true;
                         return stateJSON;
+                    case TEAM_VACATIONS:
+                        stateJSON.teamVacationsClicked = true;
+                        return stateJSON;
                     case ADD_SICK_LEAVE:
                         stateJSON.addSickLeaveClicked = true;
                         return stateJSON;
@@ -122,6 +129,9 @@ export function rootReducer(state = initalState, action) {
                         return stateJSON;
                     case EDIT_SICK_LEAVE:
                         stateJSON.editSickLeaveClicked = true;
+                        return stateJSON;
+                    case TEAM_SICK_LEAVES:
+                        stateJSON.teamSickLeavesClicked = true;
                         return stateJSON;
                     case GENERATE_REPORT:
                         stateJSON.generateReportClicked = true;
@@ -154,8 +164,10 @@ function getDefaultJSON(state){
         addVacationClicked: false,
         editVacationClicked: false,
         listVacationsClicked: false,
+        teamVacationsClicked: false,
         addSickLeaveClicked: false,
         editSickLeaveClicked: false,
-        listSickLeavesClicked: false
+        listSickLeavesClicked: false,
+        teamSickLeavesClicked: false
     }
 }

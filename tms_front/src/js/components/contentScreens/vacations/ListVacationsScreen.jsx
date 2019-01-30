@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from "react-redux"
 import { serverUrl } from "../../../../secret.js"
 import { showScreen } from "../../../redux/actions"
-import { ADD_VACATION } from '../../../redux/constants.js';
+import { ADD_VACATION, TEAM_VACATIONS } from '../../../redux/constants.js';
 import VacationPresent from '../../utilsComponents/VacationPresent.jsx';
 
 const mapStateToProps = state => {
@@ -48,6 +48,7 @@ class ListVacationsScreen extends React.Component {
       <div>
         <div className="buttonGroup btn-group btn-group-lg" role="group" aria-label="...">
           <button onClick={() => this.props.showScreen(ADD_VACATION)} className="btn btn-dark btn-lg">Add vacation</button>
+          <button onClick={() => this.props.showScreen(TEAM_VACATIONS)} className="btn btn-dark btn-lg">Show team vacations</button>
         </div>
         <div className="listEntityContainer">
             { userVacationsComponents }

@@ -78,6 +78,21 @@ namespace TMS.Controllers
             return Ok();
         }
 
+        [HttpGet("users/{userId}/vacations/team")]
+        public IActionResult GetTeamVacations(int userId)
+        {
+            var users = _repo.GetUsers();
+            var userFromRequest = _repo.GetUser(userId);
+            if (userFromRequest == null) return NotFound();
+
+            var vacationsList = users
+                .Where(o => o.Id != userId && o.TeamId == userFromRequest.TeamId)
+                .SelectMany(o => _repo.GetVacationsForUser(o.Id))
+                .Select(ModelsMapping.GetVacationeDto);
+
+            return Ok(vacationsList);
+        }
+
         #endregion
     }
 }
