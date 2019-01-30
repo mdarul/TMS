@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { serverUrl } from "../../../../secret.js";
-import { formatDateWithoutTime, formatStringDateToFullDate } from "../../../utils/dateFormatter.js"
+import { formatDateToStringDateWithoutTime, formatStringDateToFullDate } from "../../../utils/dateFormatter.js"
 import moment from 'moment';
 
 const mapStateToProps = (state) => {
@@ -15,8 +15,8 @@ class AddSickLeaveScreen extends React.Component {
         super();
 
         this.state = {
-            startTime: formatDateWithoutTime(moment("2019-01-01T00:00:00")),
-            endTime: formatDateWithoutTime(moment("2019-01-13T00:00:00")),
+            startTime: formatDateToStringDateWithoutTime(moment("2019-01-01T00:00:00")),
+            endTime: formatformatDateToStringDateWithoutTimeDateWithoutTime(moment("2019-01-13T00:00:00")),
         }
 
         this.handleChange = this.handleChange.bind(this);

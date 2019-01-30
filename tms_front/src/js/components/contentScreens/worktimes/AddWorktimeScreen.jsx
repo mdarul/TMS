@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { serverUrl } from "../../../../secret.js"
+import { serverUrl } from "../../../../secret.js";
+import { formatStringDateWithTimeToFullDate, formatDateFromRawString } from "../../../utils/dateFormatter.js";
 import moment from 'moment';
 
 const mapStateToProps = state => {
@@ -14,8 +15,8 @@ class AddWorktimeScreen extends React.Component {
     super(props);
 
     this.state = {
-      workEndTime: "2019-01-01T00:00:00",
-      workStartTime: "2019-01-01T00:00:00",
+      workEndTime: formatDateFromRawString("2019-01-01T00:00:00"),
+      workStartTime: formatDateFromRawString("2019-01-01T00:00:00"),
       taskId: ""
     }
 
@@ -35,11 +36,13 @@ class AddWorktimeScreen extends React.Component {
     const requestUrl = serverUrl + `\\api\\users\\${this.props.user.id}\\workTimes\\`;
 
     const newWorkTime = {
-      workEndTime: this.state.workEndTime,
-      workStartTime: this.state.workStartTime,
+      workEndTime: formatStringDateWithTimeToFullDate(this.state.workEndTime),
+      workStartTime: formatStringDateWithTimeToFullDate(this.state.workStartTime),
       taskId: this.state.taskId,
       userId: this.props.user.id 
     }
+
+    console.log(newWorkTime);
 
     const http = new XMLHttpRequest();
     http.open("POST", requestUrl);
@@ -59,7 +62,7 @@ class AddWorktimeScreen extends React.Component {
     event.preventDefault();
     const currentTime = moment().format().slice(0, -6);
     this.setState({
-      workStartTime: currentTime
+      workStartTime: formatDateFromRawString(currentTime)
     });
   }
 
@@ -67,44 +70,53 @@ class AddWorktimeScreen extends React.Component {
     event.preventDefault();
     const currentTime = moment().format().slice(0, -6);
     this.setState({
-      workEndTime: currentTime
+      workEndTime: formatDateFromRawString(currentTime)
     });
   }
 
   render() {
     return (
       <div>
-          <form>
-            Task id:
-            <br />
+          <form className="form-group">
+            <label>Task id</label>
             <input 
+              className="form-control"
               name="taskId"
               type="text"
               value={this.state.taskId}
               onChange={this.handleChange}/>
-            <br />
 
-            workStartTime:
-            <br />
-            <input 
-              name="workStartTime"
-              type="text"
-              value={this.state.workStartTime}
-              onChange={this.handleChange}/>
-            <button type="button" onClick={this.fillStartWithCurrentDate}>Now</button>
-            <br />
+            <label>Worktime start</label>
+            <div className="form-row">
+              <div className="form-group col-md-2">
+                <input
+                  className="form-control" 
+                  name="workStartTime"
+                  type="text"
+                  value={this.state.workStartTime}
+                  onChange={this.handleChange}/>
+              </div>
+              <div className="form-group col-md-2">
+                <button type="button" className="btn btn-primary" onClick={this.fillStartWithCurrentDate}>Now</button> 
+              </div>  
+            </div>
 
-            workEndTime:
-            <br />
-            <input 
-              name="workEndTime"
-              type="text"
-              value={this.state.workEndTime}
-              onChange={this.handleChange}/>
-            <button type="button" onClick={this.fillEndWithCurrentDate}>Now</button>
-            <br />
-            <br />
-            <button type="button" onClick={this.handleSubmit}>Add worktime</button>
+            <label>Worktime end</label>
+            <div className="form-row">
+              <div className="form-group col-md-2">
+                <input 
+                  className="form-control" 
+                  name="workEndTime"
+                  type="text"
+                  value={this.state.workEndTime}
+                  onChange={this.handleChange}/>
+              </div>
+              <div className="form-group col-md-2">
+                <button type="button" className="btn btn-primary" onClick={this.fillEndWithCurrentDate}>Now</button>
+              </div>  
+            </div>
+
+            <button type="button" className="btn btn-primary" onClick={this.handleSubmit}>Add worktime</button>
           </form>
       </div>
     );

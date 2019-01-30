@@ -2,7 +2,7 @@ import React from "react"
 import { connect } from 'react-redux'
 import { pushData } from "../../redux/actions.js"
 import { PUSH_VACATION } from "../../redux/constants.js"
-import { formatDateWithoutTime } from "../../utils/dateFormatter.js"
+import { formatDateToStringDateWithoutTime } from "../../utils/dateFormatter.js"
 
 function mapDispatchToProps(dispatch) {
     return {
@@ -15,8 +15,8 @@ class VacationPresent extends React.Component {
 
         this.state = {
             id: props.vacationJson.id,
-            startTime: formatDateWithoutTime(props.vacationJson.startTime),
-            endTime: formatDateWithoutTime(props.vacationJson.endTime)
+            startTime: formatDateToStringDateWithoutTime(props.vacationJson.startTime),
+            endTime: formatDateToStringDateWithoutTime(props.vacationJson.endTime)
         }
 
         this.pushDataForEdit = this.pushDataForEdit.bind(this);

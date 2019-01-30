@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { serverUrl } from "../../../../secret.js";
-import { formatStringDateToFullDate, formatDateWithoutTime } from "../../../utils/dateFormatter.js";
+import { formatStringDateToFullDate, formatDateToStringDateWithoutTime } from "../../../utils/dateFormatter.js";
 
 const mapStateToProps = state => {
     console.log(state);
@@ -43,8 +43,8 @@ class EditVacationScreen extends React.Component {
             if(Http.readyState === 4 && Http.status === 200) {
                 const responseData = JSON.parse(Http.responseText);
                 this.setState({
-                    startTime: formatDateWithoutTime(responseData.startTime),
-                    endTime: formatDateWithoutTime(responseData.endTime)
+                    startTime: formatDateToStringDateWithoutTime(responseData.startTime),
+                    endTime: formatDateToStringDateWithoutTime(responseData.endTime)
                 });
             }
         }
