@@ -34,7 +34,8 @@ class ListSickLeavesScreen extends React.Component {
     .then(responseData => {
       this.setState({
         userSickLeaves: responseData
-      })
+      });
+      console.log(this.state.userSickLeaves);
     });
   }
 

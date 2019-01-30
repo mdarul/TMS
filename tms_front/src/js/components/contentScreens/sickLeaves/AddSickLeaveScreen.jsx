@@ -16,7 +16,7 @@ class AddSickLeaveScreen extends React.Component {
 
         this.state = {
             startTime: formatDateToStringDateWithoutTime(moment("2019-01-01T00:00:00")),
-            endTime: formatformatDateToStringDateWithoutTimeDateWithoutTime(moment("2019-01-13T00:00:00")),
+            endTime: formatDateToStringDateWithoutTime(moment("2019-01-13T00:00:00")),
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -37,6 +37,8 @@ class AddSickLeaveScreen extends React.Component {
           startTime: formatStringDateToFullDate(this.state.startTime),
           userId: this.props.user.id 
         }
+
+        console.log(newVacation);
     
         const http = new XMLHttpRequest();
         http.open("POST", requestUrl);
