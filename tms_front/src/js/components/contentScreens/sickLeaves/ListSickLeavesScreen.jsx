@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from "react-redux";
 import { serverUrl } from "../../../../secret.js";
 import { showScreen } from "../../../redux/actions";
-import { ADD_SICK_LEAVE } from "../../../redux/constants";
+import { ADD_SICK_LEAVE, TEAM_SICK_LEAVES } from "../../../redux/constants";
 import SickLeavePresent from '../../utilsComponents/SickLeavePresent.jsx';
 
 const mapStateToProps = state => {
@@ -35,7 +35,6 @@ class ListSickLeavesScreen extends React.Component {
       this.setState({
         userSickLeaves: responseData
       });
-      console.log(this.state.userSickLeaves);
     });
   }
 
@@ -50,6 +49,7 @@ class ListSickLeavesScreen extends React.Component {
       <div>
         <div className="buttonGroup btn-group btn-group-lg" role="group" aria-label="...">
           <button onClick={() => this.props.showScreen(ADD_SICK_LEAVE)} className="btn btn-dark btn-lg">Add sick leave</button>
+          <button onClick={() => this.props.showScreen(TEAM_SICK_LEAVES)} className="btn btn-dark btn-lg">Show team sick leaves</button>
         </div>
         <div className="listEntityContainer">
             { userSickLeavesComponents }
