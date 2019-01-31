@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using TMS.Models.DTO;
+using TMS.Models.DTO.Comment;
 using TMS.Models.DTO.Management;
 using TMS.Models.DTO.Payment;
 using TMS.Models.DTO.SickLeave;
@@ -147,7 +148,7 @@ namespace TMS.Models
             };
         }
 
-        public static VacationDTO GetVacationeDto(Vacation vacation)
+        public static VacationDTO GetVacationDto(Vacation vacation)
         {
             return new VacationDTO()
             {
@@ -224,6 +225,29 @@ namespace TMS.Models
                 HourlyRate = paymentDto.HourlyRate,
                 ContractType = paymentDto.contractType,
                 JobTimePortion = paymentDto.jobTimePortion
+            };
+        }
+
+        public static Comment GetCommentEntity(CommentForCreationDto commentDto)
+        {
+            return new Comment()
+            {
+                UserId = commentDto.UserId,
+                TaskId = commentDto.TaskId,
+                Content = commentDto.Content,
+                CreationTime = commentDto.CreationTime
+            };
+        }
+
+        public static CommentDto GetCommentDto(Comment comment)
+        {
+            return new CommentDto()
+            {
+                Id = comment.Id,
+                UserId = comment.UserId,
+                TaskId = comment.TaskId,
+                Content = comment.Content,
+                CreationTime = comment.CreationTime
             };
         }
     }

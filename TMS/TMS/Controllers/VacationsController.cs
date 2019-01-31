@@ -24,7 +24,7 @@ namespace TMS.Controllers
             var vacations = _repo.GetVacations();
             if (vacations == null || !vacations.Any()) return NotFound();
 
-            return Ok(vacations.Select(ModelsMapping.GetVacationeDto));
+            return Ok(vacations.Select(ModelsMapping.GetVacationDto));
         }
 
         [HttpGet("users/{userId}/vacations")]
@@ -33,7 +33,7 @@ namespace TMS.Controllers
             var vacations = _repo.GetVacationsForUser(userId);
             if (vacations == null) return NotFound();
 
-            return Ok(vacations.Select(ModelsMapping.GetVacationeDto));
+            return Ok(vacations.Select(ModelsMapping.GetVacationDto));
         }
 
         [HttpGet("vacations/{vacationId}")]
@@ -42,7 +42,7 @@ namespace TMS.Controllers
             var vacations = _repo.GetVacation(vacationId);
             if (vacations == null) return NotFound();
 
-            return Ok(ModelsMapping.GetVacationeDto(vacations));
+            return Ok(ModelsMapping.GetVacationDto(vacations));
         }
 
         [HttpPost("vacations")]
@@ -88,7 +88,7 @@ namespace TMS.Controllers
             var vacationsList = users
                 .Where(o => o.Id != userId && o.TeamId == userFromRequest.TeamId)
                 .SelectMany(o => _repo.GetVacationsForUser(o.Id))
-                .Select(ModelsMapping.GetVacationeDto);
+                .Select(ModelsMapping.GetVacationDto);
 
             return Ok(vacationsList);
         }

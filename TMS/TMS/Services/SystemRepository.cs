@@ -210,6 +210,28 @@ namespace TMS.Services
             SaveChanges();
         }
 
+        public IEnumerable<Comment> GetComments()
+        {
+            return _context.Comments.ToList();
+        }
+
+        public Comment GetComment(int id)
+        {
+            return _context.Comments.ToList().FirstOrDefault(o => o.Id == id);
+        }
+
+        public void AddComment(Comment comment)
+        {
+            _context.Add(comment);
+            SaveChanges();
+        }
+
+        public void DeleteComment(Comment comment)
+        {
+            _context.Comments.Remove(comment);
+            SaveChanges();
+        }
+
         public void SaveChanges()
         {
             _context.SaveChanges();

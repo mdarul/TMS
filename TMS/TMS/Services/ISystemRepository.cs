@@ -52,6 +52,11 @@ namespace TMS.Services
         void AddPayment(Payment payment);
         void DeletePayment(Payment payment);
 
+        IEnumerable<Comment> GetComments();
+        Comment GetComment(int id);
+        void AddComment(Comment comment);
+        void DeleteComment(Comment comment);
+
         void SaveChanges();
     }
 }

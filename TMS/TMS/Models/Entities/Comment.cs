@@ -7,23 +7,22 @@ using System.Threading.Tasks;
 
 namespace TMS.Models.Entities
 {
-    public class Task
+    public class Comment
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [Required]
-        [MaxLength(30)]
-        public string Title { get; set; }
+        public DateTime CreationTime { get; set; }
 
         public string Content { get; set; }
-        public string Stage { get; set; } = "New";
 
-        public int? UserId { get; set; }
+        [Required]
+        public int UserId { get; set; }
         public User User { get; set; }
 
-        public List<WorkTime> WorkTimes { get; set; }
-        public List<Comment> Comments { get; set; }
+        [Required]
+        public int TaskId { get; set; }
+        public Task Task { get; set; }
     }
 }

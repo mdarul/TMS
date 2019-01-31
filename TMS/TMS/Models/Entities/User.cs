@@ -38,6 +38,7 @@ namespace TMS.Models.Entities
 
 
         public List<Task> Tasks { get; set; }
+        public List<Comment> Comments { get; set; }
         public List<WorkTime> WorkTimes { get; set; }
 
     }
