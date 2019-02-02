@@ -4,6 +4,7 @@ import { serverUrl } from "../../../../secret.js";
 import TaskPresentImmutable from "../../utilsComponents/TaskPresentImmutable.jsx";
 import CommentPresentImmutable from "../../utilsComponents/CommentPresentImmutable.jsx";
 import moment from 'moment';
+import { formatDateFromRawString } from "../../../utils/dateFormatter.js"
 
 
 const mapStateToProps = state => {
@@ -64,12 +65,12 @@ class TaskCommentsScreen extends React.Component {
                     userName: responseData.name,
                     userSurname: responseData.surname,
                     userId: comment.userId,
-                    creationTime: comment.creationTime,
+                    creationTime: formatDateFromRawString(comment.creationTime),
                     content: comment.content
                 };
                 let commentComponent = <CommentPresentImmutable commentJson={commentJson} key={comment.id}/>;
                 this.setState(prevState => ({
-                    commentComponents: [...prevState.commentComponents, commentComponent]
+                    commentComponents: [commentComponent, ...prevState.commentComponents]
                 }))
             }
         };

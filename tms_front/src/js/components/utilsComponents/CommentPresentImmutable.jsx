@@ -15,12 +15,10 @@ class CommentPresentImmutable extends React.Component {
 
     render() {
         return(
-            <div>
+            <div className="commentEntity">
                 {this.state.userName} {this.state.userSurname} ({this.state.userId}), {this.state.creationTime}
                 <br />
                 {this.state.content}
-                <br />
-                <br />
             </div>
         );
     }

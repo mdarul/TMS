@@ -123,6 +123,17 @@ body, html {
     margin-top: 10px;
 }
 
-.buttonGetValues {
-    bottom: 0;
+.commentEntity {
+    border-radius: 5px;
+    border: thin black solid;
+    padding: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: #A3BFF0;
+
+    font-family: Georgia, serif;
+}
+
+.commentEntity + .commentEntity {
+    margin-top: 10px
 }

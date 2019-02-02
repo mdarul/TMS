@@ -8,7 +8,6 @@ export const PUSH_TASK = "PUSH_TASK";
 export const PUSH_VACATION = "PUSH_VACATIONS";
 export const PUSH_SICK_LEAVE = "PUSH_SICK_LEAVE";
 
-export const USER_SETTINGS = "USER_SETTINGS";
 export const GENERATE_REPORT = "GENERATE_REPORT"; 
 
 export const LIST_WORKTIMES = "LIST_WORKTIMES";

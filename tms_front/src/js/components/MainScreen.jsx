@@ -3,16 +3,13 @@ import { showScreen } from "../redux/actions"
 import { connect } from "react-redux";
 import '../../styles/style.css'
 
-import UserSettingsScreen from "./contentScreens/UserSettingsScreen.jsx"
 import GenerateReportScreen from "./contentScreens/GenerateReportScreen.jsx"
-
 import WorktimesContainer from "./contentScreens/worktimes/WorktimesContainer.jsx"
 import TasksContainer from "./contentScreens/tasks/TasksContainer.jsx"
 import VacationsContainer from "./contentScreens/vacations/VacationsContainer.jsx"
 import SickLeavesContainer from "./contentScreens/sickLeaves/SickLeavesContainer.jsx"
 
 import {
-    USER_SETTINGS,
     LIST_WORKTIMES,
     LIST_TASKS,
     LIST_VACATIONS,
@@ -31,7 +28,6 @@ import {
 const mapStateToProps = state => {
     return {
          user: state.user,
-         userSettingsClicked: state.userSettingsClicked,
          listWorktimesClicked: state.listWorktimesClicked,
          addWorktimesClicked: state.addWorktimesClicked,
          editWorktimeClicked: state.editWorktimeClicked,
@@ -69,10 +65,6 @@ class MainScreen extends React.Component {
             </div>
             <div className="contentContainer">
                 <div className="sidebar">
-
-                    <button className="btn btn-dark btn-lg btn-block" onClick={() => this.props.showScreen(USER_SETTINGS)}>
-                        User settings
-                    </button>
                     <button className="btn btn-dark btn-lg btn-block" onClick={() => this.props.showScreen(GENERATE_REPORT)}>
                         { generateReportsText }
                     </button>
@@ -90,7 +82,6 @@ class MainScreen extends React.Component {
                     </button>
                 </div>
                 <div className="operationContainer">
-                    { this.props.userSettingsClicked === true ? <UserSettingsScreen /> : ""}
                     { this.props.generateReportClicked === true ? <GenerateReportScreen /> : ""}
 
                     { ( this.props.listWorktimesClicked === true || this.props.addWorktimesClicked === true ||

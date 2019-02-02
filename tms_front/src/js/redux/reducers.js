@@ -6,7 +6,6 @@ import
     PUSH_TASK,
     PUSH_VACATION,
     PUSH_SICK_LEAVE,
-    USER_SETTINGS,
     LIST_WORKTIMES,
     ADD_WORKTIME,
     SUBORDINATES_WORKTIMES,
@@ -35,7 +34,6 @@ const initalState = {
     selectedSickLeave: null,
     selectedTaskForComments: null,
     showCommentsClicked: false,
-    userSettingsClicked: false,
     listWorktimesClicked: false,
     addWorktimesClicked: false,
     editWorktimeClicked: false,
@@ -88,9 +86,6 @@ export function rootReducer(state = initalState, action) {
             }
         case SELECT_SCREEN:
                 switch(action.screen) {
-                    case USER_SETTINGS:
-                        stateJSON.userSettingsClicked = true;
-                        return stateJSON;
                     case LIST_WORKTIMES:
                         stateJSON.listWorktimesClicked = true;
                         return stateJSON;
@@ -159,7 +154,6 @@ function getDefaultJSON(state){
         selectedSickLeave: null,
         selectedTaskForComments: null,
         showCommentsClicked: false,
-        userSettingsClicked: false,
         listWorktimesClicked: false,
         addWorktimesClicked: false,
         editWorktimeClicked: false,
