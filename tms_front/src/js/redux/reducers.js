@@ -1,5 +1,6 @@
 import 
 {   CREATE_USER,
+    SHOW_COMMENTS,
     PUSH_DATA,
     PUSH_WORKTIME,
     PUSH_TASK,
@@ -32,6 +33,8 @@ const initalState = {
     selectedTask: null,
     selectedVacation: null,
     selectedSickLeave: null,
+    selectedTaskForComments: null,
+    showCommentsClicked: false,
     userSettingsClicked: false,
     listWorktimesClicked: false,
     addWorktimesClicked: false,
@@ -54,13 +57,16 @@ const initalState = {
 };
 
 export function rootReducer(state = initalState, action) {
-    console.log(action);
     let stateJSON = getDefaultJSON(state);
     switch(action.type) {
         case CREATE_USER:
             return (        
                 { user: action.user }
             );
+        case SHOW_COMMENTS:
+                stateJSON.showCommentsClicked = true;
+                stateJSON.selectedTaskForComments = action.task;
+                return stateJSON;
         case PUSH_DATA:
             switch(action.subType) {
                 case PUSH_WORKTIME:
@@ -151,6 +157,8 @@ function getDefaultJSON(state){
         selectedTask: null,
         selectedVacation: null,
         selectedSickLeave: null,
+        selectedTaskForComments: null,
+        showCommentsClicked: false,
         userSettingsClicked: false,
         listWorktimesClicked: false,
         addWorktimesClicked: false,

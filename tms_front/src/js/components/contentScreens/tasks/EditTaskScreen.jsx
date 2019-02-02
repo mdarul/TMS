@@ -43,7 +43,6 @@ class EditWorktimeScreen extends React.Component {
         Http.onreadystatechange = (e) => {
             if(Http.readyState === 4 && Http.status === 200) {
                 const responseData = JSON.parse(Http.responseText);
-                console.log(responseData);
                 this.setState({
                     title: responseData.title,
                     userId: responseData.userId,

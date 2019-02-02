@@ -27,7 +27,7 @@ namespace TMS.Controllers
             var payments = _repo.GetPayments();
             if (payments == null || !payments.Any()) return NotFound();
 
-            return Ok(payments.Select(ModelsMapping.GetPaymentDto));
+            return Ok(payments);
         }
 
         [HttpGet("payments/{paymentId}")]

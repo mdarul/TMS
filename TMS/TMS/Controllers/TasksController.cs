@@ -156,7 +156,7 @@ namespace TMS.Controllers
             if (userFromRequest == null) return NotFound();
 
             var taskList = users
-                .Where(o => o.Id != userId && o.TeamId == userFromRequest.TeamId)
+                .Where(o => o.TeamId == userFromRequest.TeamId)
                 .SelectMany(o => _repo.GetTasksForUser(o.Id))
                 .Select(ModelsMapping.GetTaskDto);
 

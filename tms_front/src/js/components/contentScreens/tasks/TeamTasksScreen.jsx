@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { serverUrl } from "../../../../secret.js"
-import TaskPresentImmutable from '../../utilsComponents/TaskPresentImmutable.jsx';
+import TaskPresentForTeam from '../../utilsComponents/TaskPresentForTeam.jsx';
 
 const mapStateToProps = state => {
     return {
@@ -34,7 +34,7 @@ class TeamTasksScreen extends React.Component {
   render() {
     let tasksComponents = null;
     if(this.state.teamTasks !== null) {
-      tasksComponents = this.state.teamTasks.map(taskJson => <TaskPresentImmutable taskJson={taskJson} key={taskJson.id} />); 
+      tasksComponents = this.state.teamTasks.map(taskJson => <TaskPresentForTeam taskJson={taskJson} key={taskJson.id} />); 
     }
 
     return (

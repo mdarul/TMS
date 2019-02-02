@@ -1,7 +1,8 @@
 export const CREATE_USER = "CREATE_USER";
 export const SELECT_SCREEN = "SELECT_SCREEN";
-
 export const PUSH_DATA = "PUSH_DATA";
+export const SHOW_COMMENTS = "SHOW_COMMENTS";
+
 export const PUSH_WORKTIME = "PUSH_WORKTIME";
 export const PUSH_TASK = "PUSH_TASK";
 export const PUSH_VACATION = "PUSH_VACATIONS";

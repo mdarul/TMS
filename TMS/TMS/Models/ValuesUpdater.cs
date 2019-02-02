@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using TMS.Models.DTO;
+using TMS.Models.DTO.Comment;
 using TMS.Models.DTO.Management;
 using TMS.Models.DTO.Payment;
 using TMS.Models.DTO.SickLeave;
@@ -91,6 +92,14 @@ namespace TMS.Models
             paymentToUpdate.HourlyRate = paymentWithUpdatedValues.HourlyRate;
             paymentToUpdate.ContractType = paymentWithUpdatedValues.contractType;
             paymentToUpdate.JobTimePortion = paymentWithUpdatedValues.jobTimePortion;
+        }
+
+        public static void UpdateCommentFromDto(Comment commentToUpdate, CommentForCreationDto commentWithUpdatedValues)
+        {
+            commentToUpdate.Content = commentWithUpdatedValues.Content;
+            commentToUpdate.CreationTime = commentWithUpdatedValues.CreationTime;
+            commentToUpdate.TaskId = commentWithUpdatedValues.TaskId;
+            commentToUpdate.UserId = commentWithUpdatedValues.UserId;
         }
     }
 }

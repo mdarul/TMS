@@ -222,7 +222,7 @@ namespace TMS.Services
 
         public void AddComment(Comment comment)
         {
-            _context.Add(comment);
+            _context.Comments.Add(comment);
             SaveChanges();
         }
 

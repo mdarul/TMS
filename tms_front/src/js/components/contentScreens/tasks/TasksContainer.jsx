@@ -6,6 +6,7 @@ import AddTaskScreen from "./AddTaskScreen.jsx"
 import EditTaskScreen from "./EditTaskScreen.jsx"
 import SubordinatesTasksScreen from "./SubordinatesTasksScreen.jsx"
 import TeamTasksScreen from './TeamTasksScreen.jsx';
+import TaskCommentsScreen from './TaskCommentsScreen.jsx'; 
 
 const mapStateToProps = state => {
     return {
@@ -13,7 +14,8 @@ const mapStateToProps = state => {
         editTaskClicked: state.editTaskClicked,
         addTaskClicked: state.addTaskClicked,
         subordinatesTasksClicked: state.subordinatesTasksClicked,
-        teamTaskClicked: state.teamTaskClicked
+        teamTaskClicked: state.teamTaskClicked,
+        showCommentsClicked: state.showCommentsClicked
     };
 };
 
@@ -30,6 +32,7 @@ class TasksContainer extends React.Component {
                 { this.props.editTaskClicked === true ? <EditTaskScreen /> : "" }
                 { this.props.subordinatesTasksClicked === true ? <SubordinatesTasksScreen /> : "" }
                 { this.props.teamTaskClicked === true ? <TeamTasksScreen /> : "" }
+                { this.props.showCommentsClicked === true ? <TaskCommentsScreen /> : "" }
             </div>
         );
     }

@@ -42,8 +42,6 @@ class AddWorktimeScreen extends React.Component {
       userId: this.props.user.id 
     }
 
-    console.log(newWorkTime);
-
     const http = new XMLHttpRequest();
     http.open("POST", requestUrl);
     http.setRequestHeader("Content-type", "application/json");
